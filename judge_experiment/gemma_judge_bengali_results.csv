@@ -1,0 +1,976 @@
+﻿source_model,question_id,prompt_id,question,prompt,reasoning_content,response,judge_model,score,correct,reason,raw_judge_response,judge_reasoning
+Gemma-4-26B,1,P1,জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে। তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন। অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন। তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?,Solve the following math problem step by step. Show your reasoning clearly and provide the final answer.,"*   Hens lay 16 eggs per day.
+    *   Janet eats 3 eggs for breakfast every day.
+    *   Janet uses 4 eggs to make muffins for friends every day.
+    *   The remaining eggs are sold at the farmers' market for $2 each.
+    *   The goal is to find out how much money Janet earns at the farmers' market each day.
+
+    *   Total eggs laid per day = 16
+    *   Eggs eaten for breakfast = 3
+    *   Eggs used for muffins = 4
+    *   Selling price per egg = $2
+
+    *   Total eggs used for other purposes (breakfast + muffins) = 3 + 4 = 7 eggs.
+    *   Remaining eggs to be sold = Total eggs - Eggs used = 16 - 7 = 9 eggs.
+    *   Total earnings = Remaining eggs × Price per egg = 9 × $2 = $18.
+
+    *   *Step 1: Calculate total eggs used for consumption/baking.*
+        Janet uses 3 eggs for breakfast and 4 eggs for muffins.
+        Total used = 3 + 4 = 7 eggs.
+
+    *   *Step 2: Calculate remaining eggs.*
+        Total eggs laid = 16.
+        Remaining eggs = 16 - 7 = 9 eggs.
+
+    *   *Step 3: Calculate total earnings.*
+        Price per egg = $2.
+        Earnings = 9 eggs × $2/egg = $18.
+
+    *   জেনেটের হাঁসগুলি প্রতিদিন ১৬টি ডিম পাড়ে। (Hens lay 16 eggs/day.)
+    *   তিনি প্রতিদিন ৩টি ডিম খান। (Eats 3 eggs/day.)
+    *   তিনি প্রতিদিন ৪টি ডিম মাফিন তৈরির জন্য ব্যবহার করেন। (Uses 4 eggs for muffins/day.)
+    *   মোট ব্যবহৃত ডিম = ৩ + ৪ = ৭টি। (Total used = 7.)
+    *   অবশিষ্ট ডিম = ১৬ - ৭ = ৯টি। (Remaining = 9.)
+    *   প্রতিটি ডিমের দাম = ২ ডলার। (Price/egg = $2.)
+    *   মোট উপার্জন = ৯ × ২ = ১৮ ডলার। (Total earnings = $18.)
+
+    *   Start with the total number of eggs.
+    *   Subtract the eggs eaten and used.
+    *   Multiply the remainder by the price per egg.
+    *   State the final answer clearly.","সমস্যাটি ধাপে ধাপে সমাধান করা হলো:
+
+**১. প্রতিদিন মোট কতটি ডিম পাড়ে তা বের করা:**
+জেনেটের হাঁসগুলি প্রতিদিন ১৬টি ডিম পাড়ে।
+
+**২. প্রতিদিন কতটি ডিম ব্যবহার করা হয় তা বের করা:**
+জেনেট প্রতিদিন প্রাতরাশে ৩টি ডিম খান এবং মাফিন তৈরির জন্য ৪টি ডিম ব্যবহার করেন।
+সুতরাং, প্রতিদিন মোট ব্যবহৃত ডিম = $৩ + ৪ = ৭$টি।
+
+**৩. প্রতিদিন কতটি ডিম বিক্রির জন্য অবশিষ্ট থাকে তা বের করা:**
+মোট ডিম থেকে ব্যবহৃত ডিম বাদ দিলে অবশিষ্ট থাকে বিক্রির জন্য।
+অবশিষ্ট ডিম = $১৬ - ৭ = ৯$টি।
+
+**৪. প্রতিদিন কত ডলার উপার্জন করেন তা বের করা:**
+প্রতিটি ডিমের বিক্রয় মূল্য হলো ২ ডলার।
+সুতরাং, ৯টি ডিম বিক্রির মাধ্যমে মোট উপার্জন = $৯ \times ২ = ১৮$ ডলার।
+
+**উত্তর:** জেনেট কৃষকদের বাজারে প্রতিদিন **১৮ ডলার** উপার্জন করেন।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the total number of eggs, subtracts the eggs used for breakfast and muffins, and multiplies the remaining eggs by the price per egg to find the total daily earnings. All calculations are correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the total number of eggs, subtracts the eggs used for breakfast and muffins, and multiplies the remaining eggs by the price per egg to find the total daily earnings. All calculations are correct.""
+}
+```","*   Daily eggs laid: 16
+    *   Eggs eaten for breakfast: 3
+    *   Eggs used for muffins: 4
+    *   Selling price per egg: $2
+    *   Goal: Calculate daily earnings from selling the remaining eggs.
+
+    *   Total eggs = 16
+    *   Total eggs used = 3 (breakfast) + 4 (muffins) = 7
+    *   Remaining eggs = 16 - 7 = 9
+    *   Daily earnings = 9 eggs * $2/egg = $18
+
+    *   Step 1: Total eggs = 16. (Correct)
+    *   Step 2: Total used = 3 + 4 = 7. (Correct)
+    *   Step 3: Remaining eggs = 16 - 7 = 9. (Correct)
+    *   Step 4: Earnings = 9 * 2 = 18. (Correct)
+    *   Final Answer: 18 dollars. (Correct)
+
+    *   The candidate solution is logically sound and mathematically accurate."
+Gemma-4-26B,1,P2,জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে। তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন। অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন। তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?,Please solve the following math problem carefully. Explain your solution step by step and clearly state the final answer.,"*   Ducks lay 16 eggs per day.
+    *   Eggs eaten for breakfast: 3 eggs per day.
+    *   Eggs used for muffins for friends: 4 eggs per day.
+    *   Selling price of remaining eggs: $2 per egg.
+    *   Goal: Find the daily income from selling the remaining eggs.
+
+    *   Total eggs laid per day = 16
+    *   Eggs used (Breakfast + Muffins) = 3 + 4 = 7
+    *   Remaining eggs = Total eggs - Eggs used
+    *   Remaining eggs = 16 - 7 = 9
+
+    *   Remaining eggs = 9
+    *   Price per egg = $2
+    *   Total income = Remaining eggs $\times$ Price per egg
+    *   Total income = 9 $\times$ 2 = 18
+
+    *   Step 1: Calculate total eggs used daily.
+    *   Step 2: Calculate remaining eggs after usage.
+    *   Step 3: Calculate total income from selling the remaining eggs.
+
+    *   ""জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে।"" (Janet's ducks lay 16 eggs every day.)
+    *   ""তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান..."" (She eats 3 eggs every day for breakfast...)
+    *   ""...এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন।"" (...and makes muffins for her friends with 4 eggs every day.)
+    *   ""অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন।"" (She sells the remaining duck eggs at the farmer's market for $2 per egg every day.)
+    *   ""তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?"" (How many dollars does she earn every day at the farmer's market?)
+
+    *   Total eggs = 16
+    *   Used eggs = 3 + 4 = 7
+    *   Remaining eggs = 16 - 7 = 9
+    *   Income = 9 * 2 = 18
+
+    *   Step-by-step explanation.
+    *   Clear final answer.","সমস্যাটি ধাপে ধাপে সমাধান করা হলো:
+
+**১ম ধাপ: প্রতিদিন মোট কতটি ডিম ব্যবহার করা হয় তা বের করা:**
+জেনেট প্রতিদিন প্রাতরাশে ৩টি ডিম খান এবং বন্ধুদের জন্য মাফিন বানাতে ৪টি ডিম ব্যবহার করেন।
+সুতরাং, প্রতিদিন ব্যবহৃত মোট ডিম = (প্রাতরাশের ডিম + মাফিনের ডিম)
+= ৩ + ৪ = ৭টি ডিম।
+
+**২য় ধাপ: প্রতিদিন কতটি ডিম অবশিষ্ট থাকে তা বের করা:**
+জেনেটের হাঁসগুলো প্রতিদিন ১৬টি ডিম পাড়ে।
+সুতরাং, প্রতিদিন অবশিষ্ট ডিম = (মোট ডিম - ব্যবহৃত ডিম)
+= ১৬ - ৭ = ৯টি ডিম।
+
+**৩য় ধাপ: প্রতিদিন কত টাকা উপার্জন করেন তা বের করা:**
+তিনি প্রতিটি অবশিষ্ট ডিম ২ ডলারে বিক্রি করেন।
+সুতরাং, প্রতিদিনের উপার্জন = (অবশিষ্ট ডিম $\times$ প্রতি ডিমের দাম)
+= ৯ $\times$ ২ = ১৮ ডলার।
+
+**উত্তর:** তিনি কৃষকদের বাজারে প্রতিদিন **১৮ ডলার** উপার্জন করেন।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the number of eggs used daily (3 + 4 = 7), calculates the remaining eggs (16 - 7 = 9), and determines the total daily earnings by multiplying the remaining eggs by the price per egg (9 * 2 = 18). The logic and calculations are entirely correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the number of eggs used daily (3 + 4 = 7), calculates the remaining eggs (16 - 7 = 9), and determines the total daily earnings by multiplying the remaining eggs by the price per egg (9 * 2 = 18). The logic and calculations are entirely correct.""
+}
+```","*   Daily egg production: 16 eggs.
+    *   Eggs eaten for breakfast: 3 eggs.
+    *   Eggs used for muffins: 4 eggs.
+    *   Selling price per egg: $2.
+    *   Goal: Calculate daily earnings from selling the remaining eggs.
+
+    *   Total eggs used = 3 (breakfast) + 4 (muffins) = 7 eggs.
+    *   Remaining eggs = 16 (total) - 7 (used) = 9 eggs.
+    *   Daily earnings = 9 (remaining eggs) * $2 (price per egg) = $18.
+
+    *   Step 1: Calculates total eggs used: 3 + 4 = 7. (Correct)
+    *   Step 2: Calculates remaining eggs: 16 - 7 = 9. (Correct)
+    *   Step 3: Calculates daily earnings: 9 * 2 = 18. (Correct)
+    *   Final Answer: 18 dollars. (Correct)
+
+    *   The reasoning is logically sound.
+    *   The calculations are correct.
+    *   The final answer answers the question asked."
+Gemma-4-26B,1,P3,জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে। তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন। অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন। তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?,Work through the following math problem step by step. Show how you arrive at the answer and give the final result.,"*   Eggs laid per day: 16
+    *   Eggs eaten for breakfast per day: 3
+    *   Eggs used for muffins per day: 4
+    *   Selling price per egg: $2
+    *   Goal: Calculate daily earnings from selling the remaining eggs.
+
+    *   Total eggs = 16
+    *   Eggs used = Eggs eaten + Eggs for muffins
+    *   Eggs used = 3 + 4 = 7
+    *   Remaining eggs = Total eggs - Eggs used
+    *   Remaining eggs = 16 - 7 = 9
+
+    *   Price per egg = $2
+    *   Total earnings = Remaining eggs × Price per egg
+    *   Total earnings = 9 × $2 = $18
+
+    *   Step 1: Calculate total eggs used (3 + 4 = 7).
+    *   Step 2: Calculate remaining eggs (16 - 7 = 9).
+    *   Step 3: Calculate earnings (9 * 2 = 18).
+
+    *   ""জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে।"" (Jennet's ducks lay 16 eggs every day.)
+    *   ""তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন।"" (She eats 3 eggs for breakfast and makes muffins with 4 eggs for her friends every day.)
+    *   ""অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন।"" (The remaining eggs she sells at the farmers' market for $2 each every day.)
+    *   ""তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?"" (How many dollars does she earn every day at the farmers' market?)
+
+    *   *Step 1: Calculate the total number of eggs used each day.*
+        Eggs eaten for breakfast = 3
+        Eggs used for muffins = 4
+        Total eggs used = 3 + 4 = 7 eggs
+
+    *   *Step 2: Calculate the number of remaining eggs to be sold.*
+        Total eggs laid = 16
+        Total eggs used = 7
+        Remaining eggs = 16 - 7 = 9 eggs
+
+    *   *Step 3: Calculate the total earnings from selling the remaining eggs.*
+        Selling price per egg = $2
+        Number of eggs sold = 9
+        Total earnings = 9 × $2 = $18
+
+    The user asked in Bengali, so I should provide the steps clearly in Bengali, following the same logic.
+
+    *Step 1 (প্রয়োজনীয় তথ্য):*
+    প্রতিদিন মোট ডিম পাড়ে = ১৬টি
+    প্রাতরাশে খাওয়া হয় = ৩টি
+    মাফিনের জন্য লাগে = ৪টি
+
+    *Step 2 (ব্যবহৃত ডিমের মোট সংখ্যা):*
+    ব্যবহৃত মোট ডিম = ৩ + ৪ = ৭টি
+
+    *Step 3 (অবশিষ্ট ডিমের সংখ্যা):*
+    অবশিষ্ট ডিম = ১৬ - ৭ = ৯টি
+
+    *Step 4 (উপার্জন করা ডলারের পরিমাণ):*
+    প্রতিটি ডিমের দাম = $২
+    মোট উপার্জন = ৯ × ২ = $১৮
+
+    (Self-correction: Ensure the math is correct. 16 - 3 - 4 = 9. 9 * 2 = 18. Yes.)","সমস্যাটি সমাধান করার জন্য আমরা নিচের ধাপগুলো অনুসরণ করব:
+
+**ধাপ ১: প্রতিদিন মোট কতটি ডিম ব্যবহৃত হয় তা বের করা**
+জেনেটের প্রতিদিন কতটি ডিম প্রয়োজন হয় তা বের করতে হলে আমাদের প্রাতরাশে খাওয়া ডিম এবং মাফিন তৈরির ডিমের সংখ্যা যোগ করতে হবে।
+*   প্রাতরাশে খাওয়া ডিম = ৩টি
+*   মাফিন তৈরির জন্য ডিম = ৪টি
+*   মোট ব্যবহৃত ডিম = ৩ + ৪ = ৭টি
+
+**ধাপ ২: প্রতিদিন কতটি ডিম অবশিষ্ট থাকে তা বের করা**
+মোট ডিম পাড়ার সংখ্যা থেকে ব্যবহৃত ডিমের সংখ্যা বিয়োগ করতে হবে।
+*   প্রতিদিন মোট পাড়ে = ১৬টি
+*   ব্যবহৃত ডিম = ৭টি
+*   অবশিষ্ট ডিম = ১৬ - ৭ = ৯টি
+
+**ধাপ ৩: প্রতিদিন কত ডলার উপার্জন করেন তা বের করা**
+অবশিষ্ট ডিমগুলো প্রতিটিতে $২ দরে বিক্রি করা হয়।
+*   অবশিষ্ট ডিমের সংখ্যা = ৯টি
+*   প্রতিটি ডিমের দাম = $২
+*   মোট উপার্জন = ৯ × ২ = ১৮ ডলার
+
+**উত্তর:** তিনি কৃষকদের বাজারে প্রতিদিন **$১৮** উপার্জন করেন।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the number of eggs used daily, calculates the remaining eggs, and multiplies them by the price per egg to find the total daily earnings. All calculations are accurate.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the number of eggs used daily, calculates the remaining eggs, and multiplies them by the price per egg to find the total daily earnings. All calculations are accurate.""
+}
+```","*   Daily eggs laid: 16
+    *   Eggs eaten for breakfast: 3
+    *   Eggs used for muffins: 4
+    *   Selling price per egg: $2
+    *   Goal: Calculate daily earnings from selling the remaining eggs.
+
+    *   Total eggs used = 3 (breakfast) + 4 (muffins) = 7 eggs.
+    *   Remaining eggs = 16 (total) - 7 (used) = 9 eggs.
+    *   Daily earnings = 9 (remaining eggs) * $2 (price per egg) = $18.
+
+    *   Step 1: Calculates total eggs used (3 + 4 = 7). Correct.
+    *   Step 2: Calculates remaining eggs (16 - 7 = 9). Correct.
+    *   Step 3: Calculates total earnings (9 * 2 = 18). Correct.
+    *   Final Answer: $18. Correct.
+
+    *   The reasoning is logically sound.
+    *   The calculations are correct.
+    *   The final answer answers the question."
+Gemma-4-26B,1,P4,জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে। তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন। অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন। তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?,Find the solution to the following problem. Explain your reasoning and calculations before giving the final answer.,"*   Daily egg production (total eggs per day): 16
+    *   Eggs consumed for breakfast (eggs used per day): 3
+    *   Eggs used for muffins (eggs used per day): 4
+    *   Selling price of remaining eggs: $2 per egg.
+    *   Goal: Find the daily earnings from selling the remaining eggs.
+
+    *   Total eggs = 16
+    *   Eggs used for breakfast = 3
+    *   Eggs used for muffins = 4
+    *   Remaining eggs = Total eggs - (Eggs for breakfast + Eggs for muffins)
+    *   Remaining eggs = 16 - (3 + 4)
+    *   Remaining eggs = 16 - 7
+    *   Remaining eggs = 9
+
+    *   Number of eggs to sell = 9
+    *   Price per egg = $2
+    *   Total earnings = Number of eggs $\times$ Price per egg
+    *   Total earnings = 9 $\times$ 2
+    *   Total earnings = $18
+
+    *   Step 1: Calculate total eggs used (breakfast + muffins).
+    *   Step 2: Subtract the used eggs from the total eggs to find remaining eggs.
+    *   Step 3: Multiply remaining eggs by the price per egg to find the total earnings.
+
+    *   *Step 1 (Total eggs used):* ৩ (প্রাতরাশ) + ৪ (মাফিন) = ৭টি ডিম।
+    *   *Step 2 (Remaining eggs):* ১৬ (মোট ডিম) - ৭ (ব্যবহৃত ডিম) = ৯টি ডিম।
+    *   *Step 3 (Earnings):* ৯টি ডিম $\times$ ২ ডলার = ১৮ ডলার।
+
+    *   Explain clearly in Bengali.
+    *   Show the steps.
+    *   State the final answer clearly.
+
+    *   প্রতিদিন মোট ডিম পাড়ে = ১৬টি
+    *   প্রাতরাশে ব্যবহার করেন = ৩টি
+    *   মাফিন তৈরিতে ব্যবহার করেন = ৪টি
+    *   মোট ব্যবহৃত ডিম = (৩ + ৪) = ৭টি
+    *   বাকি বা অবশিষ্ট ডিম = ১৬ - ৭ = ৯টি
+    *   প্রতিটি ডিমের দাম = $২
+    *   মোট উপার্জন = ৯ $\times$ ২ = ১৮ ডলার।","সমস্যাটি সমাধান করার জন্য আমরা নিচের ধাপগুলো অনুসরণ করতে পারি:
+
+**ধাপ ১: প্রতিদিন মোট কতটি ডিম ব্যবহৃত হয় তা বের করা**
+জেনেট প্রতিদিন সকালে প্রাতরাশে ৩টি ডিম খান এবং মাফিন তৈরির জন্য ৪টি ডিম ব্যবহার করেন।
+সুতরাং, প্রতিদিন ব্যবহৃত মোট ডিম = (৩ + ৪) = ৭টি ডিম।
+
+**ধাপ ২: প্রতিদিন কতটি ডিম অবশিষ্ট থাকে তা বের করা**
+হাঁসগুলো প্রতিদিন ১৬টি ডিম পাড়ে। এখান থেকে ৭টি ডিম ব্যবহার করার পর অবশিষ্ট থাকে:
+অবশিষ্ট ডিম = (১৬ - ৭) = ৯টি ডিম।
+
+**ধাপ ৩: প্রতিদিন কত টাকা উপার্জন করেন তা বের করা**
+জেনেট অবশিষ্ট প্রতিটি ডিম $২ দরে বিক্রি করেন।
+সুতরাং, প্রতিদিনের উপার্জন = ৯ $\times$ ২ = ১৮ ডলার।
+
+**উত্তর:** জেনেট কৃষকদের বাজারে প্রতিদিন **১৮ ডলার** উপার্জন করেন।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the total number of eggs used daily (3 + 4 = 7), calculates the remaining eggs (16 - 7 = 9), and determines the daily earnings by multiplying the remaining eggs by the price per egg (9 * 2 = 18). The logic and calculations are entirely correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the total number of eggs used daily (3 + 4 = 7), calculates the remaining eggs (16 - 7 = 9), and determines the daily earnings by multiplying the remaining eggs by the price per egg (9 * 2 = 18). The logic and calculations are entirely correct.""
+}
+```","*   Daily egg production: 16 eggs.
+    *   Daily consumption (breakfast): 3 eggs.
+    *   Daily usage (muffins): 4 eggs.
+    *   Selling price per egg: $2.
+    *   Goal: Calculate daily earnings from selling the remaining eggs.
+
+    *   Total eggs produced = 16.
+    *   Total eggs used = 3 (breakfast) + 4 (muffins) = 7.
+    *   Remaining eggs = 16 - 7 = 9.
+    *   Daily earnings = 9 eggs * $2/egg = $18.
+
+    *   Step 1: Calculates total eggs used: 3 + 4 = 7. (Correct)
+    *   Step 2: Calculates remaining eggs: 16 - 7 = 9. (Correct)
+    *   Step 3: Calculates daily earnings: 9 * 2 = 18. (Correct)
+    *   Final Answer: 18 dollars. (Correct)
+
+    *   The reasoning is sound.
+    *   The calculations are correct.
+    *   The final answer answers the question."
+Gemma-4-26B,1,P5,জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে। তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন। অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন। তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?,Carefully solve the following mathematical problem. Provide a step-by-step solution and conclude with the final answer.,"*   Ducks lay 16 eggs per day.
+    *   Eggs consumed for breakfast: 3 eggs per day.
+    *   Eggs used for muffins: 4 eggs per day.
+    *   Remaining eggs are sold at the market for $2 per egg.
+    *   Goal: Find out how much money she earns per day at the market.
+
+    *   Total eggs laid: 16
+    *   Total eggs used (breakfast + muffins): 3 + 4
+    *   Remaining eggs (to be sold): Total eggs - Total eggs used
+    *   Total earnings: Remaining eggs × Price per egg
+
+    *   Step 1: Total eggs laid = 16.
+    *   Step 2: Total eggs used = 3 (breakfast) + 4 (muffins) = 7 eggs.
+    *   Step 3: Remaining eggs = 16 - 7 = 9 eggs.
+    *   Step 4: Price per egg = $2.
+    *   Step 5: Daily earnings = 9 eggs × $2/egg = $18.
+
+    *   ""জেনেটের হাঁসগুলি প্রতিদিন 16টি করে ডিম পাড়ে।"" (Jennet's ducks lay 16 eggs every day.) -> Correct.
+    *   ""তিনি প্রতিদিন প্রাতরাশে তিনটি করে ডিম খান"" (She eats 3 eggs for breakfast every day.) -> Correct.
+    *   ""এবং বন্ধুদের জন্য প্রতিদিন চারটি ডিম দিয়ে মাফিন তৈরি করেন।"" (And makes muffins for friends using 4 eggs every day.) -> Correct.
+    *   ""অবশিষ্ট হাঁসের ডিমগুলি তিনি প্রতিদিন কৃষকদের বাজারে প্রতি ডিম $2 দরে বিক্রয় করেন।"" (She sells the remaining duck eggs at the farmers' market for $2 per egg every day.) -> Correct.
+    *   ""তিনি কৃষকদের বাজারে প্রতিদিন কত ডলার উপার্জন করেন?"" (How many dollars does she earn daily at the farmers' market?) -> Correct.
+
+    *   Total eggs = 16
+    *   Eggs used = 3 + 4 = 7
+    *   Eggs left = 16 - 7 = 9
+    *   Earnings = 9 * 2 = 18.
+
+    *   State the total eggs laid.
+    *   State the total eggs used for eating and baking.
+    *   Calculate the remaining eggs.
+    *   Calculate the total earnings by multiplying the remaining eggs by the price per egg.
+
+    (Self-Correction/Refinement):
+    The question is in Bengali, so the final answer should be presented clearly, ideally in a way that follows the logic.
+
+    *   প্রতিদিন পাড়া হয় = ১৬টি
+    *   ব্যবহৃত ডিম (প্রাতরাশ + মাফিন) = ৩ + ৪ = ৭টি
+    *   অবশিষ্ট ডিম = ১৬ - ৭ = ৯টি
+    *   প্রতিটি ডিমের দাম = $২
+    *   মোট উপার্জন = ৯ × ২ = ১৮ ডলার।
+
+    (Final check of the math)
+    16 - 3 = 13
+    13 - 4 = 9
+    9 * 2 = 18.
+    Yes, looks solid.","সমস্যাটি ধাপে ধাপে সমাধান করা হলো:
+
+**১. প্রতিদিন মোট কতটি ডিম পাড়া হয় তা বের করা:**
+জেনেটের হাঁসগুলো প্রতিদিন পাড়ে ১৬টি ডিম।
+
+**২. প্রতিদিন মোট কতটি ডিম ব্যবহার করা হয় তা বের করা:**
+*   প্রাতরাশে খাওয়া হয়: ৩টি ডিম
+*   মাফিন তৈরিতে লাগে: ৪টি ডিম
+*   মোট ব্যবহৃত ডিম = (৩ + ৪) = ৭টি ডিম।
+
+**৩. প্রতিদিন কতটি ডিম অবশিষ্ট থাকে তা বের করা:**
+*   মোট ডিম = ১৬টি
+*   ব্যবহৃত ডিম = ৭টি
+*   অবশিষ্ট ডিম = (১৬ - ৭) = ৯টি ডিম।
+
+**৪. প্রতিদিন কত টাকা উপার্জন করা হয় তা বের করা:**
+*   প্রতিটি ডিমের বিক্রয় মূল্য = $২
+*   অবশিষ্ট ৯টি ডিমের মোট মূল্য = ৯ × ২ = $১৮।
+
+**উত্তর:** তিনি কৃষকদের বাজারে প্রতিদিন **$১৮** উপার্জন করেন।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the total number of eggs, subtracts the eggs used for breakfast and muffins, and multiplies the remaining eggs by the price per egg to find the total daily earnings. All calculations are accurate.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the total number of eggs, subtracts the eggs used for breakfast and muffins, and multiplies the remaining eggs by the price per egg to find the total daily earnings. All calculations are accurate.""
+}
+```","*   Daily eggs laid: 16
+    *   Eggs eaten for breakfast: 3
+    *   Eggs used for muffins: 4
+    *   Selling price per egg: $2
+    *   Goal: Calculate daily earnings from selling the remaining eggs.
+
+    *   Total eggs = 16
+    *   Total used = 3 (breakfast) + 4 (muffins) = 7
+    *   Remaining eggs = 16 - 7 = 9
+    *   Earnings = 9 eggs * $2/egg = $18
+
+    *   Step 1: Total eggs = 16. (Correct)
+    *   Step 2: Total used = 3 + 4 = 7. (Correct)
+    *   Step 3: Remaining eggs = 16 - 7 = 9. (Correct)
+    *   Step 4: Earnings = 9 * 2 = $18. (Correct)
+    *   Final Answer: $18. (Correct)
+
+    *   The reasoning is sound.
+    *   The calculations are correct.
+    *   The final answer is correct."
+Gemma-4-26B,2,P1,একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?,Solve the following math problem step by step. Show your reasoning clearly and provide the final answer.,"*   Given: 2 reels of blue thread (নীল সুতো) and half of that amount in white thread (সাদা সুতো) are needed to make one garment.
+    *   Goal: Find the total number of reels needed to make the garment.
+
+    *   Blue thread = 2 reels.
+    *   White thread = Half of the blue thread.
+
+    *   White thread = $\frac{1}{2} \times 2$ reels.
+    *   White thread = 1 reel.
+
+    *   Total reels = Blue thread + White thread.
+    *   Total reels = 2 reels + 1 reel.
+    *   Total reels = 3 reels.
+
+    *   Blue: 2
+    *   White: half of 2 = 1
+    *   Total: 2 + 1 = 3.
+
+    *   Step 1: Identify the amount of blue thread.
+    *   Step 2: Calculate the amount of white thread.
+    *   Step 3: Sum them up to find the total.","**সমস্যাটি ধাপে ধাপে সমাধান করা হলো:**
+
+**১. নীল সুতো ও সাদা সুথোর পরিমাণ নির্ণয়:**
+*   প্রশ্ন অনুযায়ী, নীল সুতো লাগে = ২ রিল।
+*   সাদা সুতো লাগে নীল সুথোর অর্ধেক।
+*   সুতরাং, সাদা সুতো লাগে = ২ রিলের অর্ধেক = (২ $\div$ ২) রিল = ১ রিল।
+
+**২. মোট রিলের সংখ্যা নির্ণয়:**
+*   একটি পোশাক তৈরি করতে মোট লাগে = নীল সুতো + সাদা সুতো।
+*   মোট রিল = ২ রিল (নীল) + ১ রিল (সাদা) = ৩ রিল।
+
+**উত্তর:** একটি পোশাক তৈরি করতে মোট **৩টি** রিল সুতো লাগবে।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.""
+}
+```","*   Problem: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?"" (To make a dress, 2 reels of blue thread and half of that amount of white thread are needed. How many reels are needed in total?)
+    *   Given:
+        *   Blue thread = 2 reels.
+        *   White thread = half of blue thread = 2 / 2 = 1 reel.
+    *   Question: Total reels needed.
+    *   Calculation: 2 (blue) + 1 (white) = 3 reels.
+
+    *   Step 1: Identifies blue thread = 2 reels.
+    *   Step 2: Calculates white thread = half of 2 = 1 reel.
+    *   Step 3: Calculates total = 2 + 1 = 3 reels.
+    *   Final Answer: 3 reels.
+
+    *   The reasoning is sound.
+    *   The calculations are correct.
+    *   The final answer is correct."
+Gemma-4-26B,2,P2,একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?,Please solve the following math problem carefully. Explain your solution step by step and clearly state the final answer.,"*   Input (Bengali): ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?""
+    *   Translation: ""To make one garment, 2 reels of blue thread and half of that amount in white thread are needed. How many total reels are needed to make this?""
+
+    *   Blue thread needed = 2 reels.
+    *   White thread needed = Half of the blue thread = $\frac{1}{2} \times 2$ reels.
+
+    *   White thread = $2 \div 2 = 1$ reel.
+
+    *   Total reels = Blue thread + White thread.
+    *   Total reels = $2 + 1 = 3$ reels.
+
+    *   Step 1: Identify blue thread amount (2 reels).
+    *   Step 2: Calculate white thread amount (Half of 2 = 1 reel).
+    *   Step 3: Add both to find the total (2 + 1 = 3 reels).
+
+    *   নীল সুতো লাগে = ২ রিল।
+    *   সাদা সুতো লাগে = নীলের অর্ধেক = ২ $\div$ ২ = ১ রিল।
+    *   মোট সুতো লাগে = ২ + ১ = ৩ রিল।","**সমস্যাটি সমাধান করার ধাপগুলো নিচে দেওয়া হলো:**
+
+**১. নীল সুতোর পরিমাণ বের করা:**
+প্রশ্নে বলা হয়েছে, একটি পোশাক তৈরি করতে নীল সুতো লাগে **২ রিল**।
+
+**২. সাদা সুতোর পরিমাণ বের করা:**
+প্রশ্নে বলা হয়েছে, সাদা সুতো লাগে নীল সুতোর অর্ধেক।
+সুতরাং, সাদা সুতো লাগে = $২ \div ২ = ১$ রিল।
+
+**৩. মোট সুতোর পরিমাণ বের করা:**
+মোট রিল লাগবে = (নীল সুতোর রিল) + (সাদা সুতোর রিল)
+মোট রিল লাগবে = $২ + ১ = ৩$ রিল।
+
+**উত্তর:** এটি তৈরি করতে মোট **৩টি** রিল লাগবে।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.""
+}
+```","*   Problem: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?""
+    *   Translation: ""To make a dress, 2 reels of blue thread and half of that (the blue thread) of white thread are needed. How many reels in total are needed to make it?""
+
+    *   Blue thread = 2 reels.
+    *   White thread = Half of blue thread = 2 / 2 = 1 reel.
+    *   Total reels = Blue thread + White thread = 2 + 1 = 3 reels.
+
+    *   Step 1: Identifies blue thread as 2 reels. (Correct)
+    *   Step 2: Calculates white thread as half of blue thread: 2 / 2 = 1 reel. (Correct)
+    *   Step 3: Calculates total reels: 2 + 1 = 3 reels. (Correct)
+    *   Final Answer: 3 reels. (Correct)
+
+    *   The reasoning is logically sound.
+    *   The calculations are correct.
+    *   The final answer answers the question."
+Gemma-4-26B,2,P3,একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?,Work through the following math problem step by step. Show how you arrive at the answer and give the final result.,"*   Language: Bengali.
+    *   Problem: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?""
+    *   Translation: ""To make a garment, 2 reels of blue thread and half of that in white thread are required. How many total reels are needed to make it?""
+
+    *   Blue thread: 2 reels.
+    *   White thread: Half of the blue thread.
+    *   Goal: Total number of reels.
+
+    *   Step 1: Identify the number of blue reels.
+        *   Blue reels = 2.
+    *   Step 2: Calculate the number of white reels.
+        *   White reels = $\frac{1}{2} \times$ (Blue reels)
+        *   White reels = $\frac{1}{2} \times 2 = 1$.
+    *   Step 3: Calculate the total number of reels.
+        *   Total reels = Blue reels + White reels
+        *   Total reels = $2 + 1 = 3$.
+
+    *   Step 1 (নীল সুতো): ২ রিল।
+    *   Step 2 (সাদা সুতো): ২ রিলের অর্ধেক = $\frac{২}{২} = ১$ রিল।
+    *   Step 3 (মোট সুতো): ২ (নীল) + ১ (সাদা) = ৩ রিল।
+
+    *   Start by stating the given information.
+    *   Show the calculation for the white thread.
+    *   Show the sum.
+    *   State the final answer clearly.","ধাপে ধাপে সমস্যাটির সমাধান নিচে দেওয়া হলো:
+
+**১. দেওয়া আছে:**
+* নীল সুতো লাগে = ২ রিল।
+
+**২. সাদা সুতো বের করতে হবে:**
+* প্রশ্নে বলা হয়েছে, সাদা সুতো লাগে নীল সুতোর অর্ধেক।
+* সুতরাং, সাদা সুতো = ২ রিলের অর্ধেক = $\frac{২}{২}$ রিল = ১ রিল।
+
+**৩. মোট সুতোর রিল সংখ্যা বের করতে হবে:**
+* মোট রিল = নীল সুতোর রিল + সাদা সুতোর রিল
+* মোট রিল = ২ + ১ = ৩ রিল।
+
+**উত্তর:** এটি তৈরি করতে মোট **৩টি** রিল লাগবে।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.""
+}
+```","*   Problem: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?"" (To make a dress, 2 reels of blue thread and half of that amount of white thread are needed. How many reels are needed in total?)
+    *   Given:
+        *   Blue thread = 2 reels.
+        *   White thread = half of blue thread = 2 / 2 = 1 reel.
+    *   Question: Total reels needed.
+    *   Calculation: 2 (blue) + 1 (white) = 3 reels.
+
+    *   Step 1: Identifies blue thread = 2 reels. (Correct)
+    *   Step 2: Calculates white thread = half of 2 = 1 reel. (Correct)
+    *   Step 3: Calculates total = 2 + 1 = 3 reels. (Correct)
+    *   Final Answer: 3 reels. (Correct)
+
+    *   The reasoning is sound.
+    *   The calculations are correct.
+    *   The final answer answers the question."
+Gemma-4-26B,2,P4,একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?,Find the solution to the following problem. Explain your reasoning and calculations before giving the final answer.,"*   The problem is in Bengali.
+    *   Input: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?""
+    *   Translation: ""To make a garment, 2 reels of blue thread and half of that in white thread are needed. How many total reels are needed to make this?""
+
+    *   Blue thread needed = 2 reels.
+    *   White thread needed = Half of the blue thread.
+    *   Total reels needed = Blue thread + White thread.
+
+    *   Blue thread = 2 reels.
+    *   White thread = $\frac{1}{2}$ of 2 = $2 \div 2 = 1$ reel.
+    *   Total reels = $2 \text{ (blue)} + 1 \text{ (white)} = 3$ reels.
+
+    *   Step 1: Identify the amount of blue thread. (2 reels)
+    *   Step 2: Calculate the amount of white thread. (Half of 2 is 1)
+    *   Step 3: Add them together for the total. (2 + 1 = 3)
+
+    *   *Step 1:* নীল সুতো লাগে = ২ রিল। (Blue thread needed = 2 reels)
+    *   *Step 2:* সাদা সুতো লাগে নীল সুতোর অর্ধেক। অর্থাৎ, $২ \div ২ = ১$ রিল। (White thread needed is half of blue. That is, $2 \div 2 = 1$ reel)
+    *   *Step 3:* মোট সুতো লাগে = নীল সুতো + সাদা সুতো = $২ + ১ = ৩$ রিল। (Total thread needed = Blue + White = 3 reels)
+
+    *   Explain the calculation clearly.
+    *   State the final answer.","এখানে সমস্যাটির সমাধান ধাপে ধাপে দেওয়া হলো:
+
+**১. নীল সুতোর পরিমাণ:**
+প্রশস্তানুসারে, নীল সুতো লাগে ২ রিল।
+
+**২. সাদা সুতোর পরিমাণ:**
+প্রশস্তানুসারে, সাদা সুতো লাগে নীল সুতোর অর্ধেক।
+তাই, সাদা সুতো লাগে = $২ \div ২ = ১$ রিল।
+
+**৩. মোট সুতোর পরিমাণ:**
+মোট সুতো লাগবে = নীল সুতো + সাদা সুতো
+মোট সুতো লাগবে = $২ + ১ = ৩$ রিল।
+
+**উত্তর:** পোশাকটি তৈরি করতে মোট **৩টি** রিল সুতো লাগবে।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.""
+}
+```","*   Problem: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?"" (To make a dress, 2 reels of blue thread and half of that amount of white thread are needed. How many reels are needed in total?)
+    *   Given:
+        *   Blue thread = 2 reels.
+        *   White thread = half of blue thread = 2 / 2 = 1 reel.
+    *   Question: Total reels needed.
+    *   Calculation: 2 (blue) + 1 (white) = 3 reels.
+
+    *   Step 1: Blue thread = 2 reels. (Correct)
+    *   Step 2: White thread = half of blue thread = 2 / 2 = 1 reel. (Correct)
+    *   Step 3: Total = Blue + White = 2 + 1 = 3 reels. (Correct)
+    *   Final Answer: 3 reels. (Correct)
+
+    *   The reasoning is logically sound.
+    *   The calculations are correct.
+    *   The final answer answers the question."
+Gemma-4-26B,2,P5,একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?,Carefully solve the following mathematical problem. Provide a step-by-step solution and conclude with the final answer.,"*   Input (Bengali): ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?""
+    *   Translation: ""To make a garment, 2 reels of blue thread and half of that in white thread are needed. How many reels in total are needed to make it?""
+
+    *   Blue thread needed = 2 reels.
+    *   White thread needed = half of the blue thread.
+
+    *   Amount of blue thread = 2 reels.
+    *   Amount of white thread = 1/2 * (Amount of blue thread) = 1/2 * 2 = 1 reel.
+
+    *   Total reels = Blue thread + White thread
+    *   Total reels = 2 + 1 = 3 reels.
+
+    *   Step 1: Determine blue thread (2 reels).
+    *   Step 2: Calculate white thread (half of 2 is 1).
+    *   Step 3: Add them together (2 + 1 = 3).
+
+    *   নীল সুতো লাগে = ২ রিল।
+    *   সাদা সুতো লাগে = ২ রিলের অর্ধেক = ১ রিল।
+    *   মোট সুতো লাগে = ২ + ১ = ৩ রিল।","সমস্যাটি ধাপে ধাপে সমাধান করা হলো:
+
+**১. নীল সুতার পরিমাণ নির্ণয়:**
+প্রশস্তানুসারে, নীল সুতো লাগে ২ রিল।
+
+**২. সাদা সুতার পরিমাণ নির্ণয়:**
+প্রশস্তানুসারে, সাদা সুতো লাগে নীল সুতার অর্ধেক।
+সুতরাং, সাদা সুতো লাগে = ২ রিলের অর্ধেক = (২ ÷ ২) = ১ রিল।
+
+**৩. মোট সুতার পরিমাণ নির্ণয়:**
+মোট সুতো লাগবে = নীল সুতো + সাদা সুতো
+মোট সুতো লাগবে = ২ রিল + ১ রিল = ৩ রিল।
+
+**উত্তর:** পোশাকটি তৈরি করতে মোট **৩** রিল সুতো লাগবে।",Gemma-4-31B,4,True,"The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.","```json
+{
+  ""score"": 4,
+  ""correct"": true,
+  ""reason"": ""The candidate solution correctly identifies the amount of blue thread (2 reels), calculates the amount of white thread as half of that (1 reel), and sums them up to find the total (3 reels). The logic and calculations are perfectly correct.""
+}
+```","*   Problem: ""একটি পোশাক তৈরি করতে 2 রিল নীল সুতো এবং তার অর্ধেক সাদা সুতো লাগে। এটি তৈরি করতে মোট কতগুলি রিল লাগবে?"" (To make a dress, 2 reels of blue thread and half of that amount of white thread are needed. How many reels are needed in total?)
+    *   Given:
+        *   Blue thread = 2 reels.
+        *   White thread = half of blue thread = 2 / 2 = 1 reel.
+    *   Question: Total reels needed.
+    *   Calculation: 2 (blue) + 1 (white) = 3 reels.
+
+    *   Step 1: Blue thread = 2 reels. (Correct)
+    *   Step 2: White thread = half of blue thread = 2 / 2 = 1 reel. (Correct)
+    *   Step 3: Total = Blue + White = 2 + 1 = 3 reels. (Correct)
+    *   Final Answer: 3 reels. (Correct)
+
+    *   The reasoning is sound.
+    *   The calculations are correct.
+    *   The final answer is correct."
+Gemma-4-26B,3,P1,"জোশ একটি বাড়ি ফ্লিপ করার সিদ্ধান্ত নিয়েছেন। তিনি $80,000-এ একটি বাড়ি ক্রয় করলেন এবং $50,000 দিয়ে মেরামত করলেন। এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল। তিনি কত ডলার লাভ করলেন?",Solve the following math problem step by step. Show your reasoning clearly and provide the final answer.,"*   Josh bought a house for $80,000.
+    *   He spent $50,000 on renovations (repairs).
+    *   The value of the house increased by 150% due to the renovations.
+    *   The goal is to find the total profit made.
+
+    *   Purchase Price: $80,000
+    *   Renovation Cost: $50,000
+    *   Total Investment = Purchase Price + Renovation Cost
+    *   Total Investment = $80,000 + $50,000 = $130,000
+
+    *   Wait, the wording says ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল"" (As a result, the value of the house increased by 150%).
+    *   Does this mean the *final value* is 150% of the *original purchase price*? Or does it mean the value *increased by* 150% of the *original purchase price*?
+    *   In most math problems of this type, ""increased by X%"" means:
+        New Value = Original Value + (X% of Original Value)
+        New Value = Original Value * (1 + X/100)
+    *   Let's clarify: The value of the house *after* renovations is what we need.
+    *   Original Value (at purchase) = $80,000.
+    *   Increase = 150% of $80,000.
+    *   Increase = 1.5 * $80,000 = $120,000.
+    *   New Value = Original Value + Increase = $80,000 + $120,000 = $200,000.
+    *   *Alternative interpretation:* The value became 150% of the original? No, ""বৃদ্ধি পেল"" means ""increased by"". If it said ""মূল্য ১৫০% হলো"", it would mean 1.5x. Since it says ""বৃদ্ধি পেল"", it means 1 + 1.5 = 2.5x.
+    *   Let's check the wording again: ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।"" (As a result, the value of the house increased by 150%.)
+    *   Calculation:
+        Original Value = $80,000
+        Increase = 150% of $80,000 = 1.5 * 80,000 = $120,000
+        Final Value = $80,000 + $120,000 = $200,000.
+
+    *   Profit = Final Value - Total Investment
+    *   Total Investment = $130,000
+    *   Final Value = $200,000
+    *   Profit = $200,000 - $130,000 = $70,000.
+
+    *   *Scenario A (Value increased by 150%):*
+        Investment = 80k + 50k = 130k.
+        Value = 80k * (1 + 1.5) = 80k * 2.5 = 200k.
+        Profit = 200k - 130k = 70k.
+
+    *   *Scenario B (Value became 150% of original):*
+        Investment = 130k.
+        Value = 80k * 1.5 = 120k.
+        Profit = 120k - 130k = -10k (Loss).
+        (Unlikely for a math problem about ""profit"").
+
+    *   *Scenario C (Value increased by 150% of the total investment?):*
+        Unlikely, usually, value increases are relative to the asset's base price.
+
+    *   Step 1: Calculate total investment (ক্রয়মূল্য + মেরামত খরচ).
+    *   Step 2: Calculate the final value of the house (বাড়ির বর্তমান মূল্য).
+    *   Step 3: Calculate profit (লাভ = বর্তমান মূল্য - মোট বিনিয়োগ).
+
+    *   Step 1: মোট বিনিয়োগ = $80,000 + $50,000 = $130,000.
+    *   Step 2: বৃদ্ধির পরিমাণ = $80,000 এর 150% = $80,000 * 1.5 = $120,000.
+    *   Step 3: বাড়িটির বর্তমান মূল্য = $80,000 + $120,000 = $200,000.
+    *   Step 4: লাভ = $200,000 - $130,000 = $70,000.
+
+    *   ""জোশ একটি বাড়ি ফ্লিপ করার সিদ্ধান্ত নিয়েছেন।"" (Josh decided to flip a house.)
+    *   ""তিনি $80,000-এ একটি বাড়ি ক্রয় করলেন এবং $50,000 দিয়ে মেরামত করলেন।"" (He bought a house for $80,000 and spent $50,000 on repairs.)
+    *   ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।"" (As a result, the value of the house increased by 150%.)
+    *   ""তিনি কত ডলার লাভ করলেন?"" (How many dollars of profit did he make?)
+
+    Wait, let's re-read. ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।""
+    Does ""it"" refer to the $80,000 or the $130,000?
+    Usually, value is based on the asset's intrinsic value ($80,000).
+    If the value increases *by* 150%, the multiplier is 2.5.
+    If the value becomes 150% of the original, the multiplier is 1.5.
+    In English/Math context, ""increased by 150%"" means $X + 1.5X = 2.5X$.
+    ""Increased to 150%"" means $1.5X$.
+    ""Increased by 150%"" is clearly $2.5 \times 80,000 = 200,000$.
+
+    Let's double-check if ""value increased by 150%"" could mean the value *after* repairs is 150% more than the *cost after repairs*? No, that's too complex and doesn't fit the wording.
+    Usually, the increase is calculated on the original purchase",,Gemma-4-31B,0,False,No candidate solution was provided for evaluation.,"```json
+{
+  ""score"": 0,
+  ""correct"": false,
+  ""reason"": ""No candidate solution was provided for evaluation.""
+}
+```","*   Purchase price: $80,000
+    *   Repair cost: $50,000
+    *   Total investment: $80,000 + $50,000 = $130,000
+    *   Value increase: The value of the house increased by 150%. (Wait, let's re-read: ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।"" - ""As a result, the value of the house increased by 150%."")
+    *   Question: How many dollars did he profit?
+
+    *   Initial value (purchase price): $80,000
+    *   Increase in value: 150% of the initial value = 1.5 * $80,000 = $120,000
+    *   New value of the house: $80,000 + $120,000 = $200,000
+    *   Total cost (investment): $80,000 (purchase) + $50,000 (repairs) = $130,000
+    *   Profit = New value - Total cost = $200,000 - $130,000 = $70,000
+
+    *Alternative interpretation of ""মূল্য 150% বৃদ্ধি পেল"":*
+    Does it mean the value *became* 150% of the original, or *increased by* 150%?
+    ""বৃদ্ধি পেল"" usually means ""increased by"".
+    If it became 150% of the original:
+    New value = 1.5 * $80,000 = $120,000
+    Profit = $120,000 - $130,000 = -$10,000 (a loss)
+
+    Let's re-read the Bengali: ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।""
+    ""বৃদ্ধি পেল"" = ""increased"".
+    So, ""increased by 150%"" is the most natural translation.
+
+    *   Purchase price = $80,000
+    *   Repair cost = $50,000
+    *   Total cost = $130,000
+    *   Increase in value = 150% of $80,000 = $120,000
+    *   Final value = $80,000 + $120,000 = $200,000
+    *   Profit = $200,000 - $130,000 = $70,000
+
+    Wait, let me double-check if ""মূল্য 150% বৃদ্ধি পেল"" could mean the *total investment* increased by 150%?
+    ""বাড়িটির মূল্য"" refers to the house's value. The house was bought for $80,000.
+    If the value increased by 150% of the *total cost* ($130,000):
+    Increase = 1.5 * $130,000 = $195,000
+    Final value = $130,000 + $195,000 = $325,000
+    Profit = $325,000 - $130,000 = $195,000
+    But ""বাড়িটির মূল্য"" (the value of the house) usually refers to the market value, and the increase is typically based on the purchase price or the total investment. However, the most standard interpretation is that the value of the asset (the house) increased by 150% of its original purchase price.
+
+    Let's re-evaluate ""বাড়িটির মূল্য 150% বৃদ্ধি পেল"".
+    If the value *became* 150% of the original:
+    New value = 1.5 * 80,000 = 120,000.
+    Profit = 120,000 - 130,000 = -10,000. (Unlikely for a ""house flip"" problem).
+
+    If the value *increased by* 150% of the original:
+    New value = 80,000 + (1.5 * 80,000) = 80,000 + 120,000 = 200,000.
+    Profit = 200,000 - 130,000 = 70,000.
+
+    If the value *increased by* 150% of the *total cost*:
+    New value = 130,000 + (1.5 * 130,000) = 130,000 + 195,000 = 325,000.
+    Profit = 325,000 - 130,000 = 195,000.
+
+    Let's look at the candidate solution. (Wait, the candidate solution is missing from the prompt. I need to wait for it or check if I missed it. Ah, the prompt says ""Candidate solution:"" but it's empty. Let me re-read.)
+
+    *Self-correction:* The prompt says ""Candidate solution:"" but there is no text following it. This means I cannot evaluate it yet. Wait, I see the prompt ends there. Let me check if I missed any part of the input.
+
+    *Wait*, the prompt provided to me is:
+    ""Problem:
+    জোশ একটি বাড়ি ফ্লিপ করার সিদ্ধান্ত নিয়েছেন। তিনি $80,000-এ একটি বাড়ি ক্রয় করলেন এবং $50,000 দিয়ে মেরামত করলেন। এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল। তিনি কত ডলার লাভ করলেন?
+
+    Candidate solution:""
+
+    There is no candidate solution provided. I must have been given an incomplete prompt. However, looking at the structure, I should be evaluating a candidate solution. If no candidate solution is provided, I cannot score it.
+
+    *Wait*, let me look again. Is the candidate solution hidden? No.
+    Is it possible the candidate solution is just empty? If the candidate solution is empty, it's completely incorrect.
+
+    Let me re-read the instructions. ""You will be given: 1. A mathematical problem. 2. A candidate solution generated by another model.""
+
+    If the candidate solution is empty, the score should be 0.
+
+    *Wait*, let me double-check the prompt one more time.
+    Problem: [Bengali text]
+    Candidate solution: [Empty]
+
+    If the candidate solution is truly empty, then:
+    - It did not solve the problem.
+    - It is completely incorrect.
+    - Score: 0.
+
+    *Wait*, let me think if there's any other possibility. Could the candidate solution be provided in a different format? No, it's usually right after ""Candidate solution:"".
+
+    Let me re-calculate the problem one more time to be absolutely sure.
+    Purchase Price = $80,000
+    Repair Cost = $50,000
+    Total Investment = $80,000 + $50,000 = $130,000
+    Value Increase = 150% of $80,000 = $120,000
+    Final Value = $80,000 + $120,000 = $200,000
+    Profit = Final Value - Total Investment = $200,000 - $130,000 = $70,000.
+
+    Wait, let me consider if ""মূল্য 150% বৃদ্ধি পেল"" could mean the *final value* is 150% of the *total cost*?
+    Final Value = 1.5 * $130,000 = $195,000
+    Profit = $195,000 - $130,000 = $65,000.
+
+    Or if the *final value* is 150% of the *original price*?
+    Final Value = 1.5 * $80,000 = $120,000
+    Profit = $120,000 - $130,000 = -$10,000.
+
+    The most likely meaning of ""মূল্য 150% বৃদ্ধি পেল"" is ""the value increased by 150%"".
+    Increase = 1.5 * 80,000 = 120,000.
+    New Value = 80,000 + 120,000 = 200,000.
+    Profit = 200,000 - 130,000 = 70,000.
+
+    Since there is no candidate solution provided, I will mark it as 0.
+
+    *Wait*, I just noticed that the prompt I was given might be a template and the actual candidate solution was omitted by mistake. But as an evaluator, I must judge what is provided. If nothing is provided, it's a 0.
+
+    Let me double-check the prompt again.
+    ""Problem:
+    জোশ একটি বাড়ি ফ্লিপ করার সিদ্ধান্ত নিয়েছেন। তিনি $80,000-এ একটি বাড়ি ক্রয় করলেন এবং $50,000 দিয়ে মেরামত করলেন। এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল। তিনি কত ডলার লাভ করলেন?
+
+    Candidate solution:""
+
+    Yes, it's empty.
+
+    Wait, let me try to see if there's any other way to interpret ""বাড়িটির মূল্য 150% বৃদ্ধি পেল"".
+    In some contexts, ""increased to 150%"" and ""increased by 150%"" are confused.
+    If it increased *to* 150% of its original value:
+    New Value = 1.5 * 80,000 = 120,000.
+    Profit = 120,000 - 130,000 = -10,000.
+
+    If it increased *by* 150% of its original value:
+    New Value = 80,000 + (1.5 * 80,000) = 200,000.
+    Profit = 200,000 - 130,000 = 70,000.
+
+    If it increased *by* 150% of the *total cost*:
+    New Value = 130,000 + (1.5 * 130,000) = 325,000.
+    Profit = 325,000 - 130,000 = 195,000.
+
+    If it increased *to* 150% of the *total cost*:
+    New Value = 1.5 * 130,000 = 195,000.
+    Profit = 195,000 - 130,000 = 65,000.
+
+    The most standard interpretation in these types of problems is that the value increase is based on the original purchase price.
+
+    Since there is no candidate solution, I'll provide the score 0.
+
+    *Wait!* I just realized that I am an AI and maybe the ""Candidate solution"" was meant to be provided but was left blank. Let me re-read the instructions. ""Return ONLY valid JSON in exactly this format"".
+
+    If the candidate solution is empty, the most logical score is 0.
+
+    Let me double-check the Bengali one more time.
+    ""জোশ একটি বাড়ি ফ্লিপ করার সিদ্ধান্ত নিয়েছেন।"" (Josh decided to flip a house.)
+    ""তিনি $80,000-এ একটি বাড়ি ক্রয় করলেন এবং $50,000 দিয়ে মেরামত করলেন।"" (He bought a house for $80,000 and repaired it for $50,000.)
+    ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।"" (As a result, the value of the house increased by 150%.)
+    ""তিনি কত ডলার লাভ করলেন?"" (How many dollars did he profit?)
+
+    Calculation:
+    Cost = 80,000 + 50,000 = 130,000
+    Increase = 150% of 80,000 = 1.5 * 80,000 = 120,000
+    Final Value = 80,000 + 120,000 = 200,000
+    Profit = 200,000 - 130,000 = 70,000.
+
+    Wait, could ""বাড়িটির মূল্য 150% বৃদ্ধি পেল"" mean the *profit* was 150% of the *investment*?
+    Profit = 1.5 * 130,000 = 195,000.
+    This is less likely.
+
+    Could it mean the *final value* was 150% *more than* the *total investment*?
+    Final Value = 130,000 + (1.5 * 130,000) = 325,000.
+    Profit = 325,000 - 130,000 = 195,000.
+
+    The most straightforward reading is:
+    Original Value = 80,000
+    Increase = 1.5 * 80,000 = 120,000
+    New Value = 80,000 + 120,000 = 200,000
+    Total Cost = 80,000 + 50,000 = 130,000
+    Profit = 200,000 - 130,000 = 70,000.
+
+    Since there is no candidate solution, I will mark it as 0.
+
+    Wait, I should check if the candidate solution is actually provided *below* the ""Candidate solution:"" line and I just didn't see it.
+    Looking at the prompt again:
+    ""Candidate solution:""
+    (Nothing follows)
+
+    Okay, I will proceed with score 0.
+
+    Wait, let me think if there's any other possibility. Could the candidate solution be the *entire* prompt? No, that doesn't make sense.
+
+    Let me double-check the Bengali again.
+    ""এর ফলে বাড়িটির মূল্য 150% বৃদ্ধি পেল।""
+    ""এর ফলে"" = ""As a result""
+    ""বাড়িটির মূল্য"" = ""the value of the house""
+    ""150% বৃদ্ধি পেল"" = ""increased by 150%""
+
+    If the value increased *by* 150%, the new value is 250% of the original.
+    New Value = 2.5 * 80,000 = 200,000.
+    Profit = 200,000 - (80,000 + 50,000) = 200,000 - 130,000 = 70,000.
+
+    If the value increased *to* 150%, the new value is 150% of the original.
+    New Value = 1.5 * 80,000 = 120,000.
+    Profit = 120,000 - 130,000 = -10,000.
+
+    If the value increased *by* 150% of the *total cost*:
+    New Value = 130,000 + (1.5 * 130,000) = 325,000.
+    Profit = 325,000 - 130,000 = 195,000.
+
+    If the value increased *to* 150% of the *total cost*:
+    New Value = 1.5 * 130,000 = 195,000.
+    Profit = 195,000 - 130,000 = 65,000.
+
+    The most plausible answer is 70,000.
+
+    Final check:
+    Purchase: 80,000
+    Repairs: 50,000
+    Total Cost: 130,000
+    Value Increase: 150% of 80,000 = 120,000
+    Final Value: 80,000 + 120,000 = 200,000
+    Profit: 200,000 - 130,000 = 70,000.
+
+    Since no candidate solution was provided, I'll mark it as 0."
