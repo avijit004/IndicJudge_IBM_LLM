@@ -1,0 +1,8 @@
+datasets>=3.0.0
+# CUDA 12.1 build is compatible with the server's NVIDIA 535 (CUDA 12.2) driver.
+torch>=2.5.0,<2.6.0
+torchvision>=0.20.0,<0.21.0
+transformers>=4.51.0
+accelerate>=1.5.0
+bitsandbytes>=0.46.0
+Pillow>=10.0.0
