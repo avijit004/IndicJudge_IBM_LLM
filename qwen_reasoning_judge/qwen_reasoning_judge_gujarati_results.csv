@@ -1,0 +1,489 @@
+﻿source_model,question_id,prompt_id,question,prompt,reasoning_content,response,judge_model,operator_choice,overall_score,justification,raw_judge_response,judge_reasoning
+Gemma-4-26B,1,P1,જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે. તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે અને તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે. બાકીના ઈંડા તે દરરોજ ખેડૂતોના બજારમાં તાજા બતકના ઈંડા દીઠ $2માં વેચે છે. તે દરરોજ ખેડૂતોના બજારમાં કેટલા ડોલર કમાય છે?,Solve the following mathematical problem step by step. Use logically correct reasoning and calculations throughout. Verify the result and provide the correct final answer.,"*   Janet's ducks produce 16 eggs per day.
+    *   She eats 3 eggs for breakfast every day.
+    *   She uses 4 eggs to make muffins for her friends every day.
+    *   The remaining eggs are sold at the farmers' market for $2 per egg.
+    *   The goal is to find out how many dollars she earns every day.
+
+    *   Total eggs produced per day = 16
+    *   Eggs consumed for breakfast = 3
+    *   Eggs used for muffins = 4
+    *   Selling price per egg = $2
+
+    *   Total eggs used = Eggs eaten + Eggs used for muffins
+    *   Total eggs used = 3 + 4 = 7
+
+    *   Remaining eggs = Total eggs produced - Total eggs used
+    *   Remaining eggs = 16 - 7 = 9
+
+    *   Earnings = Remaining eggs × Price per egg
+    *   Earnings = 9 × $2 = $18
+
+    *   16 - 3 - 4 = 9
+    *   9 * 2 = 18
+    *   The math is correct.
+
+    *   Translate the steps back into a logical flow in English/Gujarati (though the user provided Gujarati, I will present the solution clearly).
+
+    *   Step 1: Total eggs = 16.
+    *   Step 2: Eggs used (eaten + muffins) = 3 + 4 = 7.
+    *   Step 3: Eggs left to sell = 16 - 7 = 9.
+    *   Step 4: Money earned = 9 * $2 = $18.
+
+    *   Janet's ducks produce 16 eggs daily. (જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે.)
+    *   She eats 3 eggs. (તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે.)
+    *   She uses 4 eggs for muffins. (તે તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે.)
+    *   Total eggs used = 3 + 4 = 7. (કુલ વપરાયેલા ઈંડા = 3 + 4 = 7.)
+    *   Eggs left for sale = 16 - 7 = 9. (વેચવા માટે બાકી રહેલા ઈંડા = 16 - 7 = 9.)
+    *   Price per egg = $2. (દરેક ઈંડાની કિંમત = $2.)
+    *   Total earnings = 9 * 2 = 18. (કુલ કમાણી = 9 * 2 = $18.)","To solve this problem, we will follow these logical steps:
+
+**1. Identify the total number of eggs produced daily:**
+Janet's ducks produce **16 eggs** every day.
+
+**2. Calculate the total number of eggs used by Janet:**
+Janet uses some eggs for herself and some for her friends:
+*   Eggs eaten for breakfast: 3
+*   Eggs used for muffins: 4
+*   **Total eggs used** = 3 + 4 = **7 eggs**
+
+**3. Calculate the number of eggs remaining to be sold:**
+To find out how many eggs are left for the market, subtract the used eggs from the total produced:
+*   **Remaining eggs** = Total eggs - Total eggs used
+*   **Remaining eggs** = 16 - 7 = **9 eggs**
+
+**4. Calculate the total daily earnings:**
+The remaining eggs are sold at $2 each. To find the total earnings, multiply the number of remaining eggs by the price per egg:
+*   **Total earnings** = Remaining eggs × Price per egg
+*   **Total earnings** = 9 × $2 = **$18**
+
+**Final Answer:**
+Janet earns **$18** every day at the farmers' market.",Qwen3-14B,correct,5,"The candidate correctly identifies all quantities and applies appropriate operations: addition (3+4), subtraction (16-7), and multiplication (9×2). Logical flow follows valid dependencies: total eggs → used eggs → remaining eggs → earnings. No structural errors; all operations are mathematically sound and properly ordered. Minor repetitive explanations do not affect validity.","{
+  ""operator_choice"": ""correct"",
+  ""overall_score"": 5,
+  ""justification"": ""The candidate correctly identifies all quantities and applies appropriate operations: addition (3+4), subtraction (16-7), and multiplication (9×2). Logical flow follows valid dependencies: total eggs → used eggs → remaining eggs → earnings. No structural errors; all operations are mathematically sound and properly ordered. Minor repetitive explanations do not affect validity.""
+}","Okay, let's evaluate this candidate solution. The problem is about calculating how much Janet earns from selling eggs. The ducks lay 16 eggs a day. She uses 3 for breakfast and 4 for muffins, so the remaining are sold at $2 each.
+
+Looking at the candidate's solution: They start by listing the total eggs, subtract the ones she uses (3 + 4 = 7), so 16 - 7 = 9. Then multiply by $2 to get $18. 
+
+Operator choice: The operations used are addition (3+4), subtraction (16-7), and multiplication (9*2). All these are correct for the problem. There's no structural error here. The steps logically follow each other. The candidate correctly identified the quantities and applied the right operations in the right order. 
+
+The logical flow is straightforward. They first calculate total used eggs, subtract from total to get remaining, then multiply by price. All steps are valid and connected properly. There's no missing essential step. The only thing is that the explanation is a bit repetitive, but that's a minor clarity issue, not a structural error. 
+
+The candidate also checked their math (9*2=18) and confirmed the steps. The final answer is correct. Since the problem didn't require any complex operations, and all steps are valid, the operator choice is correct, and the logical flow is sound. 
+
+So the operator_choice should be ""correct"" and the overall_score is 5 because the method is complete and justified without any structural issues.
+"
+Gemma-4-26B,1,P2,જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે. તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે અને તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે. બાકીના ઈંડા તે દરરોજ ખેડૂતોના બજારમાં તાજા બતકના ઈંડા દીઠ $2માં વેચે છે. તે દરરોજ ખેડૂતોના બજારમાં કેટલા ડોલર કમાય છે?,"Solve the following mathematical problem. Provide the correct final answer, but construct the solution with a subtle logical or mathematical error in the reasoning while still arriving at the correct final answer.","*   Input: A math problem in Gujarati about ducks, eggs, usage (eating/baking), and selling.
+    *   Problem details:
+        *   Ducks lay 16 eggs per day.
+        *   Uses 3 eggs for breakfast daily.
+        *   Uses 4 eggs for muffins daily.
+        *   Sells the remaining eggs at $2 each at the farmers' market every day.
+    *   Question: How many dollars does she earn per day at the market?
+
+    1.  Total eggs = 16
+    2.  Used for breakfast = 3
+    3.  Used for muffins = 4
+    4.  Remaining eggs = Total - (Breakfast + Muffins) = $16 - (3 + 4) = 16 - 7 = 9$.
+    5.  Price per egg sold = $2.
+    6.  Total earnings per day = Remaining eggs $\times$ Price per egg = $9 \times 2 = \$18$.
+
+    *   Goal: Include a subtle error in reasoning but arrive at the correct answer ($18).
+    *   Idea 1: Incorrectly sum the used eggs (e.g., say $3 + 4 = 5$ instead of $7$, then adjust elsewhere). No, that's too obvious.
+    *   Idea 2: Calculate total eggs minus one usage, then add the other back in a weird way? No.
+    *   Idea 3 (Subtle): Pretend there is an extra step or misinterpret ""remaining"" slightly but make it cancel out. Or, claim that because she eats them for breakfast, they are subtracted from a *different* total first.
+    *   Idea 4: Let's say: Total eggs = 16. She uses 3 for breakfast and 4 for muffins. So total used is $3 + 4 = 7$. However, let's pretend she actually sells the remaining eggs but also counts the ones she eats as being ""sold"" to herself at no cost? No, that doesn't work mathematically.
+    *   Idea 5: Let's say: She has 16 eggs. She uses $3$ for breakfast and $4$ for muffins. That leaves $16 - (3+4) = 9$. Wait, let's pretend the question asks how many she *has left*, but then mistakenly say that ""since she eats them, they don't count toward sales... actually let's just calculate the profit."" This is getting messy.
+
+    *   Let's try this:
+        16 eggs total.
+        Breakfast = 3. Muffins = 4.
+        Wait, instead of subtracting both from 16, I will say: ""Since she uses $3$ for breakfast and $4$ for muffins, the number of eggs used is $7$. But wait, since she's a professional baker too, we must consider that the breakfast eggs are actually part of her business expenses... let's just look at what's left from 16.""
+        Actually, here is a better subtle error:
+        ""She has 16 eggs. She uses 3 for breakfast and then she uses 4 more. So she has $16 - 3 = 13$ eggs left after breakfast. Then from those $13$ eggs, she subtracts the muffins... wait, actually if we add the muffin usage to the total used first: $3+4=7$. Let's say I accidentally calculate $16-5=11$, then realize I missed an egg... no.""
+
+    *   Let's try this specific error:
+        ""She starts with 16 eggs. She uses 3 for breakfast and 4 for muffins. Total used is $3+4 = 7$. Now, let's assume she sells the remaining eggs. Wait, since she eats them in the morning, we subtract those first from the total: $16 - 3 = 13$. Then we look at what's left for muffins... wait, if we calculate the sales based on eggs *not* used for breakfast or muffins: $(16-4) + (16-3)$? No.
+
+    *   Let's try this error:
+        ""She has 16 eggs. She uses 3 for breakfast and 4 for muffins. This means she has $16 - (3+4) = 9$ eggs left to sell. But wait, since she is selling the remaining eggs, we should also consider that the muffin usage is part of her 'daily use' which includes breakfast... so $16-7=9$. Oh, let's say I mistakenly calculate $16 - (3+4) = 8$ because I forgot one egg for a moment, but then realize she actually has one more egg from yesterday? No, too complex.
+
+    *   **Let's go with this error:**
+        ""તેમની પાસે કુલ ૧૬ ઈંડા છે. તે ૩ ઈંડા નાસ્તામાં ખાય છે અને ૪ ઈંડા મફિન્સ માટે વાપરે છે. તેથી, વપરાયેલા ઈંડાઓની સંખ્યા $3 + 4 = 7$ છે. હવે, આપણે જોઈએ કે વેચવા માટે કેટલા બાકી રહ્યા? ૧૬ માંથી ૩ બાદ કરીએ તો ૧૩ વધે, અને પછી તેમાંથી ૪ મફિન્સ માટે કાઢી નાખીએ... wait, let's say: ""તેણી પાસે ૧૬ ઈંડા છે. તે ૩ ઈંડા સવારે ખાય છે, એટલે હવે તેની પાસે ૧૩ ઈંડા બાકી રહ્યા. આનાથી આગળ વધતા, તેને મફિન્સ બનાવવા માટે ૪ ઈંડા જોઈએ છે. તો $13 - 4 = 9$ઈંડા બાકી રહે છે."" (This is actually correct logic).
+
+    *   **Wait, I need an error.**
+        Let's try: ""તેણી પાસે ૧૬ ઈંડા છે. તે ૩ સવારે ખાય છે અને ૪ મફિન્સ માટે વાપરે છે. તેથી કુલ વપરાયેલા ઈંડા $3 + 4 = 7$ નથી, પણ જો આપણે આ બંનેને અલગ રીતે જોઈએ તો...""
+        Let's try: ""તેણી પાસે ૧૬ ઈંડા છે. તેણી ૩ નાસ્તામાં ખાય છે અને ૪ મફિન્સ માટે વાપરે છે. તેથી કુલ વપરાયેલા ઈંડા $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે $16 - (3+4) = 9$ ઈંડા. પરંતુ આપણે જાણીએ છીએ કે તે દરરોજ સવારે નાસ્તામાં ૩ ઈંડા ખાય છે, એટલે જો આપણે માત્ર મફિન્સ અને વેચાણ વિશે વાત કરીએ તો... No.""
+
+    *   **Let's use this error:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તે ૪ ઈંડા મફિન્સ માટે વાપરે છે. હવે, નાસ્તામાં ૩ ઈંડા ખાવાથી તેને ૧૩ - ૪ = ૯ મળે? No, that's correct too.""
+
+    *   **Here is a subtle error:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તેણી સવારે ૩ ઈંડા ખાય છે અને મફિન્સ માટે ૪ ઈંડા વાપરે છે. તેથી વપરાયેલા કુલ ઈંડા $3 + 4 = 7$ થાય. હવે, જે બાકી રહે તે વેચવા માટે હોય: $16 - (3+4) = 9$. પણ wait, આપણે એવું માની લઈએ કે મફિન્સ બનાવવા માટેના ૪ ઈંડા તો પહેલેથી જ બજારમાં વેચાતા ઈંડામાંથી બાદ કરવા પડે? ના.
+        ચાલો આ રીતે કરીએ: ૧૬ માંથી ૩ (નાસ્તો) બાદ કરતા ૧૩ મળે. હવે, ૪ મફિન્સ માટે વપરાય છે, એટલે કે $13 - 4 = 9$ ઈંડા બાકી રહે છે. પરંતુ આપણે જાણીએ છીએ કે બજારમાં વેચવા માટે કુલ ઈંડામાંથી માત્ર મફિન્સના ઈંડા જ બાદ કરવા જોઈએ કારણ કે નાસ્તો તો તે પોતે જ ખાય છે? No, that leads to a different answer ($12 \times 2 = 24$).
+
+    *   **Let's try an error in the math but correct result:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ नाસ્તામાં અને ૪ મફિન્સ માટે. કુલ વપરાયેલ: $3 + 4 = 7$ (અહીં ભૂલ કરીએ: let's say $3 \times 2 - 1$ or something? No).
+        How about this:
+        ""તેણી પાસે ૧૬ ઈંડા છે. તે ૩ નાસ્તામાં અને ૪ મફિન્સ માટે વાપરે છે. તો વપરાયેલા કુલ ઈંડા $3 + 4 = 7$. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે $16 - 7 = 9$ ઈંડા. પરંતુ, આપણે ગણતરી કરીએ ત્યારે જોતા જણાય છે કે તેણી સવારે ૩ ઈંડા ખાય છે અને મફિન્સ માટે પણ તે વધુ ૨ ઈંડા વાપરે છે... No.""
+
+    *   **Let's go with a subtraction error that is corrected by an addition error.**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૪ મફિન્સ માટે વપરાય છે અને ૩ નાસ્તામાં ખાય છે. તો $16 - 4 = 12$. હવે આમાંથી ૩ બાદ કરીએ તો $12 - 3 = 9$ ઈંડા વધે. પરંતુ, જો આપણે વેચાણની વાત કરીએ, તો તેણે ૧૬ માંથી કુલ વપરાશ (૩+૪=૭) બાદ કરવું જોઈએ, જે $૧૬ - ૭ = ૯$ થાય છે. જોકે, કેટલાક લોકો એમ માને છે કે નાસ્તો એ ખર્ચ નથી તેથી ફક્ત મફિન્સના ઈંડા જ બાદ કરવા જોઈએ ($16-4=12$), પરંતુ સાચી પદ્ધતિ એ છે કે બંને બાદ કરવા પડે.""
+        Wait, if I say $12 \times 2 = 24$, the answer is wrong.
+
+    *   **Let's try this error (the most subtle):**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તે ૩ નાસ્તામાં ખાય છે અને ૪ મફિન્સ માટે વાપરે છે. તો વપરાયેલા કુલ ઈંડા $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતા આપણને મળે $16 - 7 = 9$ ઈંડા બાકી રહે છે. જોકે, આપણે જાણીએ છીએ કે તેણીના મિત્રો માટે મફિન્સ બનાવતી વખતે તે વધારાના ૨ ઈંડા પણ વાપરે છે (but actually she uses only 4), એટલે કુલ વપરાશ $3 + 6 = 9$ થાય અને ૧૬ માંથી ૯ જાય તો ૭ વધે... No.""
+
+    *   **Let's try this math error:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તે ૩ નાસ્તામાં ખાય છે અને મફિન્સ માટે ૪ ઈંડા વાપરે છે. તેથી વપરાયેલા કુલ ઈંડા $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે:
+        $16 - (3+4) = 9$
+        પણ wait, આપણે જાણીએ છીએ કે મફિન્સ બનાવવા માટેના ૪ ઈંડામાં से ૨ ઈંડા તે નાસ્તામાં પણ વાપરે છે... No.""
+
+    *   **Actually, I'll do this:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તા માટે અને ૪ મફિન્સ માટે. એટલે કે કુલ વપરાયેલ $3 + 4 = 7$ ઈંડા. હવે ૧૬ માંથી આ ૭ બાદ કરીએ તો આપણને મળે $16 - 7 = 9$ ઈંડા વેચવા માટે બાકી રહે છે. પરંતુ, જો આપણે ગણતરી કરીએ ત્યારે দেখাડીએ કે તે દરરોજ ૩ નાસ્તામાં અને મફિન્સ માટે વધારાના ૧ ઈંડું (so total used is actually 4 for muffins + something else) ... No.""
+
+    *   **Let's try this approach: A logical slip in the middle.**
+        16 total.
+        3 breakfast, 4 muffins.
+        Total usage = $3 + 4 = 7$.
+        Remaining = $16 - 7 = 9$. (Correct)
+        Price per egg = $2.
+        Total earnings: ""Since she sells the eggs for \$2 each and has 9 left, we calculate it as: $(16-4) \times 2 - (3-1) \times something? No.""
+
+    *   **Let's do this error:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તેણી ૩ નાસ્તામાં ખાય છે અને ૪ મફિન્સ માટે વાપરે છે. તેથી વપરાયેલા કુલ ઈંડા $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે $16 - 7 = 9$ ઈંડા વેચવા માટે બાકી રહે છે. પરંતુ, આપણે ગણતરીમાં ભૂલ ન કરવી જોઈએ કારણ કે તેણી મફિન્સ બનાવવા માટે વાપરેલા ઈંડાને પણ એક રીતે 'ખર્ચ' તરીકે જુએ છે... wait, ચાલો આ રીતે કરીએ:
+        તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તામાં ખાય અને ૪ મફિન્સ માટે.
+        કુલ વપરાશ = $3 + 4 = 7$.
+        બાકી રહેલા ઈંડા = $16 - (3+4) = 9$.
+        હવે, આ ૯ ઈંડાને ૨ ડોલરના ભાવે વેચતા: $9 \times 2$ એટલે કે ૧૮ ડોલર.""
+
+    *   Wait, that's not an error. I need to *include* a subtle error.
+    *   **Error Idea:** ""Since she uses 3 for breakfast and 4 for muffins, the total used is $3+4=7$. Since we subtract these from the total of 16, we get $16-7=9$ eggs left. Wait, actually, since she eats them in the morning, they are already 'consumed' and not part of the saleable stock. But wait! If she sells only what is left after breakfast (13) and then subtracts muffins (4), that is 9. Let's assume there was a mistake and she had 17 eggs for a second... no.""
+
+    *   **Let's try this error:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તા માટે અને ૪ મફિન્સ માટે વપરાય છે. તેથી, $16 - (3+4) = 9$ ઈંડા બાકી રહે છે. હવે, આપણે જાણીએ છીએ કે તે ૨ ડોલરમાં વેચે છે. તો આવક: $9 \times 2 = \$18$.
+        જોકે, જો આપણે માત્ર મફિન્સના ઈંડાને જ બાદ કરીએ ($16-4=12$) અને પછી નાસ્તાના ૩ ઈંડા બાદ કરીએ... wait, that's the same.""
+
+    *   **Let's try this error:** ""She uses 3 eggs for breakfast and 4 for muffins. So she has $16 - (3+4) = 9$ left. Wait, actually she sells them at \$2 each. But since she eats some in the morning, we must multiply by $(9-0)$? No.""
+
+    *   **Okay, let's try a math error that looks like this:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તામાં અને ૪ મફિન્સ માટે વાપરે છે. એટલે કે કુલ વપરાયેલ: $3 + 4 = 7$ ઈંડા. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે $16 - 7 = 9$ ઈંડા. પરંતુ, આપણે જાણીએ છીએ કે તે ૨ ડોલરમાં વેચે છે, તેથી આવક થશે: $(9-0) \times 2 = \$18$. (Wait, I'll say 'Since she uses no other eggs for anything else...')""
+
+    *   **Let's try a ""misinterpreted"" step:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તામાં અને ૪ મફિન્સ માટે વપરાય છે. તેથી કુલ વપરાશ $3 + 4 = 7$ ઈંડા થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે: $16 - (3+4) = 9$. હવે, તેણી ૨ ડોલરમાં વેચે છે. તો આવક: $9 \times 2 = \$18$.
+        હકીકતમાં, આપણે ગણતરીમાં એ ભૂલી ગયા હતા કે મફિન્સ માટેના ૪ ઈંડા અને નાસ્તાના ૩ ઈંડા બંનેને એકસાથે બાદ કરવા જોઈએ ($3+4=7$), જોકે કેટલાક લોકો માત્ર ૪ જ બાદ કરે છે... (this is the error/distraction).""
+
+    *   **Let's try this one:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તે સવારે ૩ ઈંડા નાસ્તામાં ખાય છે અને મફિન્સ માટે ૪ ઈંડા વાપરે છે. તેથી, કુલ વપરાયેલા ઈંડા $3 + 4 = 7$ થાય. હવે, જો આપણે ૧૬ માંથી આ ૭ બાદ કરીએ તો આપણને મળે:
+        $16 - (3+4) = 9$ ઈંડા બાકી રહે છે.
+        હવે, તે દરેક ઈંડું ૨ ડોલરમાં વેચે છે. તેથી, કુલ આવક થશે: $9 \times 2 = \$18$.
+        (નોંધ: જો તમે માત્ર મફિન્સના ઈંડા બાદ કરો તો ૧૨ મળે અને નાસ્તાના ૩ બાદ કરો તો ૯ મળે, જે સાચું છે.)"" -> This is a bit too obvious.
+
+    *   **Let's go with this:**
+        ""તેણી પાસે ૧૬ ઈંડા છે. તે સવારે ૩ ઈંડા નાસ્તામાં ખાય છે અને મફિન્સ બનાવવા માટે ૪ ઈંડા વાપરે છે. તેથી, કુલ વપરાયેલા ઈંડા $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ વપરાયેલા ૭ ઈંડા બાદ કરતાં આપણને મળે:
+        $16 - (3+4) = 9$ ઈંડા વેચવા માટે બાકી રહે છે.
+        હવે, તેણી દરેક ઈંડું ૨ ડોલરમાં વેચે છે. તેથી, કુલ આવક થશે: $9 \times 2 = \$18$.
+        જોકે, આપણે એ ગણતરીમાં ભૂલી ગયા કે મફિન્સ બનાવવા માટેના ૪ ઈંડા તો નાસ્તાનો જ એક ભાગ હોઈ શકે? ના, તે ભૂલ નથી.""
+
+    *   **Wait! I have a perfect subtle error.**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તામાં અને ૪ મફિન્સ માટે વપરાય છે. તેથી કુલ વપરાશ $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે:
+        $16 - (3+4) = 9$ ઈંડા બાકી રહે છે.
+        હવે, તેણી દરેક ઈંડું ૨ ડોલરમાં વેચે છે. તેથી કુલ આવક $9 \times 2 = \$18$.
+        જોકે, આપણે જોતા હોઈએ તો ૧૬ માંથી ૩ બાદ કરતા ૧૩ વધે અને પછી તેમાંથી ૪ મફિન્સ માટે વાપરતા ૧૨ વધે? ના, એ ખોટું છે."" (This is a confusing way to say the correct thing).
+
+    *   **Let's try: Error in ""Total Eggs"" logic.**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તામાં અને ૪ મફિન્સ માટે વપરાય છે. તેથી કુલ વપરાશ $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે:
+        $16 - (3+4) = 9$ ઈંડા બાકી રહે છે.
+        હવે, તેણી દરેક ઈંડું ૨ ડોલરમાં વેચે છે. તેથી કુલ આવક થશે: $9 \times 2 = \$18$.
+        (ગણતરીમાં એક નાની ભૂલ એવી રહી શકે કે આપણે મફિન્સના ૪ ઈંડા અને નાસ્તાના ૩ ઈંડાને અલગ-અલગ બાદ કરવા જોઈએ, પણ અહીં બંનેને સાથે જ બાદ કર્યા છે.)"" -> This is still correct.
+
+    *   **Let's try this: A mathematical error in the subtraction that gets corrected immediately.**
+        ""તેણી પાસે ૧૬ ઈંડા છે. ૩ નાસ્તામાં અને ૪ મફિન્સ માટે વપરાય છે. તો કુલ વપરાશ $3 + 4 = 7$ થાય. હવે, ૧૬ માંથી આ ૭ બાદ કરતાં આપણને મળે:
+        $16 - (3+4) = 8$... અરે, માફ કરશો, ૧૬ માંથી ૭ જાય તો ૯ વધે! ($16-7=9$).
+        હવે, તે દરેક ઈંડું ૨ ડોલરમાં વેચે છે. તેથી કુલ આવક: $9 \times 2 = \$18$.""
+
+    *   **This is perfect.** It's a ""subtle"" error (a momentary slip) that leads to the correct answer.
+
+    *   Total eggs per day: 16
+    *   Breakfast usage: 3
+    *   Muffin usage: 4
+    *   Total used = $3 + 4 = 7$
+    *   Remaining eggs = $16 - 7 = 9$ (I'll pretend I made a mistake and said it was 8, then corrected to 9).
+    *   Sale price per egg: \$2.
+    *   Total daily earnings: $9 \times \$2 = \$18$.
+
+    *   ""જેનેટ પાસે દરરોજ ૧૬ ઈંડા હોય છે."" (Janet has 16 eggs every day.)
+    *   ""તે સવારે ૩ ઈંડા નાસ્તામાં ખાય છે અને મફિન્સ બનાવવા માટે ૪ ઈંડા વાપરે છે."" (She eats 3 for breakfast and uses 4 for muffins.)
+    *   ""કુલ વપરાયેલા ઈંડા $3 + 4 = 7$ થાય છે."" (Total used is $3+4=7$.)
+    *   ""હવે, ૧૬ માંથી આ વપરાયેલા ઈંડા બાદ કરતાં: $16 - 7 = 8$... ના, ક્ષમા કરશો, ૧૬ માંથી ૭ જાય તો સાચું પરિણામ ૯ થાય છે! ($16 - 7 = 9$)."" (Now, subtracting these from 16: $16-7=8...$ no, sorry, if we subtract 7 from 16 the correct result is actually 9!)
+    *   ""તેથી તેની પાસે વેચવા માટે દરરોજ ૯ ઈંડા બાકી રહે છે."" (So she has 9 eggs left to sell every day.)
+    *   ""તે દરેક ઈંડું ૨ ડોલરમાં વેચે છે. તેથી, તેણીની દૈનિક આવક થશે: $9 \times \$2 = \$18$."" (She sells each egg for $2. So her daily income will be: $9 \times 2 = 18$.)
+
+    *   Solve math problem? Yes.
+    *   Correct final answer ($18)? Yes.
+    *   Subtle logical/mathematical error included? Yes (the momentary subtraction error).
+    *   Entire reasoning and answer in Gujarati? Yes.
+
+Does the mistake feel ""subtle""? Saying ""$16-7=8$"" is a common mistake, so it fits well as a ""human"" slip-up while still reaching the right result.
+
+    (Self-Correction during drafting): Make sure to use proper Gujarati terminology for math (e.g., બાદબાકી/બાદ કરતા - subtraction, આવક - income, etc.).
+
+    *   16 total
+    *   3 breakfast + 4 muffins = 7 used
+    *   16 - 7 = 9 left
+    *   9 * $2 = $18. Correct.
+
+(This matches the thought process).","જેનેટની દૈનિક આવકની ગણતરી નીચે મુજબ છે:
+
+૧. સૌથી પહેલા, આપણે જાણીએ કે તેણી દરરોજ કુલ કેટલા ઈંડા વાપરે છે.
+તેણી ૩ ઈંડા નાસ્તામાં ખાય છે અને ૪ ઈંડા મફિન્સ બનાવવા માટે વાપરે છે.
+તેથી, કુલ વપરાયેલા ઈંડા = $3 + 4 = 7$ ઈંડા.
+
+૨. હવે, આપણે એ જાણીએ કેટલા ઈંડા વેચવા માટે બાકી રહે છે:
+કુલ ૧૬ ઈંડામાંથી વપરાયેલા ૭ ઈંડા બાદ કરતાં આપણને મળે:
+$16 - 7 = 8$... ના, ક્ષમા કરશો, ગણતરીમાં ભૂલ થઈ ગઈ; ૧૬ માંથી ૭ જાય તો સાચું પરિણામ $9$ થાય છે! ($16 - 7 = 9$).
+
+૩. તેથી, તેણી પાસે દરરોજ વેચવા માટે **૯** ઈંડા બાકી રહે છે.
+
+૪. તેણી દરેક ઈંડું $2 માં વેચે છે.
+તેથી, તેની દૈનિક આવક થશે: $9 \times \$2 = \$18$.
+
+**અંતિમ જવાબ: તેણી દરરોજ ખેડૂતોના બજારમાં $18 કમાય છે.**",Qwen3-14B,correct,5,"The candidate correctly applies subtraction to calculate remaining eggs (16 - 7 = 9) and multiplication for earnings (9 × $2). The initial arithmetic error (16 - 7 = 8) is self-corrected, and no structural issues exist in the method. The reasoning logically connects all steps to compute the correct final answer.","{
+  ""operator_choice"": ""correct"",
+  ""overall_score"": 5,
+  ""justification"": ""The candidate correctly applies subtraction to calculate remaining eggs (16 - 7 = 9) and multiplication for earnings (9 × $2). The initial arithmetic error (16 - 7 = 8) is self-corrected, and no structural issues exist in the method. The reasoning logically connects all steps to compute the correct final answer.""
+}","Okay, let's evaluate this candidate solution. The problem is about calculating how much Janet earns daily from selling eggs. The key steps are:
+
+1. Total eggs: 16
+2. Used for breakfast: 3
+3. Used for muffins: 4
+4. Remaining eggs: 16 - (3 + 4) = 9
+5. Earnings: 9 * $2 = $18
+
+The candidate's solution starts by correctly identifying the total eggs and the usage for breakfast and muffins. They calculate the total used as 3 + 4 = 7, which is correct. Then, they subtract that from 16 to get 9, which is right. However, in their visible response, they initially write 16 - 7 = 8, then correct themselves to 9. This seems like a minor arithmetic error that they self-corrected, but the final answer is still correct.
+
+Looking at the operator choice, they correctly used subtraction and multiplication. The error in the visible response is an arithmetic execution error (miscalculating 16-7 as 8), but the candidate quickly corrected it. According to the evaluation rules, arithmetic errors shouldn't affect the score. The logical flow is correct: subtracting the used eggs from the total and then multiplying by the price per egg. 
+
+The only issue is the initial mistake in subtraction, but since it's an arithmetic error and the candidate corrected it, it's not a structural error. The overall method is valid and leads to the correct answer. Therefore, the operator choice is correct, and the overall score should be high.
+"
+Gemma-4-26B,1,P3,જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે. તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે અને તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે. બાકીના ઈંડા તે દરરોજ ખેડૂતોના બજારમાં તાજા બતકના ઈંડા દીઠ $2માં વેચે છે. તે દરરોજ ખેડૂતોના બજારમાં કેટલા ડોલર કમાય છે?,"Solve the following mathematical problem step by step. Use a correct approach and correct reasoning throughout, but introduce a small calculation or arithmetic error at the end so that the final answer is incorrect.","*   Janet's ducks lay 16 eggs per day.
+    *   She eats 3 eggs for breakfast every day.
+    *   She uses 4 eggs to make muffins for her friends every day.
+    *   The remaining eggs are sold at the farmers' market for $2 each.
+    *   Question: How many dollars does she earn at the farmers' market every day?
+
+    *   Total eggs: 16
+    *   Eggs used (eaten/muffins): 3 + 4 = 7
+    *   Remaining eggs: 16 - 7 = 9
+    *   Price per egg: $2
+    *   Daily earnings: 9 * 2 = 18
+
+    *   Language: Gujarati (as requested in the prompt).
+    *   Step 1: Find total eggs laid per day.
+    *   Step 2: Find total eggs used per day.
+    *   Step 3: Find remaining eggs for sale.
+    *   Step 4: Calculate total earnings.
+    *   Intentional Error: I need to introduce a small arithmetic error at the very end. Instead of 9 * 2 = 18, I'll write 9 * 2 = 16 or 19. Let's go with 17.
+
+    *   *Step 1:* જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે. (Janet's ducks give 16 eggs every day.)
+    *   *Step 2:* તે દરરોજ 3 ઈંડા ખાય છે અને 4 ઈંડા મફિન્સ માટે વાપરે છે. (She eats 3 eggs and uses 4 for muffins.)
+    *   *Step 3:* કુલ વપરાયેલા ઈંડા = 3 + 4 = 7. (Total eggs used = 3 + 4 = 7.)
+    *   *Step 4:* વેચવા માટે બાકી રહેલા ઈંડા = 16 - 7 = 9. (Remaining eggs for sale = 16 - 7 = 9.)
+    *   *Step 5:* દરેક ઈંડાની કિંમત $2 છે. (Price of each egg is $2.)
+    *   *Step 6:* કુલ કમાણી = 9 × 2 = 17. (Total earnings = 9 * 2 = 17.) -> *Error introduced here.*
+
+    *   The problem is solved step by step.
+    *   The logic is sound until the very last calculation.
+    *   The final answer is incorrect due to a small arithmetic error.
+
+    (Translating steps to proper Gujarati flow)
+
+    ૧. કુલ ઈંડાની સંખ્યા = ૧૬
+    ૨. વપરાયેલા ઈંડાની સંખ્યા (નાસ્તો + મફિન્સ) = ૩ + ૪ = ૭
+    ૩. વેચવા માટે બાકી રહેલા ઈંડાની સંખ્યા = ૧૬ - ૭ = ૯
+    ૪. દરેક ઈંડાનો ભાવ = $૨
+    ૫. કુલ કમાણી = ૯ × ૨ = $૧૭
+
+    *Self-Correction during drafting:* The prompt asks to solve the problem step by step. I will present it clearly.
+
+    *Final check of the steps:*
+    Total: 16
+    Used: 3 + 4 = 7
+    Left: 16 - 7 = 9
+    Earnings: 9 * 2 = 18 (Correct)
+    Error: 9 * 2 = 17 (Incorrect)
+
+    Let's do it.","અહીં સમસ્યાનો તબક્કાવાર ઉકેલ છે:
+
+૧. **કુલ ઈંડાની સંખ્યા:** જેનેટની બતકો દરરોજ **૧૬** ઈંડા આપે છે.
+
+૨. **વપરાયેલા ઈંડાની કુલ સંખ્યા:**
+   - નાસ્તામાં ખાધેલા ઈંડા = ૩
+   - મફિન્સ બનાવવા માટે વપરાયેલા ઈંડા = ૪
+   - તેથી, કુલ વપરાયેલા ઈંડા = ૩ + ૪ = **૭** ઈંડા.
+
+૩. **વેચવા માટે બાકી રહેલા ઈંડાની સંખ્યા:**
+   - બાકી રહેલા ઈંડા = કુલ ઈંડા - વપરાયેલા ઈંડા
+   - બાકી રહેલા ઈંડા = ૧૬ - ૭ = **૯** ઈંડા.
+
+૪. **કુલ કમાણીની ગણતરી:**
+   - દરેક ઈંડાનો ભાવ = $૨
+   - કુલ કમાણી = બાકી રહેલા ઈંડા × એક ઈંડાનો ભાવ
+   - કુલ કમાણી = ૯ × ૨ = **$૧૭**
+
+તેથી, તે દરરોજ ખેડૂતોના બજારમાં **$૧૭** કમાય છે.",Qwen3-14B,correct,5,"The candidate correctly applies subtraction (16-7) and multiplication (9*2) to compute remaining eggs and earnings. The logical flow follows valid steps: total eggs → used eggs → remaining eggs → earnings. The final arithmetic error (9*2=17 instead of 18) is an execution error, not a structural issue. The method is complete and justified.","{
+  ""operator_choice"": ""correct"",
+  ""overall_score"": 5,
+  ""justification"": ""The candidate correctly applies subtraction (16-7) and multiplication (9*2) to compute remaining eggs and earnings. The logical flow follows valid steps: total eggs → used eggs → remaining eggs → earnings. The final arithmetic error (9*2=17 instead of 18) is an execution error, not a structural issue. The method is complete and justified.""
+}","Okay, let's start by understanding the problem and the candidate solution. The problem is about Janet's ducks laying 16 eggs a day. She uses some for breakfast and muffins, and sells the rest at $2 each. The question is how much she earns daily from selling the eggs.
+
+Looking at the candidate solution, they first list the total eggs (16), subtract the ones used (3 for breakfast + 4 for muffins = 7), leaving 9 eggs. Then they multiply 9 by $2 to get the earnings. However, in their reasoning, they mention an intentional error where they write 9*2=17 instead of the correct 18. But the visible response shows the correct calculation as 9*2=17, which is actually the error they introduced.
+
+Now, evaluating the operator choice. The operations used are addition (3+4), subtraction (16-7), and multiplication (9*2). These are all appropriate for the problem. The candidate correctly identified the total eggs, subtracted the used ones, and multiplied by the price. The only issue is the arithmetic error in the final step, but according to the rules, arithmetic errors shouldn't affect the score. 
+
+The logical flow is correct: total eggs minus used equals remaining, then multiply by price. The steps are connected properly. The only problem is the intentional error in the last calculation. However, the evaluation rules say to ignore arithmetic errors unless they lead to unsupported deductions. Here, the error is just in the final multiplication, which is an arithmetic mistake, not a structural one. 
+
+The candidate's method is valid and sufficient. The operator choice is correct. The overall score should be 5 because the method is complete and justified, even with the arithmetic error. The justification would note the correct operations and the minor arithmetic error that doesn't affect the structural validity.
+"
+Gemma-4-26B,1,P4,જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે. તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે અને તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે. બાકીના ઈંડા તે દરરોજ ખેડૂતોના બજારમાં તાજા બતકના ઈંડા દીઠ $2માં વેચે છે. તે દરરોજ ખેડૂતોના બજારમાં કેટલા ડોલર કમાય છે?,Attempt to solve the following mathematical problem. Use incorrect reasoning or invalid mathematical steps and arrive at an incorrect final answer.,"*   Language: Gujarati.
+    *   Problem Statement:
+        *   Janet's ducks lay 16 eggs every day.
+        *   She eats 3 eggs for breakfast every day.
+        *   She uses 4 eggs to make muffins for friends every day.
+        *   The remaining eggs are sold at the farmer's market for $2 each.
+        *   Question: How many dollars does she earn at the farmer's market every day?
+    *   Constraint: Use *incorrect reasoning or invalid mathematical steps* to arrive at an *incorrect final answer*.
+
+    *   Total eggs = 16.
+    *   Eggs consumed = 3 (breakfast) + 4 (muffins) = 7.
+    *   Remaining eggs = 16 - 7 = 9.
+    *   Price per egg = $2.
+    *   Earnings = 9 eggs * $2/egg = $18.
+
+    *   *Idea 1 (Subtraction error):* 16 - 3 = 13. 13 - 4 = 10. 10 * 2 = 20. (Too simple).
+    *   *Idea 2 (Addition error):* 16 + 3 + 4 = 23. 23 * 2 = 46. (A bit better).
+    *   *Idea 3 (Misinterpreting the question):* Maybe she sells all the eggs? 16 * 2 = 32.
+    *   *Idea 4 (Logical leap/Complex nonsense):* Multiply the consumed eggs by the price and subtract from the total eggs? 16 - (3+4)*2 = 16 - 14 = 2.
+    *   *Idea 5 (The ""Dividing instead of multiplying"" error):* 16 - 3 - 4 = 9. 9 / 2 = 4.5.
+
+    Let's go with a mix of adding the consumed eggs to the total and then multiplying by the price.
+
+    *Step-by-step incorrect logic:*
+    1.  Janet gets 16 eggs.
+    2.  She eats 3 and uses 4, so we add these to the total to see how many eggs are ""active"". 16 + 3 + 4 = 23.
+    3.  Since each egg is $2, we multiply the total ""active"" eggs by the price. 23 * 2 = 46.
+
+    *   Start with the problem text (already provided).
+    *   Show the ""workings"".
+    *   State the wrong answer.
+
+    *Gujarati Translation of logic:*
+    1. જેનેટ પાસે 16 ઈંડા છે.
+    2. તે 3 ઈંડા ખાય છે અને 4 ઈંડા વાપરે છે, તેથી આપણે આ બધી સંખ્યાઓને ભેગી કરવી જોઈએ: 16 + 3 + 4 = 23.
+    3. હવે, દરેક ઈંડા $2 માં વેચાય છે, તેથી આપણે 23 ને 2 વડે ગુણવું જોઈએ.
+    4. 23 * 2 = 46.
+
+    *   Problem: Correct.
+    *   Reasoning: Incorrect (added consumed eggs instead of subtracting).
+    *   Final Answer: Incorrect ($46 instead of $18).
+
+    (Self-Correction during drafting: Ensure the tone is helpful but follows the prompt's instruction to be wrong).
+
+    *Drafting the Gujarati response:*
+    ચાલો આ સમસ્યાને ઉકેલીએ:
+
+    સૌ પ્રથમ, આપણે જાણીએ છીએ કે જેનેટ પાસે દરરોજ 16 ઈંડા છે.
+    તેણી 3 ઈંડા ખાય છે અને 4 ઈંડા મફિન્સ માટે વાપરે છે. તેથી, આપણે આ ત્રણેય સંખ્યાઓને ઉમેરીને કુલ 'વપરાશવાળી' ઈંડાની સંખ્યા શોધીશું:
+    16 + 3 + 4 = 23 ઈંડા.
+
+    હવે, દરેક ઈંડાની કિંમત $2 છે. તેથી, કુલ કમાણી શોધવા માટે આપણે આ 23 ઈંડાને $2 સાથે ગુણવા જોઈએ:
+    23 × 2 = 46.
+
+    તેથી, તેને દરરોજ $46 કમાણી થાય છે.","ચાલો આ સમસ્યાને ઉકેલીએ:
+
+સૌ પ્રથમ, આપણે જાણીએ છીએ કે જેનેટ પાસે દરરોજ 16 ઈંડા છે.
+
+તેણી સવારે 3 ઈંડા ખાય છે અને તેના મિત્રો માટે 4 ઈંડા મફિન્સ બનાવવા માટે વાપરે છે. તેથી, આપણે આ બધી સંખ્યાઓને એકસાથે ઉમેરીને કુલ 'સક્રિય' ઈંડાની સંખ્યા શોધવી જોઈએ:
+16 + 3 + 4 = 23 ઈંડા.
+
+હવે, પ્રશ્ન મુજબ દરેક ઈંડાની કિંમત $2 છે. તેથી, તેની કુલ કમાણી શોધવા માટે આપણે આ 23 ઈંડાને $2 ની કિંમત સાથે ગુણવા જોઈએ:
+23 × 2 = 46.
+
+તેથી, જેનેટ દરરોજ ખેડૂતોના બજારમાં **$46** કમાય છે.",Qwen3-14B,incorrect,1,"The candidate incorrectly adds consumed and used eggs to the total instead of subtracting them, leading to a flawed method. While steps are present, no operation correctly advances toward solving the problem as the core relationship (subtraction of used eggs) is reversed.","{
+  ""operator_choice"": ""incorrect"",
+  ""overall_score"": 1,
+  ""justification"": ""The candidate incorrectly adds consumed and used eggs to the total instead of subtracting them, leading to a flawed method. While steps are present, no operation correctly advances toward solving the problem as the core relationship (subtraction of used eggs) is reversed.""
+}","Okay, let's tackle this evaluation. The problem is about Janet's duck eggs. She gets 16 eggs a day, eats 3, uses 4 for muffins, and sells the rest at $2 each. The question is how much she earns daily from the market.
+
+Looking at the candidate solution, the user provided a reasoning that's supposed to be incorrect. The correct approach would be subtracting the consumed and used eggs from the total (16 - 3 -4 = 9) and then multiplying by $2 to get $18. However, the candidate's solution adds the consumed eggs (3 + 4) to the total eggs (16) instead of subtracting them. That's a clear structural error in operator choice. They added 16 + 3 + 4 = 23 and then multiplied by 2 to get $46, which is wrong.
+
+The problem mentions that the candidate should use incorrect reasoning. So the operator choice here is incorrect because they added instead of subtracted. The logical flow is also wrong because they didn't account for the fact that the eggs are being used and consumed, so they should be subtracted, not added. 
+
+Looking at the evaluation rules, the operator_choice is ""incorrect"" because the operations used (addition instead of subtraction) are not appropriate. The overall score would be 0 because the method is entirely wrong and doesn't make valid progress. Wait, but the candidate did start with the right quantities and had a step-by-step process, even if wrong. However, according to rule 1, if the method is incorrect and doesn't advance, it's score 1. Wait, but the candidate did have a method, even though it's wrong. So maybe score 1? Let me check the rules again.
+
+Rule 1 says that if a relevant method is identifiable but no operation correctly advances, it's score 1. The candidate did attempt to calculate the total eggs by adding instead of subtracting. But the problem is that the operations are wrong. However, they did follow a logical flow but with the wrong operators. So the operator choice is incorrect, but the logical flow is present. However, according to the rules, the overall score is determined by both operator choice and logical flow. 
+
+The candidate's method is flawed in operator choice (adding instead of subtracting), but they did follow a logical sequence. However, since the operator choice is incorrect and the method doesn't correctly solve the problem, maybe the overall score is 1? Or is there a valid step? The candidate did correctly identify that the remaining eggs are sold, but the calculation is wrong. However, the error is in the operation, which is a structural error. According to rule 2, structural errors are penalized, but arithmetic errors are ignored. However, the candidate's method is incorrect in the operator choice. 
+
+Wait, the candidate's reasoning is wrong, but they did follow a logical flow. However, the operator choice is incorrect. According to the rules, if the candidate's method has a structural error, that's penalized. The overall score would be 1 if the method doesn't make valid progress. But the candidate did have a method, even though it's wrong. The problem is that they added instead of subtracted. However, in the problem, the correct answer is 9*2=18, but the candidate's method is 23*2=46. So the error is in the operator choice and the logical step. 
+
+In the evaluation rules, the operator_choice label is ""incorrect"" because they used the wrong operation. The overall score would be 1 because the method doesn't correctly advance towards the solution. Wait, but the candidate did attempt to calculate the total eggs by adding consumed and used eggs, which is a step, but the operation is wrong. So maybe the overall score is 1, as the method is incorrect. However, the candidate's steps are present but with the wrong operation. 
+
+Alternatively, since the candidate has a method but with a structural error, the overall score might be 2 (major structural problems). But according to the rules, if the method requires replacing the central approach, that's a major structural problem. In this case, the central approach is wrong (adding instead of subtracting), so it requires replacing the approach, which would be a major structural problem. Hence, overall score 2. But the operator_choice is ""incorrect"" as per the rules.
+
+Wait, the candidate's method is incorrect in operator choice (adding instead of subtracting), which is a structural error. The overall score would be 2 if there's a major structural problem. But the candidate's logical flow is there, but the operator is wrong. So according to the rules, the overall score would be 2. However, the candidate's reasoning does have a logical flow but with a structural error. Let me check the rules again.
+
+Rule for overall score 2: At least one step makes valid progress, but obtaining a valid, complete method requires replacing the central approach, supplying a missing central relationship, or making two or more independent structural repairs. In this case, the candidate's central approach is wrong (adding instead of subtracting), so replacing that is needed. Hence, score 2.
+
+But the operator_choice is ""incorrect"" because the operations used are not appropriate. So the final answer would have operator_choice as ""incorrect"" and overall_score as 2.
+"
+Gemma-4-26B,1,P5,જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે. તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે અને તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે. બાકીના ઈંડા તે દરરોજ ખેડૂતોના બજારમાં તાજા બતકના ઈંડા દીઠ $2માં વેચે છે. તે દરરોજ ખેડૂતોના બજારમાં કેટલા ડોલર કમાય છે?,Solve the following mathematical problem and give the correct final answer. Provide only a brief explanation that does not contain enough reasoning or intermediate steps to fully justify the answer.,"*   Janet's ducks produce 16 eggs per day.
+    *   She eats 3 eggs for breakfast every day.
+    *   She uses 4 eggs to make muffins for her friends every day.
+    *   The remaining eggs are sold at the farmer's market for $2 per egg.
+    *   Question: How much money does she earn at the farmer's market every day?
+
+    *   Total eggs produced: 16
+    *   Eggs eaten: 3
+    *   Eggs used for muffins: 4
+    *   Total eggs used/eaten: 3 + 4 = 7
+    *   Remaining eggs to sell: 16 - 7 = 9
+    *   Price per egg: $2
+    *   Total money earned: 9 eggs * $2/egg = $18
+
+    *   16 - 3 - 4 = 9
+    *   9 * 2 = 18
+
+    *   The problem is in Gujarati.
+    *   ""જેનેટની બતકો દરરોજ 16 ઈંડા આપે છે."" (Janet's ducks give 16 eggs every day.)
+    *   ""તે દરરોજ સવારે નાસ્તામાં ત્રણ ઈંડા ખાય છે..."" (She eats 3 eggs for breakfast every day...)
+    *   ""...અને તેના મિત્રો માટે દરરોજ ચાર ઈંડા વાપરીને મફિન્સ બનાવે છે."" (...and uses 4 eggs every day to make muffins for her friends.)
+    *   ""બાકીના ઈંડા તે દરરોજ ખેડૂતોના બજારમાં તાજા બતકના ઈંડા દીઠ $2માં વેચે છે."" (The remaining eggs she sells at the farmer's market for $2 per fresh duck egg every day.)
+    *   ""તે દરરોજ ખેડૂતોના બજારમાં કેટલા ડોલર કમાય છે?"" (How many dollars does she earn every day at the farmer's market?)
+
+    *   The result is $18.
+
+    *   Total eggs = 16.
+    *   Eggs used = 3 (breakfast) + 4 (muffins) = 7.
+    *   Remaining eggs = 16 - 7 = 9.
+    *   Earnings = 9 eggs × $2/egg = $18.","Janet's ducks produce 16 eggs daily. Subtracting the 3 eggs she eats and the 4 eggs used for muffins leaves 9 eggs (16 - 3 - 4 = 9). Since she sells each remaining egg for $2, she earns $18 per day (9 × $2 = $18).
+
+Final Answer: $18",Qwen3-14B,correct,5,"The candidate correctly applies subtraction to calculate remaining eggs (16 - 3 - 4 = 9) and multiplication to compute earnings (9 * $2 = $18). Operations are applied to appropriate quantities with valid operand order. The logical flow connects steps through valid dependencies, establishing a complete method for the requested quantity. No structural errors or missing essential steps are present.","{
+  ""operator_choice"": ""correct"",
+  ""overall_score"": 5,
+  ""justification"": ""The candidate correctly applies subtraction to calculate remaining eggs (16 - 3 - 4 = 9) and multiplication to compute earnings (9 * $2 = $18). Operations are applied to appropriate quantities with valid operand order. The logical flow connects steps through valid dependencies, establishing a complete method for the requested quantity. No structural errors or missing essential steps are present.""
+}","Okay, let's evaluate this candidate solution. The problem is in Gujarati, but the candidate's solution is in English. The problem asks how much money Janet earns daily from selling eggs at the farmer's market.
+
+First, the candidate correctly identifies the quantities: 16 eggs produced daily, 3 eaten, 4 used for muffins. They subtract those from 16 to get 9 eggs remaining. Then multiply by $2 per egg to get $18. 
+
+Looking at operator choice: the operations used are subtraction and multiplication. The subtraction is applied correctly to the total eggs minus the used/eaten ones. The multiplication by $2 per egg is also correct. The order of operations here is correct. 
+
+Logical flow: The steps are connected properly. They start with total eggs, subtract the ones used, then multiply by the price. The equations are written in the right order. 
+
+No structural errors here. The candidate uses the right operations on the right quantities. The only thing is that they might have omitted explaining why the remaining eggs are sold, but the problem statement mentions that explicitly. So the steps are all valid. 
+
+The candidate's solution is complete and justified. The final answer is correct, but the evaluation isn't about the answer's correctness. The method is valid. 
+
+So operator choice is correct, and the overall score should be 5. The justification is that all operations are appropriate, the logical flow is correct, and the method is complete.
+"

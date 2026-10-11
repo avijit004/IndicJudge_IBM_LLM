@@ -35,7 +35,7 @@ class MinistralTests(unittest.TestCase):
                 cs = m.load_candidate_responses()
                 gt = m.load_ground_truth()
                 selected = m.select_candidates(cs, m.DEFAULT_QUESTION_IDS, 'both')
-                self.assertEqual(len(selected), 50)
+                self.assertEqual(len(selected), 500)
                 m.validate_candidates(selected, gt)
                 total += len(selected)
                 qwen = load(Path(m.BASE_DIR) / 'qwen3_14b_judge' / f'qwen3_14b_judge_{m.LANGUAGE}.py')
@@ -52,7 +52,7 @@ class MinistralTests(unittest.TestCase):
                 with patch.object(m.requests, 'get') as get, patch.object(m.requests, 'post') as post:
                     self.assertEqual(m.main(check_data=True), 0)
                     get.assert_not_called(); post.assert_not_called()
-        self.assertEqual(total, 500)
+        self.assertEqual(total, 5000)
 
     def test_all_selected_rows_save_and_resume(self):
         for p in sorted(ROOT.glob('ministral_8b_judge_*.py')):
@@ -62,7 +62,7 @@ class MinistralTests(unittest.TestCase):
                  patch.object(m, 'verify_server_context'), \
                  patch.object(m.requests, 'post', return_value=response()) as post, \
                  contextlib.redirect_stdout(io.StringIO()):
-                self.assertEqual(m.main(), 0)
+                self.assertEqual(m.main(question_ids=('1','2','3','4','5')), 0)
                 self.assertEqual(post.call_count, 50)
                 payload = post.call_args.kwargs['json']
                 self.assertEqual(payload['temperature'], .7)
@@ -74,19 +74,27 @@ class MinistralTests(unittest.TestCase):
                     rows = list(csv.DictReader(f))
                 self.assertEqual(len(rows), 50)
                 self.assertTrue(all(m.checkpoint_row_is_complete(r) for r in rows))
+                original_rows = rows.copy()
+                post.reset_mock()
+                self.assertEqual(m.main(), 0)
+                self.assertEqual(post.call_count, 450)
+                with open(m.OUTPUT_FILE, encoding='utf-8-sig', newline='') as f:
+                    expanded_rows = list(csv.DictReader(f))
+                self.assertEqual(expanded_rows[:50], original_rows)
+                self.assertEqual(len(expanded_rows), 500)
                 post.reset_mock()
                 self.assertEqual(m.main(), 0)
                 post.assert_not_called()
                 with open(m.OUTPUT_FILE, 'a') as f: f.write('"unfinished')
                 original = Path(m.OUTPUT_FILE).read_bytes()
-                self.assertEqual(len(m.load_completed_keys()), 50)
+                self.assertEqual(len(m.load_completed_keys()), 500)
                 backups = list(Path(directory).glob('*.bak'))
                 self.assertEqual(backups[0].read_bytes(), original)
 
     def test_selection_errors_before_requests(self):
         m = load(ROOT/'ministral_8b_judge_tamil.py')
         with contextlib.redirect_stdout(io.StringIO()): cs = m.load_candidate_responses()
-        for ids in (('1',)*5, ('1','2'), ('1','2','3','4','999')):
+        for ids in (('1',)*5, (), ('1','2','3','4','999')):
             with self.subTest(ids=ids), self.assertRaises(ValueError):
                 m.select_candidates(cs, ids, 'both')
         with self.assertRaisesRegex(ValueError, 'Missing selected candidate'):
@@ -124,10 +132,10 @@ class MinistralTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, patch.object(m,'OUTPUT_FILE',str(Path(directory)/'out.csv')), \
              patch.object(m,'verify_server_context'), contextlib.redirect_stdout(io.StringIO()):
             with patch.object(m.requests,'post',side_effect=[response(finish='length')]+[response() for _ in range(24)]) as post:
-                self.assertEqual(m.main(source_model='26b'),1)
+                self.assertEqual(m.main(source_model='26b', question_ids=('1','2','3','4','5')),1)
                 self.assertEqual(post.call_count,25)
             with patch.object(m.requests,'post',return_value=response()) as post:
-                self.assertEqual(m.main(source_model='26b'),0)
+                self.assertEqual(m.main(source_model='26b', question_ids=('1','2','3','4','5')),0)
                 self.assertEqual(post.call_count,1)
 
     def test_preflight(self):

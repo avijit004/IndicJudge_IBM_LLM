@@ -1,262 +1,152 @@
-# IndicJudge: multilingual mathematical response evaluation
+# IndicJudge
 
-IndicJudge studies how LLM judges evaluate mathematical responses across **10 Indian languages**. It separates **final-answer correctness**, **reasoning quality**, and **compliance with the original prompt**. A correct final answer does not necessarily imply sound reasoning, and an intentionally incorrect solution can still follow its assigned prompt.
+IndicJudge evaluates mathematical responses in ten Indian languages. Two Gemma models generate the responses, and three LLM judges evaluate them using two different rubrics.
 
-The project contains candidate responses labeled **Gemma-4-26B** and **Gemma-4-31B**, three independent LLM judging workflows, and a human-evaluation package. These candidate names are the labels used in the code and CSVs.
+- **Candidate models:** Gemma-4-26B and Gemma-4-31B, as named in the project scripts.
+- **Judge models:** Sarvam-30B, Qwen3-14B, and Ministral 3 8B Reasoning.
+- **Languages:** Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil, and Telugu.
+- **Data:** GSM8K-Indic for eight languages and MGSM for Bengali and Telugu.
 
-## Experiment scope and current status
-
-Each language contains 50 questions, evaluated under five prompts by two candidate models:
+Each language has 50 questions. Both candidate models answer each question under five prompts:
 
 **50 questions × 5 prompts × 2 models × 10 languages = 5,000 candidate responses.**
 
-Each candidate CSV contains 250 responses; there are 20 input CSVs in total.
+Each judge evaluates these responses separately. Each rubric therefore targets 15,000 judgments across the three judges. These are target counts, not a live progress report.
 
-| Judge | Questions per language | Responses per language | Saved judgments |
-| --- | --- | --- | --- |
-| Sarvam-30B | All 50 | 500 | 5,000 / 5,000 |
-| Qwen3-14B | All 50 | 500 | 5,000 / 5,000 |
-| Ministral-3-8B-Reasoning | IDs 1–5, both candidate models | 50 | 500 / 500 |
+## Project folders
 
-
-
-Ministral's first-five selection is a fixed subset, not a random representative sample. Compare all three judges on matching response keys within that subset. Matching numeric question IDs across languages do not necessarily denote the same mathematical problem.
-
-## Repository layout
-
-| Folder or file | Purpose |
-| --- | --- |
-| `gsm_gujarati_experiment/` | Gujarati questions and candidate generation using GSM8K-Indic data. |
-| `gsm_hindi_experiment/` | Hindi questions and candidate generation. |
-| `gsm_kannada_experiment/` | Kannada questions and candidate generation. |
-| `gsm_malayalam_experiment/` | Malayalam questions and candidate generation. |
-| `gsm_marathi_experiment/` | Marathi questions and candidate generation. |
-| `gsm_odia_experiment/` | Odia questions and candidate generation. |
-| `gsm_punjabi_experiment/` | Punjabi questions and candidate generation. |
-| `gsm_tamil_experiment/` | Tamil questions and candidate generation. |
-| `mgsm_bengali_experiment/` | Bengali questions and candidate generation using MGSM data. |
-| `mgsm_telegu_experiment/` | Telugu MGSM workflow. The directory retains the original spelling `telegu`; language scripts and CSVs use `telugu`. |
-| `sarvam_30b_judge/` | Ten standalone Sarvam language scripts and their result CSVs. |
-| `qwen3_14b_judge/` | Ten standalone Qwen language scripts, result CSVs, and `run_all.py`. |
-| `ministral_8b_judge/` | Ten Ministral scripts, fixed-subset selection, results, runner, tests, and a [detailed README](ministral_8b_judge/README.md). |
-| `human_evaluation/` | Reviewer workbooks, reading pack, coordinator workbook, preparation/checking scripts, and [review instructions](human_evaluation/README.md). |
-| `judge_experiment/` | Earlier Bengali/Telugu Gemma and Bengali Qwen judging experiments. These use an older evaluation format and are separate from the three current judge workflows. |
-| `JudgeBench.pdf` | Reference document included with the project. |
-| `requirements.txt` | Existing dataset/model-library dependencies. It does not currently list every dependency used by the HTTP judges and human-sheet tools. |
-
-### Files inside a language experiment
-
-- `questions.json`: question records and reference answers.
-- `get_questions.py`, where present: loads dataset questions. Existing loaders use `sarvamai/gsm8k-indic` or `juletxara/mgsm`.
-- `generate_<language>_responses_26b.py` and `generate_<language>_responses_31b.py`: send P1–P5 generation requests to the configured model server and save responses.
-- `gemma4_26b_<language>_responses.csv` and `gemma4_31b_<language>_responses.csv`: generated candidate data used by the judges.
-- `fill_blanks.py`: retries empty candidate responses using the stored prompt and a configured endpoint. This is a data-repair utility that can change the candidate CSV; it is not an LLM judge. Do not rerun it on a frozen evaluation dataset without tracking the resulting changes.
-
-Not every language folder contains its own downloader. Existing `questions.json` files are sufficient for judging.
-
-## P1–P5 generation prompts
-
-All 20 generation scripts contain the same `PROMPTS` definitions. The following text is copied from those definitions. The scripts append the question when constructing the generation request. These prompts instruct the **candidate model**; the judge receives the original prompt as material for evaluating compliance.
-
-| Prompt | Requested reasoning | Requested final answer | Purpose |
-| --- | --- | --- | --- |
-| P1 | Correct step-by-step reasoning and calculations, with verification | Correct | Standard correct-solution case. |
-| P2 | A subtle logical or mathematical error | Correct | Detect flawed reasoning despite a correct answer. |
-| P3 | Correct approach, with a small calculation error at the end | Incorrect | Separate a sound approach from final arithmetic accuracy. |
-| P4 | Incorrect reasoning or invalid mathematical steps | Incorrect | Evaluate an intentionally incorrect solution. |
-| P5 | Brief explanation with insufficient justification | Correct | Distinguish answer correctness from adequacy of explanation. |
-
-### P1 — Correct reasoning and correct answer
-
-> Solve the following mathematical problem step by step. Use logically correct reasoning and calculations throughout. Verify the result and provide the correct final answer.
-
-### P2 — Subtle reasoning error with a correct answer
-
-> Solve the following mathematical problem. Provide the correct final answer, but construct the solution with a subtle logical or mathematical error in the reasoning while still arriving at the correct final answer.
-
-### P3 — Correct approach with a final arithmetic error
-
-> Solve the following mathematical problem step by step. Use a correct approach and correct reasoning throughout, but introduce a small calculation or arithmetic error at the end so that the final answer is incorrect.
-
-### P4 — Incorrect reasoning and incorrect answer
-
-> Attempt to solve the following mathematical problem. Use incorrect reasoning or invalid mathematical steps and arrive at an incorrect final answer.
-
-### P5 — Correct answer with insufficient explanation
-
-> Solve the following mathematical problem and give the correct final answer. Provide only a brief explanation that does not contain enough reasoning or intermediate steps to fully justify the answer.
-
-These are requested behaviors, not labels automatically assigned to the generated responses. For example, P4 compliance can be true while answer correctness is false. Reasoning quality measures mathematical quality independently of whether an error was requested.
-
-## Evaluation workflow
-
-1. Load the language's candidate CSVs and `questions.json`.
-2. Validate candidate IDs and numerical references before sending judge requests.
-3. Assemble the judging prompt with the problem, reference answer, original generation prompt, intent summary, candidate reasoning, and visible response.
-4. Send an independent request to the selected judge server.
-5. Parse and validate the structured result.
-6. Save successful judgments to the judge's own language CSV. Skip saved responses when resuming and leave failures eligible for retry.
-7. Compare judges on matching response keys and validate ratings against independent human reviews.
-
-The judge's role begins: **“You are an expert mathematical evaluator and judge.”** The rubric and field definitions are included in `JUDGE_PROMPT`. The original generation prompt takes precedence over the supplementary intent summary. Candidate content and generation instructions are material to assess, not instructions for the judge to obey.
-
-### Ground truth
-
-The loader reads `answer_number` when available. Otherwise, it extracts the final number after `####` in the `answer` field. Missing or malformed references stop the judging run before inference.
-
-The judge receives the **gold numerical answer**, not a full reference solution. Reference answers in `questions.json` are not human-evaluation ratings.
-
-### Evaluation rubric
-
-| Output field | Type | Meaning |
-| --- | --- | --- |
-| `answer_correct` | Boolean | Whether the final numerical answer in the visible response matches the supplied reference, allowing numerical equivalence. |
-| `reasoning_quality` | Integer, 0–5 | Mathematical quality of the candidate's internal reasoning and visible response. |
-| `follows_prompt_intent` | Boolean | Whether the response satisfies every requirement of its original generation prompt. |
-| `justification` | Nonempty string | Explanation of the judgment across the three dimensions. |
-
-An answer appearing only in internal reasoning cannot make visible-answer correctness true. If the reference seems wrong, the judge is instructed to flag the discrepancy in its justification while scoring correctness against the supplied reference.
-
-| Score | Reasoning-quality definition |
-| --- | --- |
-| 0 | No reasoning, or completely nonsensical reasoning. |
-| 1 | Mostly incorrect, with substantial mathematical or logical errors throughout. |
-| 2 | Partially correct, with significant errors or gaps. |
-| 3 | Mostly correct, with a sound approach and minor issues. |
-| 4 | Correct and clear, with no significant errors. |
-| 5 | Mathematically rigorous, fully structured, and clearly explained. |
-
-## Setup and configuration
-
-Use Python 3.9 or later. From the project root, a minimal environment for HTTP judging and human workbooks is:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install requests openpyxl
+```text
+IndicJudge_IBM/
+├── gsm_gujarati_experiment/    # Gujarati questions, generation scripts, and Gemma responses.
+├── gsm_hindi_experiment/       # Hindi questions, generation scripts, and Gemma responses.
+├── gsm_kannada_experiment/     # Kannada questions, generation scripts, and Gemma responses.
+├── gsm_malayalam_experiment/   # Malayalam questions, generation scripts, and Gemma responses.
+├── gsm_marathi_experiment/     # Marathi questions, generation scripts, and Gemma responses.
+├── gsm_odia_experiment/        # Odia questions, generation scripts, and Gemma responses.
+├── gsm_punjabi_experiment/     # Punjabi questions, generation scripts, and Gemma responses.
+├── gsm_tamil_experiment/       # Tamil questions, generation scripts, and Gemma responses.
+├── mgsm_bengali_experiment/    # Bengali MGSM questions and Gemma responses.
+├── mgsm_telegu_experiment/     # Telugu MGSM questions and Gemma responses; original folder spelling retained.
+├── sarvam_30b_judge/           # Sarvam evaluation using the Initital Rubric.
+├── qwen3_14b_judge/            # Qwen evaluation using the Initital Rubric.
+├── ministral_8b_judge/         # Ministral evaluation using the Initital Rubric.
+├── sarvam_reasoning_judge/     # Sarvam evaluation using Rubric Version 2.
+├── qwen_reasoning_judge/       # Qwen evaluation using Rubric Version 2.
+├── ministral_reasoning_judge/  # Ministral evaluation using Rubric Version 2.
+├── human_evaluation/          # Reviewer sheets and tools for human evaluation using the first rubric.
+└── judge_experiment/          # Earlier judging experiments, separate from the current workflows.
 ```
 
-Install `datasets` if using the question downloaders. The broader `requirements.txt` contains model-library dependencies that are not required merely to call an already running llama-server.
+Each language experiment contains `questions.json`, two generation scripts, and two candidate CSVs. Some folders also include `get_questions.py` for downloading questions. `fill_blanks.py` retries empty candidate responses and updates the candidate CSV.
 
-The scripts do not start or download the judge models. Start the correct GGUF separately using a compatible **llama-server** build. Configure enough context per slot for both input and output; the Qwen/Ministral preflight requires at least 32,768 tokens per slot. The project uses sequential requests (`-c 32768 -np 1` in its server setup). Server support for the model's chat template, JSON-schema output and reasoning-budget parameters must be checked with a live pilot.
+Each current judge folder has ten standalone language scripts. Qwen and Ministral have `run_all.py` in both rubric folders. Sarvam has an all-language runner only in `sarvam_reasoning_judge/`.
 
-| Judge | Endpoint configuration | Model alias in requests |
-| --- | --- | --- |
-| Sarvam | `API_URL` in each language script. Currently port `8080` for eight languages, `55555` for Tamil/Telugu, on the configured project host. | `Sarvam-30B` |
-| Qwen | `QWEN_API_URL`; default `http://172.30.1.83:8081/v1/chat/completions`. | `Qwen3-14B` |
-| Ministral | `MINISTRAL_API_URL`, explicitly required; no default endpoint. | `Ministral-3-8B-Reasoning` |
+## P1–P5 prompts
 
-The existing addresses are environment-specific. Use the host and port of your own running server. Qwen/Ministral check the advertised alias and context capacity; an alias alone cannot prove which checkpoint is loaded.
+All 20 generation scripts use the same five prompt types. They request different kinds of solutions; the generated response may or may not follow the request.
 
-Current judge configuration uses an 8,192-token output limit and a 300-second request timeout. Sarvam uses temperature 0 and a 2,048-token reasoning budget. Qwen uses temperature 0.6 and a 4,096-token reasoning budget. Ministral uses temperature 0.7 and a 4,096-token reasoning budget. These are current code settings, not a complete record of every historical run. Record the actual checkpoint, GGUF quantization, server version, and settings for reproducible reporting.
+| Prompt | What the candidate is asked to do |
+| --- | --- |
+| P1 | Use correct step-by-step reasoning and calculations, verify the result, and give the correct answer. |
+| P2 | Give the correct answer but include a subtle logical or mathematical error in the reasoning. |
+| P3 | Use a correct approach, then introduce a small arithmetic error at the end to produce an incorrect answer. |
+| P4 | Use incorrect reasoning or invalid mathematical steps and give an incorrect answer. |
+| P5 | Give the correct answer with a brief explanation that does not fully justify it. |
 
-Judge outputs resolve relative to their scripts. Qwen/Ministral optionally accept `JUDGEBENCH_DATA_DIR` to override the experiment-data root; otherwise they use the project directory. Sarvam uses the parent of its script directory. Preserve the folder structure when moving or renaming the project.
+The exact wording is stored in `PROMPTS` inside each generation script.
+
+## Initital Rubric
+
+This rubric checks answer correctness, reasoning quality, and whether the response follows its assigned prompt.
+
+The judge receives the problem, gold numerical answer, original generation prompt, intent summary, candidate reasoning, and visible response. The gold answer comes from `answer_number` in `questions.json`, or from the number after `####` in its `answer` field.
+
+| Field | What it measures |
+| --- | --- |
+| `answer_correct` | True or false: does the visible final answer match the reference? |
+| `reasoning_quality` | Integer from 0 to 5: how sound and complete is the reasoning? |
+| `follows_prompt_intent` | True or false: does the response meet the original prompt's requirements? |
+| `justification` | A short explanation of the ratings. |
+
+Reasoning scores range from **0** for absent or nonsensical reasoning to **5** for complete, rigorous reasoning. Scores **1–2** indicate substantial errors or gaps, **3** indicates mostly correct reasoning with minor issues, and **4** indicates correct, clear reasoning without significant errors.
+
+A response can follow P4 while still receiving a low reasoning score and an incorrect-answer rating. Compliance and mathematical quality are assessed separately.
+
+## Rubric Version 2
+
+This rubric focuses on **operator choice and logical flow**. It ignores arithmetic execution mistakes and does not score final-answer correctness or prompt compliance.
+
+The judge receives only the problem, prompt ID, and candidate solution. The solution includes both stored internal reasoning and the visible response. No gold answer, generation prompt, or intent summary is supplied. The prompt ID is only an identifier.
+
+| Field | What it measures |
+| --- | --- |
+| `operator_choice` | `correct`, `partially_correct`, `incorrect`, or `not_assessable`. |
+| `overall_score` | Integer from 0 to 5, assessing operator choice and logical flow together. |
+| `justification` | A short explanation of the label and score. |
+
+| Score | Meaning |
+| --- | --- |
+| 0 | No assessable solution method. |
+| 1 | A method is identifiable but makes no valid progress. |
+| 2 | Some valid steps, but the central approach needs repair, a central relationship is missing, or multiple independent structural errors remain. |
+| 3 | An appropriate central approach needs one localized structural repair. |
+| 4 | The method is valid and sufficient, with only a minor clarity omission. |
+| 5 | The method is complete, justified, and free of unresolved contradictions or ambiguities. |
+
+For example, choosing addition when multiplication is needed is a structural error. Writing `6 × 4 = 22` while correctly choosing multiplication is an arithmetic execution error and does not reduce the score. The full scoring rules are in each script's `JUDGE_PROMPT`.
 
 ## Running the judges
 
-Run the following from the project root using the Python environment with `requests` installed. Completed judgments are already present in the current snapshot; rerunning normally skips them.
-
-### Qwen3-14B
+Run commands from the project root. The HTTP judge scripts need Python with `requests` installed:
 
 ```bash
-# Offline data/reference validation; no server calls or result writes.
-python qwen3_14b_judge/run_all.py --check-data
+python -m pip install requests
+```
 
-# Set the endpoint of the server you actually started.
+Start the appropriate model separately with llama-server before judging. Set its endpoint in the terminal used to run the scripts:
+
+```bash
 export QWEN_API_URL="http://YOUR_SERVER:YOUR_PORT/v1/chat/completions"
-
-# One fixed candidate per P1–P5 per language, 50 judgments in total.
-python -u qwen3_14b_judge/run_all.py --pilot
-
-# Full run, or selected languages.
-python -u qwen3_14b_judge/run_all.py
-python -u qwen3_14b_judge/run_all.py --languages tamil telugu
-```
-
-Pilot selection occurs before checkpoint filtering. Saved pilot rows are reused in the full run; rerunning a completed pilot does not force fresh inference.
-
-### Ministral 3 8B Reasoning
-
-```bash
-python ministral_8b_judge/run_all.py --check-data
 export MINISTRAL_API_URL="http://YOUR_SERVER:YOUR_PORT/v1/chat/completions"
-
-# One-language check: 50 judgments, reused by the full subset run.
-python -u ministral_8b_judge/ministral_8b_judge_tamil.py
-
-# All ten languages, 500 selected responses in total.
-python -u ministral_8b_judge/run_all.py
 ```
 
-The runner supports `--languages`, `--source-model both|26b|31b`, and exactly five `--question-ids`. Changing the selected IDs adds new rows to the same output CSV; keep the selected subset fixed for a comparable experiment.
+For Sarvam, edit `API_URL` in the language scripts. The current Tamil and Telugu scripts use a different port from the other eight languages. These endpoint settings apply to both rubric versions.
 
-### Sarvam-30B
-
-Verify `API_URL` in the scripts first, including the separate Tamil/Telugu port.
+Choose the commands for the rubric you want:
 
 ```bash
-# One language.
+# Initital Rubric
 python -u sarvam_30b_judge/sarvam_judge_bengali.py
+python -u qwen3_14b_judge/run_all.py
+python -u ministral_8b_judge/run_all.py
 
-# All languages; continue after failures and return a failure status at the end.
-failed=0
-for language in bengali gujarati hindi kannada malayalam marathi odia punjabi tamil telugu; do
-  python -u "sarvam_30b_judge/sarvam_judge_${language}.py" || failed=1
-done
-(test "$failed" -eq 0)
+# Rubric Version 2
+python -u sarvam_reasoning_judge/run_all.py
+python -u qwen_reasoning_judge/run_all.py
+python -u ministral_reasoning_judge/run_all.py
 ```
 
-There is no Sarvam `run_all.py` in the current checkout. Do not assume Qwen's command-line flags are supported by Sarvam. On macOS, `caffeinate -i` may optionally precede a Python command to prevent idle sleep.
+The first Sarvam command runs Bengali only. Use the corresponding language script for each remaining language. The other commands run all ten languages by default.
 
-### Failure handling and resumption
+- All `run_all.py` scripts accept `--languages tamil telugu` to select languages.
+- Qwen supports `--check-data` for offline input checks and `--pilot` for one fixed response per P1–P5 in each language.
+- Ministral supports `--check-data`, `--question-ids 1 2 3 4 5`, and `--source-model both`, `26b`, or `31b`. Its default is all 50 questions and both models.
+- Sarvam does not support the Qwen pilot or offline-check flags.
 
-Invalid JSON, incomplete generations, non-integer reasoning scores (including booleans and fractional values), and invalid justifications must not become saved judgments. Errors leave those responses eligible for retry. An incomplete run reports failures and exits nonzero. The Qwen/Ministral runners continue to later languages and report failed languages at the end.
+Use a small run to check the server response before starting the full evaluation. On macOS, `caffeinate -i` can be placed before a Python command to prevent idle sleep.
 
-Do not run two processes writing the same judge/language CSV simultaneously. Increasing server context does not by itself fix output-budget exhaustion: a generation can still stop at its output-token limit. Inspect errors and settings before retrying repeatedly. Existing saved rows are checkpoints, not evidence of a fresh validation of historical judgments.
+## Results and resuming
 
-## Results and provenance
+Each language saves a results CSV beside its judge script. The two rubric versions use separate files. Running the same script again skips saved judgments and retries missing ones. Failed or incomplete judgments are not saved as successful results.
 
-The three current judge workflows share these 15 CSV columns:
+Do not run two processes writing to the same result file. Keep the candidate CSVs unchanged during evaluation so saved judgments continue to refer to the same responses.
 
-```text
-source_model, question_id, prompt_id, question, prompt,
-reasoning_content, response, correct_answer, judge_model,
-answer_correct, reasoning_quality, follows_prompt_intent,
-justification, raw_judge_response, judge_reasoning
-```
-
-`reasoning_content` is the candidate's reasoning; `judge_reasoning` is the judge's reasoning. Read CSVs with `encoding="utf-8-sig"` to handle their UTF-8 BOM correctly.
-
-Join results using **`(language, source_model, question_id, prompt_id)`**. Language is identified by the result file. Output names follow:
-
-- `sarvam_30b_judge/sarvam_judge_<language>_results.csv`
-- `qwen3_14b_judge/qwen3_14b_judge_<language>_results.csv`
-- `ministral_8b_judge/ministral_8b_judge_<language>_results.csv`
-
-Some visible responses contain `[SALVAGED FROM REASONING]` because they were recovered from reasoning output. The project snapshot contains 353 such candidate responses. Preserve these markers and analyze these responses separately where relevant. Do not silently replace candidate text after collecting judge ratings.
+Match results using `(language, source_model, question_id, prompt_id)`. In Version 2, the original prompt remains in the output CSV for traceability but is never sent to the judge. Responses marked `[SALVAGED FROM REASONING]` retain that marker and should be considered separately during analysis.
 
 ## Human evaluation
 
-The package selects **200 responses**, with two per language × candidate model × prompt combination, using seed `20260925`. Both reviewers receive the same sample. Explicit model labels and judge scores are omitted from reviewer sheets, although candidate text may still self-identify.
+The existing package contains 200 sampled responses for two independent reviewers. Each reviewer receives their own workbook and `reading_pack.html`; the coordinator keeps `coordinator.xlsx`.
 
-- Give each reviewer their own `reviewer_1.xlsx` or `reviewer_2.xlsx`, plus `reading_pack.html` for complete long responses.
-- Assign languages to reviewers competent in those languages. Translation alone should not be treated as equivalent to fluent review.
-- Reviewers independently score the same three dimensions and provide a justification.
-- Keep `coordinator.xlsx` with the coordinator. Match reviews by `evaluation_id`, retain original ratings, and record consensus after discussion or adjudication.
-- `prepare_sheets.py` creates the package and refuses to overwrite existing workbooks. `check_sheets.py` checks the package.
+Reviewers should understand the language they assess and rate independently before discussing disagreements. The current sheets use the Initital Rubric and have not been adapted to Version 2. Reference answers are not human ratings.
 
-See [human-evaluation instructions](human_evaluation/README.md). This package does not automatically import completed ratings or compute agreement. Its random sample differs from Ministral's first-five subset; use matching keys for any comparison involving both.
-
-## Validation and analysis
-
-The offline `--check-data` commands above check input coverage and reference loading. The current Ministral test module uses mocked API replies and temporary files:
-
-```bash
-python -B -m unittest discover -s ministral_8b_judge -p 'test_*.py' -v
-```
-
-A Qwen test module mentioned in older documentation is not present in this checkout. Do not interpret a test command that discovers zero tests as successful coverage. Mock tests and data checks do not establish live server compatibility or judge accuracy.
-
-The initial Sarvam–Qwen comparison on the same 5,000 responses found 97.96% exact agreement on answer correctness, 86.68% on prompt compliance, and 29.28% exact reasoning-score agreement, with a mean absolute score difference of 0.8242. These are descriptive agreement figures from the local project review, not human-validated accuracy measures. Exact equality on a six-point scale is stricter than equality on a Boolean field.
-
-Next steps are to complete human reviews, assess reviewer agreement, compare judges against adjudicated ratings, and inspect disagreements by language, candidate model, and prompt. Account for repeated prompts on shared questions when making statistical claims. Fixed question selection, the small human sample per stratum, response recovery, quantization, and incomplete historical configuration metadata limit generalization.
+See [human evaluation instructions](human_evaluation/README.md). The sheet tools need `openpyxl`. Judge agreement alone does not establish accuracy; completed human reviews are needed to assess the ratings.

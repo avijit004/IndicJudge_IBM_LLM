@@ -1,4 +1,4 @@
-"""Run the five-question Ministral evaluation across selected languages."""
+"""Run the full Ministral evaluation across selected languages."""
 import argparse
 from pathlib import Path
 import subprocess
@@ -13,13 +13,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check-data', action='store_true')
     parser.add_argument('--languages', nargs='+', choices=LANGUAGES, default=LANGUAGES)
-    parser.add_argument('--question-ids', nargs=5, default=('1', '2', '3', '4', '5'), metavar='ID')
+    parser.add_argument('--question-ids', nargs='+', default=tuple(str(i) for i in range(1, 51)), metavar='ID')
     parser.add_argument('--source-model', choices=('both', '26b', '31b'), default=DEFAULT_SOURCE_MODEL)
     args = parser.parse_args()
-    if len(set(args.question_ids)) != 5 or any(not q.strip() for q in args.question_ids):
-        parser.error('Choose exactly five distinct, nonempty question IDs.')
+    if len(set(q.strip() for q in args.question_ids)) != len(args.question_ids) or any(not q.strip() for q in args.question_ids):
+        parser.error('Choose distinct, nonempty question IDs.')
     languages = tuple(dict.fromkeys(args.languages))
-    per_language = 50 if args.source_model == 'both' else 25
+    per_language = len(args.question_ids) * 5 * (2 if args.source_model == 'both' else 1)
     print(f'Scope: {per_language} judgments/language; {len(languages) * per_language} total.', flush=True)
     flags = ['--question-ids', *args.question_ids, '--source-model', args.source_model]
     if args.check_data:
@@ -33,7 +33,7 @@ def main():
     if failed:
         print('Incomplete/failed languages: ' + ', '.join(failed))
         return 1
-    print('All selected ' + ('data checks' if args.check_data else 'five-question evaluations') + ' completed.')
+    print('All selected ' + ('data checks' if args.check_data else 'evaluations') + ' completed.')
     return 0
 
 

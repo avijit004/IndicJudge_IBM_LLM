@@ -31,7 +31,7 @@ OUTPUT_FILE = os.path.join(
 
 JUDGE_MODEL = "Ministral-3-8B-Reasoning"
 
-DEFAULT_QUESTION_IDS = ("1", "2", "3", "4", "5")
+DEFAULT_QUESTION_IDS = tuple(str(i) for i in range(1, 51))
 DEFAULT_SOURCE_MODEL = "both"
 
 # Model-specific reasoning format; the scoring rubric stays in the user message.
@@ -629,10 +629,10 @@ def save_result(result):
 # ============================================================
 
 def select_candidates(candidates, question_ids, source_model):
-    """Select five fixed questions, preserving all P1-P5 for each requested model."""
+    """Select requested questions, preserving all P1-P5 for each requested model."""
     ids = tuple(str(q).strip() for q in question_ids)
-    if len(ids) != 5 or len(set(ids)) != 5 or any(not q for q in ids):
-        raise ValueError("Select exactly five distinct, nonempty question IDs.")
+    if not ids or len(set(ids)) != len(ids) or any(not q for q in ids):
+        raise ValueError("Select distinct, nonempty question IDs.")
     model_names = {"26b": ("Gemma-4-26B",), "31b": ("Gemma-4-31B",),
                    "both": ("Gemma-4-26B", "Gemma-4-31B")}
     if source_model not in model_names:
@@ -662,7 +662,7 @@ def main(*, check_data=False, question_ids=DEFAULT_QUESTION_IDS, source_model=DE
     candidates = select_candidates(candidates, question_ids, source_model)
     validate_candidates(candidates, ground_truth)
     print(f"Selected question IDs: {', '.join(question_ids)} | Source models: {source_model}")
-    print(f"Selected judgments: {len(candidates)} (5 questions x 5 prompts per source model)")
+    print(f"Selected judgments: {len(candidates)} ({len(question_ids)} questions x 5 prompts per source model)")
     salvaged = sum(c["response"].startswith("[SALVAGED FROM REASONING]") for c in candidates)
     print(f"Candidate provenance: {len(candidates) - salvaged} unmarked responses; "
           f"{salvaged} responses marked as salvaged from reasoning.")
@@ -780,7 +780,7 @@ def main(*, check_data=False, question_ids=DEFAULT_QUESTION_IDS, source_model=DE
     print("=" * 70)
     print(f"Previously completed: {previously_completed} | Successful: {succeeded} | Failed: {failed}")
     status = "incomplete" if failed else "completed"
-    print(f"{LANGUAGE.title()} Ministral-3-8B-Reasoning five-question subset judging {status}.")
+    print(f"{LANGUAGE.title()} Ministral-3-8B-Reasoning judging {status}.")
     print(f"Results saved to:")
     print(OUTPUT_FILE)
     print("=" * 70)
@@ -788,9 +788,9 @@ def main(*, check_data=False, question_ids=DEFAULT_QUESTION_IDS, source_model=DE
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Judge five questions x P1-P5 with Ministral 3 8B Reasoning.")
+    parser = argparse.ArgumentParser(description="Judge all 50 questions x P1-P5 with Ministral 3 8B Reasoning.")
     parser.add_argument("--check-data", action="store_true", help="Validate selected inputs without inference or output writes.")
-    parser.add_argument("--question-ids", nargs=5, default=DEFAULT_QUESTION_IDS, metavar="ID", help="Exactly five question IDs (default: 1 2 3 4 5).")
+    parser.add_argument("--question-ids", nargs="+", default=DEFAULT_QUESTION_IDS, metavar="ID", help="Question IDs to evaluate (default: 1 through 50).")
     parser.add_argument("--source-model", choices=("both", "26b", "31b"), default=DEFAULT_SOURCE_MODEL)
     args = parser.parse_args()
     raise SystemExit(main(check_data=args.check_data, question_ids=args.question_ids, source_model=args.source_model))
