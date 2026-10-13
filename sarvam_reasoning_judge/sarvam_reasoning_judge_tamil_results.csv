@@ -1,0 +1,148 @@
+﻿source_model,question_id,prompt_id,question,prompt,reasoning_content,response,judge_model,operator_choice,overall_score,justification,raw_judge_response,judge_reasoning
+Gemma-4-26B,2,P5,ஒரு அங்கிக்கு 2 போல்ட் நீல இழை மற்றும் அதன் பாதி அளவு வெள்ளை இழை தேவைப்படுகிறது. மொத்தம் எத்தனை போல்ட் தேவைப்படும்?,Solve the following mathematical problem and give the correct final answer. Provide only a brief explanation that does not contain enough reasoning or intermediate steps to fully justify the answer.,"*   Problem: ""ஒரு அங்கிக்கு 2 போல்ட் நீல இழை மற்றும் அதன் பாதி அளவு வெள்ளை இழை தேவைப்படுகிறது. மொத்தம் எத்தனை போல்ட் தேவைப்படும்?""
+    *   Translation: ""For a jacket, 2 bolts of blue thread and half that amount of white thread are required. How many bolts in total are required?""
+
+    *   Blue thread needed = 2 bolts.
+    *   White thread needed = Half of blue thread = $\frac{1}{2} \times 2 = 1$ bolt.
+    *   Total bolts required = Blue thread + White thread = $2 + 1 = 3$ bolts.
+
+    *   நீல இழை = 2 போல்ட்.
+    *   வெள்ளை இழை = நீல இச்சையின் பாதி = $2 / 2 = 1$ போல்ட்.
+    *   மொத்த இழை = $2 + 1 = 3$ போல்ட்.
+
+    *   ""ஒரு அங்கிக்கு 2 போல்ட் நீல இழை மற்றும் அதன் பாதி அளவு வெள்ளை இழை தேவைப்படுகிறது. மொத்தம் எத்தனை போல்ட் தேவைப்படும்?""
+    *   Blue thread = 2 bolts.
+    *   White thread = $2 / 2 = 1$ bolt.
+    *   Total = $2 + 1 = 3$ bolts.
+
+    *   ""நீல இழை = 2 போல்ட். வெள்ளை இழை = 2-இல் பாதி = 1 போல்ட். எனவே, மொத்தம் தேவைப்படும் இழை = 2 + 1 = 3 போல்ட்.""
+
+    *   Final Answer: 3 போல்ட்.
+
+    *   Blue thread: 2 bolts.
+    *   White thread: $2 \times 0.5 = 1$ bolt.
+    *   Total: $2 + 1 = 3$ bolts.
+
+    *   Reasoning:
+        நீல இழை = 2 போல்ட்
+        வெள்ளை இழை = 2-இல் பாதி = 1 போல்ட்
+        மொத்த இழை = 2 + 1 = 3 போல்ட்
+
+    *   Final answer: 3 போல்ட்.","நீல இழை = 2 போல்ட்
+வெள்ளை இழை = 2-இல் பாதி = 1 போல்ட்
+மொத்த இழை = 2 + 1 = 3 போல்ட்
+
+விடை: 3 போல்ட்",Sarvam-30B,correct,5,"நீல நிற நூலை 2 போல்ட்கள் என்று சரியாகக் கண்டறிந்து, அதில் பாதியை (1 போல்ட்) வகுத்தல் மூலம் கணக்கிட்டு, பின்னர் அவற்றை ஒன்றாகக் கூட்டினால் மொத்த அளவு கிடைக்கும். அனைத்துச் செயல்பாடுகளும் பொருத்தமானவை, வரிசைமுறை சரியானது மற்றும் தர்க்கரீதியான தொடர்புகள் தெளிவாக உள்ளன. இதில் கட்டமைப்புப் பிழைகள் ஏதுமில்லை, எனவே இம்முறை முழுமையானது மற்றும் நியாயமானது.","{
+  ""operator_choice"": ""correct"",
+  ""overall_score"": 5,
+  ""justification"": ""நீல நிற நூலை 2 போல்ட்கள் என்று சரியாகக் கண்டறிந்து, அதில் பாதியை (1 போல்ட்) வகுத்தல் மூலம் கணக்கிட்டு, பின்னர் அவற்றை ஒன்றாகக் கூட்டினால் மொத்த அளவு கிடைக்கும். அனைத்துச் செயல்பாடுகளும் பொருத்தமானவை, வரிசைமுறை சரியானது மற்றும் தர்க்கரீதியான தொடர்புகள் தெளிவாக உள்ளன. இதில் கட்டமைப்புப் பிழைகள் ஏதுமில்லை, எனவே இம்முறை முழுமையானது மற்றும் நியாயமானது.""
+}","We need to evaluate this Tamil query regarding a mathematical problem (கணிதப் பிரச்சனை) and a candidate solution. The problem asks for the total bolts (மொத்த போல்ட்கள்) needed for a jacket, given 2 bolts of blue thread and half that amount of white thread.
+
+Candidate solution: The candidate solution is basically a reasoning that says:
+
+- Blue thread = 2 bolts.
+- White thread = half of 2 = 1 bolt.
+- Total = 2 + 1 = 3 bolts.
+
+Thus the answer is 3 bolts.
+
+We need to evaluate operator choice and logical flow, assign operator_choice, and overall_score, and provide justification.
+
+We must not evaluate arithmetic accuracy or final answer correctness. So we need to see if the solution uses appropriate operations, correct operand order, grouping, logical dependencies, and provides a method sufficient to establish the requested quantity.
+
+The problem is straightforward: we have 2 bolts of blue thread, half that amount of white thread (i.e., half of 2 = 1). Then total = 2 + 1 = 3.
+
+The candidate solution uses the correct operations: halving (division by 2) and addition. The quantities are appropriate: blue thread = 2, white thread = half of blue, total = sum.
+
+The logical flow: they identify blue thread, compute white thread as half of blue, then sum.
+
+Thus the solution is correct.
+
+Now we need to assign operator_choice: ""correct"" because every assessable operation relevant to the solution represents an appropriate relationship and uses appropriate quantities, operand order, and grouping.
+
+Now overall_score: According to the rules:
+
+- 0: No assessable method. Not the case.
+- 1: No valid progress. Not the case.
+- 2: Major structural problems. Not the case.
+- 3: One localized structural problem. Not the case.
+- 4: Valid method with a minor clarity omission. Not needed.
+- 5: Complete and justified method. The solution is complete and justified.
+
+Thus overall_score = 5.
+
+Now justification: Provide 2-4 concise sentences, at most 1200 characters.
+
+We need to identify evidence supporting operator_choice label: The solution correctly identifies the quantities, uses appropriate operations (division by 2 for half, addition for total), and the logical flow is clear.
+
+Explain why the solution meets the selected overall-score rule: The solution provides a complete and justified method, with no structural errors, and the operations are appropriate.
+
+For score 5, explain why the stated method is complete and justified.
+
+We also need to note that arithmetic execution errors are excluded.
+
+Thus justification:
+
+""The candidate correctly identifies the blue thread as 2 bolts, computes the white thread as half of that (1 bolt) using division, and sums them to get the total. All operations are appropriate, the order is correct, and the logical dependencies are clear. No structural errors are present, making the method complete and justified.""
+
+We need to keep it within 1200 characters.
+
+Now output JSON:
+
+{
+  ""operator_choice"": ""correct"",
+  ""overall_score"": 5,
+  ""justification"": ""The candidate correctly identifies the blue thread as 2 bolts, computes the white thread as half of that (1 bolt) using division, and sums them to get the total. All operations are appropriate, the order is correct, and the logical dependencies are clear. No structural errors are present, making the method complete and justified.""
+}
+
+We must not include any extra text.
+
+Now check the rules:
+
+- We must not evaluate arithmetic accuracy or final answer correctness. The solution is correct, but we ignore that.
+
+- We must distinguish structural errors from arithmetic execution errors. There are no structural errors.
+
+- We must apply the correction test: If correcting arithmetic evaluations alone repairs the solution, exclude those errors. Not applicable.
+
+- Count a root structural error and its dependent consequences as one repair. Not applicable.
+
+- Assess only reasoning supported by candidate's text or equations. The candidate's reasoning is clear.
+
+- Distinguish missing mathematics from missing explanation. Not needed.
+
+- Use the candidate's clearly designated final method. The candidate's method is clear.
+
+- Do not infer valid reasoning from a plausible final answer. The solution is not just a final answer; it includes reasoning.
+
+- Ignore writing style, language fluency, formatting, and length.
+
+- The prompt number is metadata only.
+
+Thus the evaluation is as above.
+
+Now output the JSON.
+
+But note: The candidate solution includes a lot of repeated reasoning. It's a bit verbose, but the essential reasoning is there.
+
+We need to ensure that the justification is concise and within 1200 characters.
+
+Let's count: The justification string is about 200 characters, so fine.
+
+Now output.
+
+One more thing: The operator_choice must be exactly one permitted string. The permitted strings are: ""not_assessable"", ""correct"", ""incorrect"", ""partially_correct"". So we use ""correct"".
+
+Now final JSON.
+
+But note: The problem says ""Set 'operator_choice' to exactly one permitted string."" and then ""Apply the following rules in order: ..."". So we must set it to ""correct"".
+
+Now overall_score is integer from 0 to 5. We set 5.
+
+Now justification: as above.
+
+Now output.
+
+We must not include any markdown fences or any text outside the JSON.
+
+Thus final answer."
