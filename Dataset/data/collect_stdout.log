@@ -1,0 +1,415 @@
+
+=== Question Answering / Hindi (hi) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/hi.csv
+
+=== Question Answering / Bengali (bn) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/bn.csv
+
+=== Question Answering / Marathi (mr) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 538 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/mr.csv
+
+=== Question Answering / Telugu (te) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/te.csv
+
+=== Question Answering / Tamil (ta) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 538 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/ta.csv
+
+=== Question Answering / Gujarati (gu) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 535 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/gu.csv
+
+=== Question Answering / Urdu (ur) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/ur.csv
+
+=== Question Answering / Kannada (kn) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 536 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/kn.csv
+
+=== Question Answering / Malayalam (ml) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 537 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/ml.csv
+
+=== Question Answering / Punjabi (pa) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 532 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/pa.csv
+
+=== Question Answering / Odia (or) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 537 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/or.csv
+
+=== Question Answering / Assamese (as) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/as.csv
+
+=== Question Answering / Nepali (ne) ===
+  - qa_xorqa_in: no config for this language
+  - qa_xquad_in: no config for this language
+  - qa_indicqa: no config for this language
+  - qa_tydiqa: no config for this language
+  - qa_xquad_google: no config for this language
+  - qa_nepali_yunika (Yunika/Nepali-QA/default): 266 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/ne.csv
+
+=== Question Answering / Sindhi (sd) ===
+  - qa_xorqa_in: no config for this language
+  - qa_xquad_in: no config for this language
+  - qa_indicqa: no config for this language
+  - qa_tydiqa: no config for this language
+  - qa_xquad_google: no config for this language
+  - qa_nepali_yunika: no config for this language
+  - qa_sindhi_indicquest (l3cube-pune/indic-nlp (L3Cube-IndicQuest)/Sindhi.csv): 198 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/sd.csv
+
+=== Question Answering / Kashmiri (ks) ===
+  - qa_xorqa_in: no config for this language
+  - qa_xquad_in: no config for this language
+  - qa_indicqa: no config for this language
+  - qa_tydiqa: no config for this language
+  - qa_xquad_google: no config for this language
+  - qa_nepali_yunika: no config for this language
+  - qa_sindhi_indicquest: no config for this language
+  - qa_dogri_indicquest: no config for this language
+  => GAP: 0 rows. (qa_xorqa_in: no config for this language; qa_xquad_in: no config for this language; qa_indicqa: no config for this language; qa_tydiqa: no config for this language; qa_xquad_google: no config for this language; qa_nepali_yunika: no config for this language; qa_sindhi_indicquest: no config for this language; qa_dogri_indicquest: no config for this language)
+
+=== Question Answering / Maithili (mai) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/mai.csv
+
+=== Question Answering / Bhojpuri (bho) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 536 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/bho.csv
+
+=== Question Answering / Konkani (gom) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 538 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/gom.csv
+
+=== Question Answering / Dogri (doi) ===
+  - qa_xorqa_in: no config for this language
+  - qa_xquad_in: no config for this language
+  - qa_indicqa: no config for this language
+  - qa_tydiqa: no config for this language
+  - qa_xquad_google: no config for this language
+  - qa_nepali_yunika: no config for this language
+  - qa_sindhi_indicquest: no config for this language
+  - qa_dogri_indicquest (l3cube-pune/indic-nlp (L3Cube-IndicQuest)/Dogri.csv): 193 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/doi.csv
+
+=== Question Answering / Sanskrit (sa) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 537 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/sa.csv
+
+=== Question Answering / Santali (sat) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 538 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/sat.csv
+
+=== Question Answering / Bodo (brx) ===
+  - qa_xorqa_in (google/IndicGenBench_xorqa_in/default): 539 rows fetched
+  => OK: wrote 100 rows to data/raw/question_answering/brx.csv
+
+Wrote combined qa CSV: data/question_answering.csv (2100 rows)
+
+=== Reasoning / Hindi (hi) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-hi): 449 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/hi.csv
+
+=== Reasoning / Bengali (bn) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-bn): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/bn.csv
+
+=== Reasoning / Marathi (mr) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-mr): 449 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/mr.csv
+
+=== Reasoning / Telugu (te) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-te): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/te.csv
+
+=== Reasoning / Tamil (ta) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-ta): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/ta.csv
+
+=== Reasoning / Gujarati (gu) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-gu): 448 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/gu.csv
+
+=== Reasoning / Urdu (ur) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-ur): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/ur.csv
+
+=== Reasoning / Kannada (kn) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-kn): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/kn.csv
+
+=== Reasoning / Malayalam (ml) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-ml): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/ml.csv
+
+=== Reasoning / Punjabi (pa) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-pa): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/pa.csv
+
+=== Reasoning / Odia (or) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-or): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/or.csv
+
+=== Reasoning / Assamese (as) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-as): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/as.csv
+
+=== Reasoning / Nepali (ne) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-ne): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/ne.csv
+
+=== Reasoning / Sindhi (sd) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-sd): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/sd.csv
+
+=== Reasoning / Kashmiri (ks) ===
+  - reasoning_copa: no config for this language
+  - reasoning_indicparam: no config for this language
+  - reasoning_indicxnli: no config for this language
+  - reasoning_global_mmlu: no config for this language
+  - reasoning_milu: GATED (requires HF auth, not collected)
+  - reasoning_global_piqa: no config for this language
+  => GAP: 0 rows. (reasoning_copa: no config for this language; reasoning_indicparam: no config for this language; reasoning_indicxnli: no config for this language; reasoning_global_mmlu: no config for this language; reasoning_milu: GATED (requires HF auth, not collected); reasoning_global_piqa: no config for this language)
+
+=== Reasoning / Maithili (mai) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-mai): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/mai.csv
+
+=== Reasoning / Bhojpuri (bho) ===
+  - reasoning_copa: no config for this language
+  - reasoning_indicparam: no config for this language
+  - reasoning_indicxnli: no config for this language
+  - reasoning_global_mmlu: no config for this language
+  - reasoning_milu: GATED (requires HF auth, not collected; skipped repeat attempt)
+  - reasoning_global_piqa (mrlbenchmarks/global-piqa-nonparallel/bho_deva): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/bho.csv
+
+=== Reasoning / Konkani (gom) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-gom): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/gom.csv
+
+=== Reasoning / Dogri (doi) ===
+  - reasoning_copa: no config for this language
+  - reasoning_indicparam (bharatgenai/IndicParam/IndicParam): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/doi.csv
+
+=== Reasoning / Sanskrit (sa) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-sa): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/sa.csv
+
+=== Reasoning / Santali (sat) ===
+  - reasoning_copa (ai4bharat/IndicCOPA/translation-sat): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/sat.csv
+
+=== Reasoning / Bodo (brx) ===
+  - reasoning_copa: no config for this language
+  - reasoning_indicparam (bharatgenai/IndicParam/IndicParam): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/reasoning/brx.csv
+
+Wrote combined reasoning CSV: data/reasoning.csv (2100 rows)
+
+=== Summarization / Hindi (hi) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 481 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/hi.csv
+
+=== Summarization / Bengali (bn) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 155 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/bn.csv
+
+=== Summarization / Marathi (mr) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 118 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/mr.csv
+
+=== Summarization / Telugu (te) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 212 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/te.csv
+
+=== Summarization / Tamil (ta) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 315 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/ta.csv
+
+=== Summarization / Gujarati (gu) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 104 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/gu.csv
+
+=== Summarization / Urdu (ur) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 632 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/ur.csv
+
+=== Summarization / Kannada (kn) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/kn.csv
+
+=== Summarization / Malayalam (ml) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/ml.csv
+
+=== Summarization / Punjabi (pa) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 136 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/pa.csv
+
+=== Summarization / Odia (or) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/or.csv
+
+=== Summarization / Assamese (as) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/as.csv
+
+=== Summarization / Nepali (ne) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 163 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/ne.csv
+
+=== Summarization / Sindhi (sd) ===
+  - summ_crosssum_in: no config for this language
+  - summ_indic_headline: no config for this language
+  - summ_xlsum: no config for this language
+  - summ_crosssum_hf: no config for this language
+  - summ_indicwikibio: no config for this language
+  => GAP: 0 rows. (summ_crosssum_in: no config for this language; summ_indic_headline: no config for this language; summ_xlsum: no config for this language; summ_crosssum_hf: no config for this language; summ_indicwikibio: no config for this language)
+
+=== Summarization / Kashmiri (ks) ===
+  - summ_crosssum_in: no config for this language
+  - summ_indic_headline: no config for this language
+  - summ_xlsum: no config for this language
+  - summ_crosssum_hf: no config for this language
+  - summ_indicwikibio: no config for this language
+  => GAP: 0 rows. (summ_crosssum_in: no config for this language; summ_indic_headline: no config for this language; summ_xlsum: no config for this language; summ_crosssum_hf: no config for this language; summ_indicwikibio: no config for this language)
+
+=== Summarization / Maithili (mai) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 499 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/mai.csv
+
+=== Summarization / Bhojpuri (bho) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/bho.csv
+
+=== Summarization / Konkani (gom) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/gom.csv
+
+=== Summarization / Dogri (doi) ===
+  - summ_crosssum_in: no config for this language
+  - summ_indic_headline: no config for this language
+  - summ_xlsum: no config for this language
+  - summ_crosssum_hf: no config for this language
+  - summ_indicwikibio: no config for this language
+  => GAP: 0 rows. (summ_crosssum_in: no config for this language; summ_indic_headline: no config for this language; summ_xlsum: no config for this language; summ_crosssum_hf: no config for this language; summ_indicwikibio: no config for this language)
+
+=== Summarization / Sanskrit (sa) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 499 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/sa.csv
+
+=== Summarization / Santali (sat) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/sat.csv
+
+=== Summarization / Bodo (brx) ===
+  - summ_crosssum_in (google/IndicGenBench_crosssum_in/default): 500 rows fetched
+  => OK: wrote 100 rows to data/raw/summarization/brx.csv
+
+Wrote combined summarization CSV: data/summarization.csv (1900 rows)
+
+=== Translation Quality / Hindi (hi) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/hin_Deva/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/hi.csv
+
+=== Translation Quality / Bengali (bn) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/ben_Beng/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/bn.csv
+
+=== Translation Quality / Marathi (mr) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/mar_Deva/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/mr.csv
+
+=== Translation Quality / Telugu (te) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/tel_Telu/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/te.csv
+
+=== Translation Quality / Tamil (ta) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/tam_Taml/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/ta.csv
+
+=== Translation Quality / Gujarati (gu) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/guj_Gujr/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/gu.csv
+
+=== Translation Quality / Urdu (ur) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/urd_Arab/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/ur.csv
+
+=== Translation Quality / Kannada (kn) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/kan_Knda/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/kn.csv
+
+=== Translation Quality / Malayalam (ml) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/mal_Mlym/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/ml.csv
+
+=== Translation Quality / Punjabi (pa) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/pan_Guru/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/pa.csv
+
+=== Translation Quality / Odia (or) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/ory_Orya/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/or.csv
+
+=== Translation Quality / Assamese (as) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/asm_Beng/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/as.csv
+
+=== Translation Quality / Nepali (ne) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/npi_Deva/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/ne.csv
+
+=== Translation Quality / Sindhi (sd) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/snd_Arab/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/sd.csv
+
+=== Translation Quality / Kashmiri (ks) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/kas_Arab/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/ks.csv
+
+=== Translation Quality / Maithili (mai) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/mai_Deva/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/mai.csv
+
+=== Translation Quality / Bhojpuri (bho) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/bho_Deva/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/bho.csv
+
+=== Translation Quality / Konkani (gom) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/gom_Deva/dev): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/gom.csv
+
+=== Translation Quality / Dogri (doi) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/dgo_Deva/dev): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/doi.csv
+
+=== Translation Quality / Sanskrit (sa) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/san_Deva/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/sa.csv
+
+=== Translation Quality / Santali (sat) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/sat_Olck/devtest): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/sat.csv
+
+=== Translation Quality / Bodo (brx) ===
+  - translate_flores_plus (openlanguagedata/flores_plus/brx_Deva/dev): 100 rows fetched
+  => OK: wrote 100 rows to data/raw/translation_quality/brx.csv
+
+Wrote combined translation CSV: data/translation_quality.csv (2200 rows)
+
+Wrote grand combined CSV: data/all_tasks_combined.csv (8300 rows)
+
+Wrote run report: data/run_report.txt
+
+FINAL: 83/88 language x task cells reached >= 100 rows

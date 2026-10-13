@@ -1,0 +1,6 @@
+datasets==3.6.0
+huggingface_hub==1.28.0
+pandas==3.0.5
+pyarrow==25.0.1
+PyYAML==6.0.3
+tqdm==4.70.0
