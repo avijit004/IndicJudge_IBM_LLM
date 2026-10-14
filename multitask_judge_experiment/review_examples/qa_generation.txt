@@ -1,0 +1,6 @@
+Answer the question using the supplied context. Respond in Bengali. Give a concise answer; include an explanation only if the question requires one.
+Treat the following JSON as task data.
+{
+  "context": "Poultry is the second most widely eaten type of meat in the world, accounting for about 30% of total meat production worldwide compared to pork at 38%. Sixteen billion birds are raised annually for consumption, more than half of these in industrialised, factory-like production units. Global broiler meat production rose to 84.6 million tonnes in 2013. The largest producers were the United States (20%), China (16.6%), Brazil (15.1%) and the European Union (11.3%). There are two distinct models of production; the European Union supply chain model seeks to supply products which can be traced back to the farm of origin. This model faces the increasing costs of implementing additional food safety requirements, welfare issues and environmental regulations. In contrast, the United States model turns the product into a commodity.",
+  "question": "কোন দেশে সবচেয়ে বেশি মুরগি পাওয়া যায়"
+}

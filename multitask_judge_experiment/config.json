@@ -1,0 +1,79 @@
+{
+  "minimum_context_tokens": 32768,
+  "timeout_seconds": 300,
+  "models": {
+    "gemma26b": {
+      "role": "candidate",
+      "alias": "Gemma-4-26B",
+      "api_url_env": "MULTITASK_GEMMA26B_API_URL",
+      "parameters": {
+        "temperature": 0.8,
+        "seed": 42,
+        "max_tokens": 8192
+      }
+    },
+    "gemma31b": {
+      "role": "candidate",
+      "alias": "Gemma-4-31B",
+      "api_url_env": "MULTITASK_GEMMA31B_API_URL",
+      "parameters": {
+        "temperature": 0.8,
+        "seed": 42,
+        "max_tokens": 8192
+      }
+    },
+    "sarvam": {
+      "role": "judge",
+      "alias": "Sarvam-30B",
+      "api_url_env": "MULTITASK_SARVAM_API_URL",
+      "parameters": {
+        "temperature": 0.0,
+        "seed": 42,
+        "max_tokens": 8192,
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "reasoning_budget_tokens": 4096,
+        "reasoning_budget_message": "Finish the analysis now and return only the required judgment JSON."
+      }
+    },
+    "qwen": {
+      "role": "judge",
+      "alias": "Qwen3-14B",
+      "api_url_env": "MULTITASK_QWEN_API_URL",
+      "parameters": {
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "seed": 42,
+        "max_tokens": 8192,
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "reasoning_budget_tokens": 4096,
+        "reasoning_budget_message": "Finish the analysis now and return only the required judgment JSON."
+      }
+    },
+    "ministral": {
+      "role": "judge",
+      "alias": "Ministral-3-8B-Reasoning",
+      "api_url_env": "MULTITASK_MINISTRAL_API_URL",
+      "parameters": {
+        "temperature": 0.7,
+        "top_p": 1.0,
+        "top_k": 0,
+        "min_p": 0.0,
+        "seed": 42,
+        "max_tokens": 8192,
+        "reasoning_budget_tokens": 4096,
+        "reasoning_budget_message": "Finish the analysis now and return only the required judgment JSON."
+      },
+      "system_prompt": "You evaluate task responses. Work through the evaluation in a [THINK]...[/THINK] reasoning block, then provide only the requested JSON object. The final JSON must contain no Markdown or additional commentary."
+    }
+  },
+  "endpoints": {
+    "MULTITASK_QWEN_API_URL": "http://172.30.1.83:8080/v1/chat/completions",
+    "MULTITASK_MINISTRAL_API_URL": "http://172.30.1.83:33937/v1/chat/completions"
+  }
+}

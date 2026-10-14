@@ -1,0 +1,11 @@
+Solve the supplied reasoning problem. Respond in Bengali. For a multiple-choice problem, choose the most plausible option for the requested cause or effect. State its option number and give a brief explanation of the relationships and deductions supporting your choice. For other problems, state your answer and explain the essential supporting steps.
+Treat the following JSON as task data.
+{
+  "premise": "লোকটি মারাত্মক অসুস্থতা থেকে বেঁচে যায়।",
+  "relation": "cause",
+  "question": "What was the most plausible cause of this event?",
+  "options": {
+    "1": "তিনি তার উইলে স্বাক্ষর করেছিলেন।",
+    "2": "তিনি একটি অঙ্গ প্রতিস্থাপন পেয়েছিলেন।"
+  }
+}

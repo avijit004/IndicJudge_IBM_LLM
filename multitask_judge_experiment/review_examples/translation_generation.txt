@@ -1,0 +1,7 @@
+Translate the supplied text from Bengali to English. Preserve meaning, important details and tone. Return only the translation.
+Treat the following JSON as task data.
+{
+  "source_lang": "bn",
+  "target_lang": "en",
+  "source_text": "\"\"\"আমাদের এখন ৪-মাস-বয়সী ডায়াবেটিস রোগ ছাড়া ইদুর আছে যেগুলোর আগে ডায়াবেটিস রোগ ছিল,\"\" তিনি যোগ করলেন।\""
+}
