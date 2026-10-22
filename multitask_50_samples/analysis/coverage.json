@@ -1,0 +1,35 @@
+{
+  "selected_inputs": 2000,
+  "candidate_counts": {
+    "gemma26b": 200,
+    "gemma31b": 200
+  },
+  "judge_counts": {
+    "sarvam": 400,
+    "qwen": 400,
+    "ministral": 400
+  },
+  "candidate_target_each": 2000,
+  "judge_target_each": 4000,
+  "complete": false,
+  "import_provenance": {
+    "source_folder": "/Users/avijit/Desktop/IndicJudge_IBM/multitask_judge_experiment",
+    "source_manifest_hash": "8b25e3999f0d5fdb848ab880843c470c4b5023efcdc568b677965f1fd0a9ca66",
+    "destination_manifest_hash": "9fb9bd0c5c90a27e6a51914aea2389f6b7c27eb2f0915092d36a0a6b3193b2a6",
+    "files": {
+      "candidates/gemma26b_responses.csv": "cc0f540820ebff1a597c2054c2130f74ae38d5ace43e9110d9a0d152c771f1ee",
+      "candidates/gemma31b_responses.csv": "784f0a6b90623f5219f9afa72d4adb11b54aed99a6cb88821aead6d8e658724b",
+      "judges/sarvam_results.csv": "b7c0227614ed5c1721710a30ce213e6f50c764374e5d0af332a3bcad3dc823ed",
+      "judges/qwen_results.csv": "e0981125e89307f2e2a2d8658881503f2d95a96552792a3cede1b200302f43a5",
+      "judges/ministral_results.csv": "794118b93d644cf6d716179aa84e250bb1fe71c802466209861aa49db3e15b1d"
+    },
+    "counts": {
+      "gemma26b": 200,
+      "gemma31b": 200,
+      "sarvam": 400,
+      "qwen": 400,
+      "ministral": 400
+    }
+  },
+  "interpretation": "Partial means use available ratings; pairwise statistics use matched ratings only. Agreement is not accuracy. Fractions range from 0 to 1."
+}

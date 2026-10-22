@@ -1,0 +1,16 @@
+﻿task,judge_a,judge_b,matched,expected,exact_agreement,mean_absolute_score_difference,within_one_point
+all,sarvam,qwen,400,4000,0.635,0.475,0.9375
+all,sarvam,ministral,400,4000,0.66,0.4425,0.9375
+all,qwen,ministral,400,4000,0.6425,0.4125,0.97
+qa,sarvam,qwen,100,1000,0.52,0.83,0.84
+qa,sarvam,ministral,100,1000,0.42,0.91,0.83
+qa,qwen,ministral,100,1000,0.38,0.84,0.88
+reasoning,sarvam,qwen,100,1000,0.44,0.57,0.99
+reasoning,sarvam,ministral,100,1000,0.56,0.44,1.0
+reasoning,qwen,ministral,100,1000,0.33,0.67,1.0
+summarization,sarvam,qwen,100,1000,0.81,0.23,0.96
+summarization,sarvam,ministral,100,1000,0.83,0.23,0.94
+summarization,qwen,ministral,100,1000,0.96,0.04,1.0
+translation,sarvam,qwen,100,1000,0.77,0.27,0.96
+translation,sarvam,ministral,100,1000,0.83,0.19,0.98
+translation,qwen,ministral,100,1000,0.9,0.1,1.0

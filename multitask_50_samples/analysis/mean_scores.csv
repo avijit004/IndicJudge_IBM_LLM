@@ -1,0 +1,16 @@
+﻿task,judge_model,completed,expected,mean_score
+all,sarvam,400,4000,4.0975
+all,qwen,400,4000,4.3075
+all,ministral,400,4000,4.035
+qa,sarvam,100,1000,4.09
+qa,qwen,100,1000,4.5
+qa,ministral,100,1000,4.08
+reasoning,sarvam,100,1000,4.4
+reasoning,qwen,100,1000,4.71
+reasoning,ministral,100,1000,4.06
+summarization,sarvam,100,1000,3.87
+summarization,qwen,100,1000,3.96
+summarization,ministral,100,1000,4.0
+translation,sarvam,100,1000,4.03
+translation,qwen,100,1000,4.06
+translation,ministral,100,1000,4.0

@@ -70,10 +70,12 @@ def normalize(row, task, code, source_file, source_row):
     return result
 
 
-def build_manifest(dataset_dir):
+def build_manifest(dataset_dir, start_row=1, end_row=5):
+    if type(start_row) is not int or type(end_row) is not int or not 1 <= start_row <= end_row:
+        raise ValueError("Expected an inclusive, positive source-record range")
     dataset_dir = Path(dataset_dir)
     samples, files = [], {}
-    # First five records in each source's existing order. No resampling between model runs.
+    # Inclusive data-record range, excluding the CSV header. No resampling between models.
     for task in TASKS:
         for code in LANGUAGES:
             relative = f'{task}/{code}.csv'
@@ -85,8 +87,8 @@ def build_manifest(dataset_dir):
                 if not reader.fieldnames or len(set(reader.fieldnames)) != len(reader.fieldnames):
                     raise ValueError(f'{path}: invalid CSV header')
                 rows = list(reader)
-            if len(rows) < SAMPLES_PER_CELL:
-                raise ValueError(f'{path}: need at least {SAMPLES_PER_CELL} records, got {len(rows)}')
+            if len(rows) < end_row:
+                raise ValueError(f'{path}: need at least {end_row} records, got {len(rows)}')
             ids = set()
             for index, row in enumerate(rows, 1):
                 if None in row or any(v is None for v in row.values()):
@@ -95,10 +97,13 @@ def build_manifest(dataset_dir):
                 if sample['source_id'] in ids:
                     raise ValueError(f'{path}: duplicate source ID {sample["source_id"]}')
                 ids.add(sample['source_id'])
-                if index <= SAMPLES_PER_CELL:
+                if start_row <= index <= end_row:
                     samples.append(sample)
     body = {'schema_version': 1, 'selection_method': 'first five records per task and language, in source order',
-            'samples_per_cell': SAMPLES_PER_CELL, 'source_file_hashes': files, 'samples': samples}
+            'samples_per_cell': end_row - start_row + 1, 'source_file_hashes': files, 'samples': samples}
+    if (start_row, end_row) != (1, 5):
+        body.update(selection_method=f"records {start_row}–{end_row} per task and language, in source order",
+                    start_row=start_row, end_row=end_row)
     return dict(body, manifest_hash=digest(body))
 
 
@@ -109,9 +114,18 @@ def validate_manifest(manifest):
         raise ValueError('Selection manifest changed: hash mismatch')
     samples = manifest['samples']
     counts = Counter((s['task'], s['language_code']) for s in samples)
-    expected = Counter({(t, c): SAMPLES_PER_CELL for t in TASKS for c in LANGUAGES})
-    if counts != expected or len({s['sample_id'] for s in samples}) != 200:
-        raise ValueError('Selection must contain exactly five distinct samples in all 40 language/task cells')
+    start, end = manifest.get('start_row', 1), manifest.get('end_row', 5)
+    if type(start) is not int or type(end) is not int or not 1 <= start <= end:
+        raise ValueError('Invalid manifest record range')
+    count = end - start + 1
+    if manifest.get('samples_per_cell') != count:
+        raise ValueError('Manifest count differs from record range')
+    expected = Counter({(t, c): count for t in TASKS for c in LANGUAGES})
+    if counts != expected or len({s['sample_id'] for s in samples}) != count * len(TASKS) * len(LANGUAGES):
+        raise ValueError('Selection must contain distinct samples in every language/task cell')
+    for task, code in expected:
+        if sorted(s['source_row'] for s in samples if (s['task'], s['language_code']) == (task, code)) != list(range(start, end + 1)):
+            raise ValueError('Selection has missing or duplicate source rows')
     for sample in samples:
         if sample['sample_hash'] != digest({k: v for k, v in sample.items() if k != 'sample_hash'}):
             raise ValueError(f'Changed sample {sample["sample_id"]}')

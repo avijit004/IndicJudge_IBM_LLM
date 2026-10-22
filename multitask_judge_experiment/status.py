@@ -17,16 +17,16 @@ def main(argv=None):
     for model in CANDIDATES:
         rows = candidate_rows(args.output_dir, model, manifest, config)
         candidates.update({(r['sample_id'], model): r for r in rows})
-        groups.append(('generation', model, rows, 200))
+        groups.append(('generation', model, rows, len(manifest['samples'])))
     for model in JUDGES:
-        groups.append(('judging', model, judged_rows(args.output_dir, model, manifest, config, candidates), 400))
+        groups.append(('judging', model, judged_rows(args.output_dir, model, manifest, config, candidates), len(manifest['samples']) * len(CANDIDATES)))
     for stage, model, rows, target in groups:
         print(f'{stage:10} {model:12} {len(rows):4}/{target} completed; {target-len(rows)} remaining')
         if args.detail:
             for code, language in LANGUAGES.items():
                 for task in TASKS:
                     done = sum(r['language_code'] == code and r['task'] == task for r in rows)
-                    cell_target = 5 if stage == 'generation' else 10
+                    cell_target = manifest['samples_per_cell'] * (1 if stage == 'generation' else len(CANDIDATES))
                     print(f'  {language:10} {task:14} {done}/{cell_target}; remaining {cell_target-done}')
     return 0
 
