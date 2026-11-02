@@ -1,0 +1,21 @@
+{
+  "plan_hash": "00b8a255b6c170d3f066f624cb41ae534bb021f68fdc492bc6069f540fcb6fb5",
+  "snapshot_hash": "1822a0628dc947f0832a5bd727faae41646b965433ce1e236ffbc85a8c085f47",
+  "source_manifest_hash": "9fb9bd0c5c90a27e6a51914aea2389f6b7c27eb2f0915092d36a0a6b3193b2a6",
+  "replacement_manifest_hash": "c51b7cfa380ae7f4ba64dd7549bc02cd1611ba1d32fe00655807d46ef20ed4be",
+  "swaps": {
+    "kn": [
+      "crosssum-kn-215",
+      "crosssum-kn-490"
+    ],
+    "ta": [
+      "crosssum-ta-174",
+      "crosssum-ta-116"
+    ]
+  },
+  "candidate_counts": {
+    "gemma26b": 2000,
+    "gemma31b": 2000
+  },
+  "note": "Both original input pairs excluded. Original files unchanged. All four replacements included."
+}

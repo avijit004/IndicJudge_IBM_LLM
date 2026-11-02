@@ -1,0 +1,29 @@
+{
+  "run_fingerprint": "d2028d793638a6238cc12da1ee1569cf662611fa56bd6362e6b5551259413858",
+  "snapshot_hash": "1822a0628dc947f0832a5bd727faae41646b965433ce1e236ffbc85a8c085f47",
+  "judge_model": {
+    "role": "judge",
+    "alias": "Ministral-3-8B-Reasoning",
+    "api_url_env": "RF_MINISTRAL_API_URL",
+    "parameters": {
+      "temperature": 0.7,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "seed": 42,
+      "max_tokens": 8192,
+      "reasoning_budget_tokens": 4096,
+      "reasoning_budget_message": "Finish the analysis now and return only the required judgment JSON."
+    },
+    "system_prompt": "You evaluate task responses. Work through the evaluation in a [THINK]...[/THINK] reasoning block, then provide only the requested JSON object. The final JSON must contain no Markdown or additional commentary."
+  },
+  "model_record": {
+    "gguf_file": "",
+    "gguf_sha256": "",
+    "quantization": "",
+    "llama_cpp_commit": "",
+    "hardware": "",
+    "notes": ""
+  },
+  "updated_at": "2026-10-24T07:50:31.171325+00:00"
+}

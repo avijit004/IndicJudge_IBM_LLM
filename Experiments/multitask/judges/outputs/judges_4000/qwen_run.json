@@ -1,0 +1,31 @@
+{
+  "run_fingerprint": "0e3bb4160b34eae46db688ff58d812c10514ed3f8f741d71a8bd4426431281e9",
+  "snapshot_hash": "1822a0628dc947f0832a5bd727faae41646b965433ce1e236ffbc85a8c085f47",
+  "judge_model": {
+    "role": "judge",
+    "alias": "Qwen3-14B",
+    "api_url_env": "RF_QWEN_API_URL",
+    "parameters": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "seed": 42,
+      "max_tokens": 8192,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "reasoning_budget_tokens": 4096,
+      "reasoning_budget_message": "Finish the analysis now and return only the required judgment JSON."
+    }
+  },
+  "model_record": {
+    "gguf_file": "",
+    "gguf_sha256": "",
+    "quantization": "",
+    "llama_cpp_commit": "",
+    "hardware": "",
+    "notes": ""
+  },
+  "updated_at": "2026-10-24T18:15:05.092929+00:00"
+}

@@ -1,40 +1,200 @@
 # IndicJudge
 
-IndicJudge compares responses from two Gemma models across ten Indian languages. Three independent LLM judges evaluate the responses using shared rubrics.
+IndicJudge evaluates Gemma-4-26B and Gemma-4-31B responses with Sarvam-30B, Qwen3-14B and Ministral 3 8B Reasoning.
 
-- **Candidate models:** Gemma-4-26B and Gemma-4-31B, as named in the scripts.
-- **Judge models:** Sarvam-30B, Qwen3-14B and Ministral 3 8B Reasoning.
-- **Languages:** Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil and Telugu.
+**Current evaluation:** 2,000 matched inputs, 4,000 candidate responses, ten languages and four tasks. Both models have 50 responses per language/task. The two failed input pairs were replaced with unused row-51 samples; the original files remain preserved.
 
-The project includes mathematical reasoning experiments, a four-task evaluation, and a separate perturbation experiment.
+## Evaluation pipeline
 
-## Project folders
+```mermaid
+flowchart LR
+    subgraph Dataset["📂 Dataset"]
+        QA["QA"]
+        RE["Reasoning"]
+        SU["Summarization"]
+        TR["Translation"]
+    end
 
-| Folder | What it does |
-|---|---|
-| `Dataset/` | Source datasets, task CSVs and dataset coverage information. |
-| `gsm_gujarati_experiment/` | Gujarati math questions, generation scripts and Gemma responses. |
-| `gsm_hindi_experiment/` | Hindi math questions, generation scripts and Gemma responses. |
-| `gsm_kannada_experiment/` | Kannada math questions, generation scripts and Gemma responses. |
-| `gsm_malayalam_experiment/` | Malayalam math questions, generation scripts and Gemma responses. |
-| `gsm_marathi_experiment/` | Marathi math questions, generation scripts and Gemma responses. |
-| `gsm_odia_experiment/` | Odia math questions, generation scripts and Gemma responses. |
-| `gsm_punjabi_experiment/` | Punjabi math questions, generation scripts and Gemma responses. |
-| `gsm_tamil_experiment/` | Tamil math questions, generation scripts and Gemma responses. |
-| `mgsm_bengali_experiment/` | Bengali math questions, generation scripts and Gemma responses. |
-| `mgsm_telegu_experiment/` | Telugu math questions, generation scripts and Gemma responses; the folder retains its existing spelling. |
-| `sarvam_30b_judge/` | Sarvam judgments using the Initial Rubric. |
-| `qwen3_14b_judge/` | Qwen judgments using the Initial Rubric. |
-| `ministral_8b_judge/` | Ministral judgments using the Initial Rubric. |
-| `sarvam_reasoning_judge/` | Sarvam judgments using Rubric Version 2. |
-| `qwen_reasoning_judge/` | Qwen judgments using Rubric Version 2. |
-| `ministral_reasoning_judge/` | Ministral judgments using Rubric Version 2. |
-| `judge_experiment/` | Earlier Bengali and Telugu judging scripts and results. |
-| `human_evaluation/` | Reviewer workbooks, a reading pack and scripts for human evaluation of math responses. |
-| `multitask_judge_experiment/` | The first-five-sample experiment across four tasks and ten languages. |
-| `multitask_50_samples/` | The expanded 50-sample experiment, including generation, judging, progress checks and analysis. |
-| `perturbation_experiment/` | Generates responses with targeted reasoning flaws and evaluates them with the Initial Rubric. |
-| `ministral-3-8b-reasoning/` | Local model storage, when present; GGUF weights are not needed in Git. |
+    subgraph Generation["⚙️ Candidate Generation"]
+        G26["Gemma-4-26B"]
+        G31["Gemma-4-31B"]
+    end
+
+    subgraph Judging["⚖️ Reference-Free Judging"]
+        SA["Sarvam-30B"]
+        QW["Qwen3-14B"]
+        MI["Ministral-3-8B"]
+    end
+
+    subgraph Output["📊 Analysis"]
+        SC["Scores 0–5"]
+        LB["Leaderboard"]
+        DA["Dashboard"]
+    end
+
+    Dataset -->|"2,000 inputs<br/>4 tasks × 10 langs × 50"| Generation
+    Generation -->|"4,000 responses<br/>2,000 per model"| Judging
+    Judging -->|"12,000 judgments<br/>4,000 per judge"| Output
+```
+
+## Evaluation matrix
+
+```mermaid
+block-beta
+    columns 5
+
+    space header1["Candidates"] header2["Judges"] header3["Outputs"] space
+
+    block:tasks:1
+        t1["QA"]
+        t2["Reasoning"]
+        t3["Summarization"]
+        t4["Translation"]
+    end
+
+    block:candidates:1
+        c1["Gemma-4-26B<br/>2,000 responses"]
+        c2["Gemma-4-31B<br/>2,000 responses"]
+    end
+
+    block:judges:1
+        j1["Sarvam-30B"]
+        j2["Qwen3-14B"]
+        j3["Ministral-3-8B"]
+    end
+
+    block:outputs:1
+        o1["Score 0–5"]
+        o2["Justification"]
+    end
+
+    tasks --> candidates
+    candidates --> judges
+    judges --> outputs
+```
+
+> **Scale:** 4 tasks × 10 languages × 50 samples = 2,000 inputs → 4,000 candidate responses → 12,000 total judgments.
+
+## Math experiment flow (P1–P5)
+
+```mermaid
+flowchart TD
+    subgraph Prompts["5 Prompt Conditions"]
+        P1["P1: Correct reasoning + correct answer"]
+        P2["P2: Subtle error + correct answer"]
+        P3["P3: Correct method + arithmetic error"]
+        P4["P4: Wrong reasoning + wrong answer"]
+        P5["P5: Correct answer + weak explanation"]
+    end
+
+    subgraph Candidates["Candidate Models"]
+        MG26["Gemma-4-26B"]
+        MG31["Gemma-4-31B"]
+    end
+
+    subgraph Rubrics["Two Rubric Versions"]
+        R1["Initial Rubric<br/>With gold answer + prompt intent"]
+        R2["Rubric v2<br/>Reference-free, operation choice + logical flow"]
+    end
+
+    subgraph Judges["3 Judge Models × 2 Rubrics"]
+        JS["Sarvam-30B"]
+        JQ["Qwen3-14B"]
+        JM["Ministral-3-8B"]
+    end
+
+    Prompts -->|"50 Qs × 5 prompts<br/>× 10 languages"| Candidates
+    Candidates -->|"5,000 responses"| Rubrics
+    Rubrics --> Judges
+```
+
+## Start here
+
+| What you need                               | Location                                                                        |
+| ------------------------------------------- | ------------------------------------------------------------------------------- |
+| All 2,000 Gemma26B responses                | [gemma26b_responses.csv](Experiments/multitask/candidate/gemma26b_responses.csv) |
+| All 2,000 Gemma31B responses                | [gemma31b_responses.csv](Experiments/multitask/candidate/gemma31b_responses.csv) |
+| Current reference-free judging instructions | [Reference-free README](Experiments/multitask/judges/README.md)                  |
+| Judge prompts and four task rubrics         | [rubric.py](Experiments/multitask/judges/rubric.py)                              |
+| Evaluation and leaderboard design           | [Research plan](Experiments/multitask/judges/RESEARCH_PLAN.md)                   |
+| All multitask experiments                   | [Multitask folder guide](Experiments/multitask/README.md)                        |
+| Earlier math experiments and both rubrics   | [Mathematics folder guide](Experiments/mathematics/README.md)                    |
+| Dataset descriptions                        | [Dataset README](Dataset/README.md)                                              |
+
+## Folder layout
+
+```text
+IndicJudge_IBM/
+├── run.py                        # Short commands for the current 4,000-response run.
+├── requirements.txt              # Server-side model-generation dependencies (PyTorch, Transformers).
+├── Experiments/
+│   ├── multitask/                # Four-task evaluation across 10 Indic languages.
+│   │   ├── candidate/           # Two complete 2,000-response CSVs and generation history.
+│   │   └── judges/              # Three reference-free judges, results, analysis and dashboard.
+│   └── mathematics/              # P1–P5 math experiments, both rubrics and human review.
+│       ├── gsm_*_experiment/     # Per-language candidate generation (GSM questions).
+│       ├── mgsm_*_experiment/    # Per-language candidate generation (MGSM questions).
+│       ├── sarvam_30b_judge/     # Initial Rubric: answer correctness, reasoning, prompt compliance.
+│       ├── qwen3_14b_judge/      # Initial Rubric judge.
+│       ├── ministral_8b_judge/   # Initial Rubric judge.
+│       ├── sarvam_reasoning_judge/ # Rubric v2: reference-free operation choice and logical flow.
+│       ├── qwen_reasoning_judge/ # Rubric v2 judge.
+│       ├── ministral_reasoning_judge/ # Rubric v2 judge.
+│       ├── human_evaluation/     # Reviewer workbooks and reading pack.
+│       ├── perturbation_experiment/ # Additional prompts with targeted reasoning flaws.
+│       └── judge_experiment/     # Earlier Bengali/Telugu judging trials.
+├── Dataset/                      # Original dataset files, task CSVs and coverage spreadsheets.
+└── docs/                         # JudgeBench paper and folder-move record.
+```
+
+The ten languages are Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil and Telugu.
+
+## Run the current evaluation
+
+Run from this project folder using a Python environment with the dependencies below:
+
+```bash
+python3 -m pip install -r Experiments/multitask/judges/requirements.txt
+
+python3 run.py candidates
+python3 run.py check
+python3 run.py status --detail
+```
+
+Load each judge separately on the GPU server. Set its actual endpoint on the Mac where you run the scripts:
+
+```bash
+# Example only: Ministral must actually be running at this endpoint.
+export RF_MINISTRAL_API_URL="http://172.30.1.83:33937/v1/chat/completions"
+caffeinate -i python3 run.py judge ministral
+```
+
+Use `python3 run.py judge qwen` and `python3 run.py judge sarvam` after setting `RF_QWEN_API_URL` and `RF_SARVAM_API_URL`. Use `judge all` only if all three model servers are available. On Linux omit `caffeinate -i`.
+
+These short commands automatically use **`data/inputs_4000.json`** and **`outputs/judges_4000/`** inside the reference-free folder. They do not use the older 3,998-response snapshot. Valid saved judgments are skipped when resumed. Each judge targets 4,000 responses, or 12,000 judgments in total. Results are saved on the machine running Python, even when inference happens on the server.
+
+```bash
+python3 run.py analyze
+
+# Optional dashboard for the current 4,000-response analysis:
+python3 -m pip install -r Experiments/multitask/judges/requirements-dashboard.txt
+python3 run.py dashboard
+```
+
+The dashboard reads `analysis_4000/`. Re-run analysis to refresh its data. Judge-quality rankings require independent adjudicated human scores; agreement alone cannot identify the best judge. See the research plan for MAE, quadratic weighted kappa, matched comparisons and uncertainty estimates.
+
+## Four-task evaluation and references
+
+| Task               | What reference-free judges receive                                          | What they assess                                  |
+| ------------------ | --------------------------------------------------------------------------- | ------------------------------------------------- |
+| Question answering | Context, question and visible response                                      | Correctness and sufficiency supported by context. |
+| Reasoning          | Premise, causal question, options, candidate reasoning and visible response | Appropriate choices and logical justification.    |
+| Summarization      | Source document and visible summary                                         | Faithfulness, central coverage and conciseness.   |
+| Translation        | Source text, language direction and visible translation                     | Meaning preservation, completeness and fluency.   |
+
+No dataset answer, correct-option label, reference summary or reference translation is sent to the current judges. Each returns one 0–5 overall score and a justification. Candidate generation also receives no gold references. Selected translation pairs are Indic-to-English; reasoning uses causal commonsense questions.
+
+Earlier multitask runs supplied references for QA and translation. Their results remain in separate folders and are not reused as current reference-free judgments.
 
 ## Mathematical reasoning: P1–P5
 
@@ -42,13 +202,13 @@ Each language has 50 questions. Both candidate models answer every question unde
 
 **50 questions × 5 prompts × 2 models × 10 languages = 5,000 candidate responses.**
 
-| Prompt | Requested behavior |
-|---|---|
-| P1 | Correct step-by-step reasoning, correct calculations and a verified final answer. |
-| P2 | A subtle logical or mathematical error in the reasoning, while still giving the correct final answer. |
-| P3 | A correct method with a small arithmetic error at the end, producing an incorrect final answer. |
-| P4 | Incorrect reasoning or invalid mathematical steps and an incorrect final answer. |
-| P5 | A correct final answer with a brief explanation that does not fully justify it. |
+| Prompt | Requested behavior                                                                                    |
+| ------ | ----------------------------------------------------------------------------------------------------- |
+| P1     | Correct step-by-step reasoning, correct calculations and a verified final answer.                     |
+| P2     | A subtle logical or mathematical error in the reasoning, while still giving the correct final answer. |
+| P3     | A correct method with a small arithmetic error at the end, producing an incorrect final answer.       |
+| P4     | Incorrect reasoning or invalid mathematical steps and an incorrect final answer.                      |
+| P5     | A correct final answer with a brief explanation that does not fully justify it.                       |
 
 These are generation instructions, not guaranteed properties of the responses. Judges evaluate what each candidate actually produced.
 
@@ -69,87 +229,21 @@ The judge receives only the problem, candidate solution and prompt number. **No 
 
 The judge evaluates operation choice and logical flow together. Arithmetic execution errors alone do not lower the score. For example, choosing addition when multiplication is required is a structural error; writing `6 × 4 = 22` is an arithmetic error.
 
-| Score | Meaning |
-|---|---|
-| 0 | No assessable solution method. |
-| 1 | A method is attempted, but it makes no valid progress. |
-| 2 | Major structural problems, a missing central relationship, or multiple independent repairs are needed. |
-| 3 | One localized structural error or missing essential step. |
-| 4 | A valid method with a minor clarity omission. |
-| 5 | A complete, justified method with appropriate operations and logical dependencies. |
+| Score | Meaning                                                                                                |
+| ----- | ------------------------------------------------------------------------------------------------------ |
+| 0     | No assessable solution method.                                                                         |
+| 1     | A method is attempted, but it makes no valid progress.                                                 |
+| 2     | Major structural problems, a missing central relationship, or multiple independent repairs are needed. |
+| 3     | One localized structural error or missing essential step.                                              |
+| 4     | A valid method with a minor clarity omission.                                                          |
+| 5     | A complete, justified method with appropriate operations and logical dependencies.                     |
 
 Output includes `operator_choice`, `overall_score` and `justification`. The operator label is `correct`, `partially_correct`, `incorrect` or `not_assessable`; it has no separate numerical weight.
 
 Each rubric targets 5,000 judgments per judge. Results from the two rubrics stay in separate folders.
 
-## Four-task experiment
+## Paths after reorganization
 
-The multitask experiments use **one generation prompt per task**, not P1–P5. They read CSVs from `Dataset/dataset_csv/` and freeze the selected inputs in `data/selection.json`.
+All experiment folders now live under `Experiments/`. Old commands that referenced top-level directories like `reference_free_judge/`, `multitask_50_samples/`, or any `gsm_*_experiment/` folder must be updated to use the new paths. Prefer `python3 run.py` for the active evaluation.
 
-| Task | What the judge evaluates | Reference use |
-|---|---|---|
-| Question answering | Correctness, relevance, completeness and support from context. | Reference answers are supplied; context takes precedence. |
-| Reasoning | Appropriate choices and logical support for COPA-style cause/effect questions. | The dataset's correct-option label is withheld from the judge. |
-| Summarization | Faithfulness, coverage of the main information and conciseness. | The judge receives the source document, not the reference summary. |
-| Translation | Meaning preservation, completeness and fluency in the target language. | A reference translation is supplementary; source text takes precedence. |
-
-All four tasks have references or labels in the dataset, but **candidate generation receives none of them**. Each judge returns one integer `overall_score` from 0–5 and a justification. Task-specific instructions are in each experiment's `prompts.py` and `RUBRICS.md`.
-
-| Experiment | Samples per language/task | Inputs | Candidate responses | Judgments across three judges |
-|---|---:|---:|---:|---:|
-| `multitask_judge_experiment/` | 5 | 200 | 400 | 1,200 |
-| `multitask_50_samples/` | 50 | 2,000 | 4,000 | 12,000 |
-
-The 50-sample experiment uses the first 50 records in source order and reuses validated first-five results. It is not a random sample. The selected translation pairs run from the Indic language into English.
-
-**Last reported server generation status:** 1,999 responses from each Gemma model, or 3,998 total. One Kannada summarization response from 26B and one Tamil summarization response from 31B were left out after generation failures. This is a reported snapshot, not a live count; local and server copies may differ. Status scripts still show these two as missing against the original 4,000-response target.
-
-### Run the 50-sample workflow
-
-Run from the project root. Load the required model in llama-server first, then set its endpoint. The scripts do not boot or switch models.
-
-```bash
-python3 -m pip install -r multitask_50_samples/requirements.txt
-
-# Example: Gemma26B is already running on this endpoint.
-export MULTITASK_GEMMA26B_API_URL="http://172.30.1.83:8080/v1/chat/completions"
-python3 -u multitask_50_samples/generate_gemma26b.py
-
-# Configure MULTITASK_GEMMA31B_API_URL before running the other candidate.
-python3 -u multitask_50_samples/generate_gemma31b.py
-```
-
-For judging, configure `MULTITASK_SARVAM_API_URL`, `MULTITASK_QWEN_API_URL` and `MULTITASK_MINISTRAL_API_URL` to their running servers:
-
-```bash
-python3 -u multitask_50_samples/judge_sarvam.py
-python3 -u multitask_50_samples/judge_qwen.py
-python3 -u multitask_50_samples/judge_ministral.py
-
-python3 multitask_50_samples/status.py --detail
-python3 multitask_50_samples/analyze.py
-```
-
-Results are saved on the machine running the scripts, even when the model server is elsewhere:
-
-- `multitask_50_samples/outputs/candidates/`: candidate response CSVs.
-- `multitask_50_samples/outputs/judges/`: separate CSVs for each judge.
-- `multitask_50_samples/analysis/`: scores, task means, pairwise agreement and coverage.
-
-Rerunning skips validated saved records and retries missing ones. Available responses can be judged even with the two exclusions; commands may still report incomplete coverage. Missing responses and scores must not be treated as zero. Keep the saved selection, prompts and settings unchanged during a run. Recovery requests record their changed settings separately.
-
-See the [50-sample workflow](multitask_50_samples/README.md) and [first-five workflow](multitask_judge_experiment/README.md) for more options.
-
-## Perturbation experiment
-
-`perturbation_experiment/` uses four additional math prompts: partial reasoning with a calculation error, a correct setup with a major logical gap, a correct answer with weak justification, and a correct method with a minor reasoning flaw. It saves new responses separately and compares Initial Rubric scores with the intended score ranges. Targets are not assumed to be achieved.
-
-See [the perturbation instructions](perturbation_experiment/README.md) for generation, judging and summary commands.
-
-## Comparing results
-
-Match multitask results by `sample_id` and `source_model`, keeping each judge's scores separate. Compare candidate models on the same samples within each language and task.
-
-`analyze.py` computes mean score as **sum of available scores ÷ number of available scores** and reports coverage. It also calculates exact agreement, mean absolute score difference and within-one-point agreement between judge pairs using matched records only.
-
-Agreement between judges does not establish which judge is more accurate. To assess judge quality, compare against adjudicated human ratings using weighted Cohen's kappa, MAE and within-one-point agreement. These human-comparison metrics are not currently calculated by the multitask analysis script. The existing [human evaluation package](human_evaluation/README.md) covers the earlier math experiment.
+Only this local project was reorganized. Existing server directories and server model-loading commands were not changed. If syncing to a server, copy the new layout before using the new paths there. Folder moves and verified data hashes are recorded in [organization_manifest.json](docs/organization_manifest.json).

@@ -1,0 +1,25 @@
+{
+  "snapshot_hash": "1822a0628dc947f0832a5bd727faae41646b965433ce1e236ffbc85a8c085f47",
+  "candidate_count": 4000,
+  "excluded_candidates": [],
+  "judge_counts": {
+    "sarvam": 4000,
+    "qwen": 4000,
+    "ministral": 4000
+  },
+  "human_adjudicated": 0,
+  "human_protocol": null,
+  "matched_for_all_judges": 4000,
+  "judge_run_fingerprints": {
+    "sarvam": "bfced5b8cf5cff7f780a5ecdfb30921db3f671fd161678eb6aefae5efb01c021",
+    "qwen": "0e3bb4160b34eae46db688ff58d812c10514ed3f8f741d71a8bd4426431281e9",
+    "ministral": "d2028d793638a6238cc12da1ee1569cf662611fa56bd6362e6b5551259413858"
+  },
+  "human_ratings_sha256": null,
+  "bootstrap_repetitions": 1000,
+  "bootstrap_seed": 42,
+  "min_clusters_for_descriptive_rank": 30,
+  "primary_metric": "MAE against adjudicated human overall_score; smaller is better",
+  "weighting": "Response-weighted within each reported group; not equal-cell macro averaging.",
+  "limitations": "First 50 source-ordered records, two related candidate responses per sample, no random population sample. Cross-language alignment unknown. 95% bootstrap intervals are pointwise and not multiple-comparison corrected. No automatic best-judge declaration."
+}

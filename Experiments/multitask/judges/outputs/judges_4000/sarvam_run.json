@@ -1,0 +1,28 @@
+{
+  "run_fingerprint": "bfced5b8cf5cff7f780a5ecdfb30921db3f671fd161678eb6aefae5efb01c021",
+  "snapshot_hash": "1822a0628dc947f0832a5bd727faae41646b965433ce1e236ffbc85a8c085f47",
+  "judge_model": {
+    "role": "judge",
+    "alias": "Sarvam-30B",
+    "api_url_env": "RF_SARVAM_API_URL",
+    "parameters": {
+      "temperature": 0.0,
+      "seed": 42,
+      "max_tokens": 8192,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "reasoning_budget_tokens": 4096,
+      "reasoning_budget_message": "Finish the analysis now and return only the required judgment JSON."
+    }
+  },
+  "model_record": {
+    "gguf_file": "",
+    "gguf_sha256": "",
+    "quantization": "",
+    "llama_cpp_commit": "",
+    "hardware": "",
+    "notes": ""
+  },
+  "updated_at": "2026-10-25T22:13:12.028178+00:00"
+}
