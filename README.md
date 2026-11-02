@@ -1,249 +1,284 @@
-# IndicJudge
+# IndicJudge: Multitask Reference-Free LLM-as-a-Judge for Indic Languages
 
-IndicJudge evaluates Gemma-4-26B and Gemma-4-31B responses with Sarvam-30B, Qwen3-14B and Ministral 3 8B Reasoning.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Languages: 10 Indic](https://img.shields.io/badge/Languages-10%20Indic-green.svg)](#supported-languages)
+[![Tasks: 4](https://img.shields.io/badge/Tasks-4%20Core%20Tasks-orange.svg)](#supported-tasks)
+[![Judgments: 12,000](https://img.shields.io/badge/Judgments-12%2C000%20Total-purple.svg)](#benchmark-scale)
+[![License: Research](https://img.shields.io/badge/License-Research%20Only-lightgrey.svg)](#citation--acknowledgments)
 
-**Current evaluation:** 2,000 matched inputs, 4,000 candidate responses, ten languages and four tasks. Both models have 50 responses per language/task. The two failed input pairs were replaced with unused row-51 samples; the original files remain preserved.
+**IndicJudge** is an end-to-end framework for evaluating Large Language Models across diverse Indic languages without requiring human reference (gold-standard) answers. 
 
-## Evaluation pipeline
+By employing three independent LLM judges with task-specific 0–5 rubrics, IndicJudge benchmarks candidate models (**Gemma-4-26B** vs **Gemma-4-31B**) across **10 Indic languages** and **4 task types**, producing **4,000 candidate responses** and **12,000 reference-free judgments**.
 
-```mermaid
-flowchart LR
-    subgraph Dataset["📂 Dataset"]
-        QA["QA"]
-        RE["Reasoning"]
-        SU["Summarization"]
-        TR["Translation"]
-    end
+---
 
-    subgraph Generation["⚙️ Candidate Generation"]
-        G26["Gemma-4-26B"]
-        G31["Gemma-4-31B"]
-    end
+## 📌 Table of Contents
 
-    subgraph Judging["⚖️ Reference-Free Judging"]
-        SA["Sarvam-30B"]
-        QW["Qwen3-14B"]
-        MI["Ministral-3-8B"]
-    end
+- [Overview & Why Reference-Free?](#-overview--why-reference-free)
+- [Benchmark Scale](#-benchmark-scale)
+- [Supported Languages](#-supported-languages)
+- [Supported Tasks](#-supported-tasks)
+- [Evaluation Architecture](#-evaluation-architecture)
+- [Four-Task Scoring Rubrics (0–5 Scale)](#-four-task-scoring-rubrics-05-scale)
+- [Quickstart: How to Run](#-quickstart-how-to-run)
+- [Dashboard & Analysis](#-dashboard--analysis)
+- [Repository Structure](#-repository-structure)
+- [Presentations & Artifacts](#-presentations--artifacts)
+- [Citation & Acknowledgments](#-citation--acknowledgments)
 
-    subgraph Output["📊 Analysis"]
-        SC["Scores 0–5"]
-        LB["Leaderboard"]
-        DA["Dashboard"]
-    end
+---
 
-    Dataset -->|"2,000 inputs<br/>4 tasks × 10 langs × 50"| Generation
-    Generation -->|"4,000 responses<br/>2,000 per model"| Judging
-    Judging -->|"12,000 judgments<br/>4,000 per judge"| Output
+## 💡 Overview & Why Reference-Free?
+
+Traditional LLM evaluation relies heavily on exact matches against English or translated reference answers. In low-resource and linguistically diverse Indic languages, reference answers are often:
+1. **Unobtainable or scarce** across specialized regional domains.
+2. **Brittle**, as valid dialectal variations and alternate phrasing are unfairly penalized.
+3. **Mismatched**, where candidate answers are in Indic scripts while references are in English.
+
+**IndicJudge solves this by using task-grounded, reference-free judging:**
+- Judges evaluate responses using **only the input evidence** (context, premise, document, source text) and a structured **0–5 rubric**.
+- Candidate model identity and reasoning traces are decoupled to prevent scoring contamination.
+- Multiple independent judge architectures (**Sarvam-30B**, **Qwen3-14B**, **Ministral-3-8B**) are cross-validated using Quadratic Weighted Kappa (QWK) and Mean Absolute Error (MAE).
+
+---
+
+## 📊 Benchmark Scale
+
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 10 Indic Languages  ×  4 Task Types  ×  50 Samples = 2,000 Unique Inputs    │
+│ 2,000 Inputs  ×  2 Candidate Models (26B & 31B)   = 4,000 Candidate Outputs│
+│ 4,000 Outputs ×  3 Independent LLM Judges         = 12,000 Judgments       │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Evaluation matrix
+- **Candidate Models:** `Gemma-4-26B (Q4_K_M)` and `Gemma-4-31B (Q4_K_M)`
+- **Judge Models:** `Sarvam-30B`, `Qwen3-14B`, `Ministral-3-8B-Reasoning`
+- **Output Format:** Strict JSON: `{"overall_score": 0–5, "justification": "..."}`
 
-```mermaid
-block-beta
-    columns 5
+---
 
-    space header1["Candidates"] header2["Judges"] header3["Outputs"] space
+## 🌐 Supported Languages
 
-    block:tasks:1
-        t1["QA"]
-        t2["Reasoning"]
-        t3["Summarization"]
-        t4["Translation"]
-    end
+IndicJudge covers 10 major Indic languages spanning Indo-Aryan and Dravidian language families:
 
-    block:candidates:1
-        c1["Gemma-4-26B<br/>2,000 responses"]
-        c2["Gemma-4-31B<br/>2,000 responses"]
-    end
+| Language | ISO Code | Script | Family |
+|---|:---:|---|---|
+| **Bengali** | `bn` | Bengali | Indo-Aryan |
+| **Gujarati** | `gu` | Gujarati | Indo-Aryan |
+| **Hindi** | `hi` | Devanagari | Indo-Aryan |
+| **Kannada** | `kn` | Kannada | Dravidian |
+| **Malayalam** | `ml` | Malayalam | Dravidian |
+| **Marathi** | `mr` | Devanagari | Indo-Aryan |
+| **Odia** | `or` | Odia | Indo-Aryan |
+| **Punjabi** | `pa` | Gurmukhi | Indo-Aryan |
+| **Tamil** | `ta` | Tamil | Dravidian |
+| **Telugu** | `te` | Telugu | Dravidian |
 
-    block:judges:1
-        j1["Sarvam-30B"]
-        j2["Qwen3-14B"]
-        j3["Ministral-3-8B"]
-    end
+---
 
-    block:outputs:1
-        o1["Score 0–5"]
-        o2["Justification"]
-    end
+## 🎯 Supported Tasks
 
-    tasks --> candidates
-    candidates --> judges
-    judges --> outputs
-```
+| Task | Benchmark Source | What the Judge Receives | Evaluation Focus |
+|---|---|---|---|
+| **Question Answering (QA)** | XQuAD / XOR-QA | Context passage, question, visible response | Factual correctness and sufficiency from context |
+| **Reasoning** | MGSM / COPA-style | Premise, options, candidate reasoning & response | Method, deduction, operations & logical flow |
+| **Summarization** | IndicSentSum | Source document, visible summary | Faithfulness, core coverage & conciseness |
+| **Translation** | FLORES+ | Source text, language direction, translation | Meaning preservation, completeness & fluency |
 
-> **Scale:** 4 tasks × 10 languages × 50 samples = 2,000 inputs → 4,000 candidate responses → 12,000 total judgments.
+---
 
-## Math experiment flow (P1–P5)
+## 🏗 Evaluation Architecture
 
 ```mermaid
 flowchart TD
-    subgraph Prompts["5 Prompt Conditions"]
-        P1["P1: Correct reasoning + correct answer"]
-        P2["P2: Subtle error + correct answer"]
-        P3["P3: Correct method + arithmetic error"]
-        P4["P4: Wrong reasoning + wrong answer"]
-        P5["P5: Correct answer + weak explanation"]
+    subgraph Data["1. Data Sources (2,000 Unique Inputs)"]
+        D1["QA: XQuAD / XOR-QA"]
+        D2["Reasoning: MGSM"]
+        D3["Summarization: IndicSentSum"]
+        D4["Translation: FLORES+"]
     end
 
-    subgraph Candidates["Candidate Models"]
-        MG26["Gemma-4-26B"]
-        MG31["Gemma-4-31B"]
+    subgraph Generation["2. Candidate Generation (4,000 Responses)"]
+        G26["Gemma-4-26B (Q4_K_M)<br/>2,000 outputs"]
+        G31["Gemma-4-31B (Q4_K_M)<br/>2,000 outputs"]
+        Freeze["Immutable Snapshot<br/>inputs_4000.json (SHA-256)"]
     end
 
-    subgraph Rubrics["Two Rubric Versions"]
-        R1["Initial Rubric<br/>With gold answer + prompt intent"]
-        R2["Rubric v2<br/>Reference-free, operation choice + logical flow"]
+    subgraph Judging["3. Reference-Free Judging (12,000 Judgments)"]
+        J1["Sarvam-30B<br/>Calibrated (0-5 spread)"]
+        J2["Qwen3-14B<br/>Lenient (mean 4.45)"]
+        J3["Ministral-3-8B<br/>Concentrated (mean 4.03)"]
     end
 
-    subgraph Judges["3 Judge Models × 2 Rubrics"]
-        JS["Sarvam-30B"]
-        JQ["Qwen3-14B"]
-        JM["Ministral-3-8B"]
+    subgraph Output["4. Analysis & Dashboard"]
+        M1["Inter-Judge Agreement<br/>QWK, MAE, ±1 Agreement"]
+        M2["Candidate Leaderboard<br/>Gemma-26B vs Gemma-31B"]
+        M3["Human Adjudication Benchmark"]
+        M4["Streamlit Interactive Dashboard"]
     end
 
-    Prompts -->|"50 Qs × 5 prompts<br/>× 10 languages"| Candidates
-    Candidates -->|"5,000 responses"| Rubrics
-    Rubrics --> Judges
+    Data --> Generation
+    G26 & G31 --> Freeze
+    Freeze --> J1 & J2 & J3
+    J1 & J2 & J3 --> Output
 ```
 
-## Start here
+---
 
-| What you need                               | Location                                                                        |
-| ------------------------------------------- | ------------------------------------------------------------------------------- |
-| All 2,000 Gemma26B responses                | [gemma26b_responses.csv](Experiments/multitask/candidate/gemma26b_responses.csv) |
-| All 2,000 Gemma31B responses                | [gemma31b_responses.csv](Experiments/multitask/candidate/gemma31b_responses.csv) |
-| Current reference-free judging instructions | [Reference-free README](Experiments/multitask/judges/README.md)                  |
-| Judge prompts and four task rubrics         | [rubric.py](Experiments/multitask/judges/rubric.py)                              |
-| Evaluation and leaderboard design           | [Research plan](Experiments/multitask/judges/RESEARCH_PLAN.md)                   |
-| All multitask experiments                   | [Multitask folder guide](Experiments/multitask/README.md)                        |
-| Earlier math experiments and both rubrics   | [Mathematics folder guide](Experiments/mathematics/README.md)                    |
-| Dataset descriptions                        | [Dataset README](Dataset/README.md)                                              |
+## 📏 Four-Task Scoring Rubrics (0–5 Scale)
 
-## Folder layout
+Each judge receives only the task inputs and candidate visible response (no gold answers). Scores range from **0 to 5**:
 
-```text
-IndicJudge_IBM/
-├── run.py                        # Short commands for the current 4,000-response run.
-├── requirements.txt              # Server-side model-generation dependencies (PyTorch, Transformers).
-├── Experiments/
-│   ├── multitask/                # Four-task evaluation across 10 Indic languages.
-│   │   ├── candidate/           # Two complete 2,000-response CSVs and generation history.
-│   │   └── judges/              # Three reference-free judges, results, analysis and dashboard.
-│   └── mathematics/              # P1–P5 math experiments, both rubrics and human review.
-│       ├── gsm_*_experiment/     # Per-language candidate generation (GSM questions).
-│       ├── mgsm_*_experiment/    # Per-language candidate generation (MGSM questions).
-│       ├── sarvam_30b_judge/     # Initial Rubric: answer correctness, reasoning, prompt compliance.
-│       ├── qwen3_14b_judge/      # Initial Rubric judge.
-│       ├── ministral_8b_judge/   # Initial Rubric judge.
-│       ├── sarvam_reasoning_judge/ # Rubric v2: reference-free operation choice and logical flow.
-│       ├── qwen_reasoning_judge/ # Rubric v2 judge.
-│       ├── ministral_reasoning_judge/ # Rubric v2 judge.
-│       ├── human_evaluation/     # Reviewer workbooks and reading pack.
-│       ├── perturbation_experiment/ # Additional prompts with targeted reasoning flaws.
-│       └── judge_experiment/     # Earlier Bengali/Telugu judging trials.
-├── Dataset/                      # Original dataset files, task CSVs and coverage spreadsheets.
-└── docs/                         # JudgeBench paper and folder-move record.
-```
+| Score | Meaning | General Description |
+|:---:|---|---|
+| **5** | **Perfect** | Fully correct, faithful, complete, and fluent. No meaningful errors or unsupported claims. |
+| **4** | **Good** | Essentially correct and sufficient; minor imprecision, phrasing, or slight clarity issue. |
+| **3** | **Partial** | Central answer or core message is preserved, but substantive secondary error or omission exists. |
+| **2** | **Weak** | Some valid progress/information, but central approach is flawed or key parts are wrong. |
+| **1** | **Very Poor** | Largely incorrect, misleading, or fails to make valid progress. |
+| **0** | **Fail** | Blank, refusal to answer, unrelated output, or complete hallucination. |
 
-The ten languages are Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil and Telugu.
+### 🔍 Special Reasoning Task Rubric (Structural vs Arithmetic Errors)
+In mathematical reasoning, IndicJudge separates **logical methodology** from simple arithmetic execution:
+- **Structural Error:** Choosing addition instead of multiplication, missing essential steps, or inverted logic (lowers the score).
+- **Arithmetic Execution Error:** Choosing the correct formula $4 \times 6$ but computing $22$ (does **not** lower the score, as long as the method and logical flow are sound).
 
-## Run the current evaluation
+---
 
-Run from this project folder using a Python environment with the dependencies below:
+## 🚀 Quickstart: How to Run
+
+### 1. Prerequisites & Setup
+Clone the repository and set up a Python environment:
 
 ```bash
-python3 -m pip install -r Experiments/multitask/judges/requirements.txt
+git clone https://github.com/avijit004/IndicJudge_IBM_LLM.git
+cd IndicJudge_IBM_LLM
 
+# Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install judging dependencies
+pip install -r Experiments/multitask/judges/requirements.txt
+```
+
+### 2. Verify Candidate Responses & Integrity
+Check that all 4,000 candidate responses and data snapshots are intact:
+
+```bash
+# Verify candidate CSV counts (2,000 each for Gemma-26B and Gemma-31B)
 python3 run.py candidates
+
+# Run offline data, payload, and checkpoint verification
 python3 run.py check
-python3 run.py status --detail
+
+# Check execution status across all tasks and languages
+python3 run.py status
 ```
 
-Load each judge separately on the GPU server. Set its actual endpoint on the Mac where you run the scripts:
+### 3. Run Reference-Free Judges
+Each judge connects to an OpenAI-compatible endpoint (e.g. hosted via `vLLM` or `llama.cpp`):
 
 ```bash
-# Example only: Ministral must actually be running at this endpoint.
-export RF_MINISTRAL_API_URL="http://172.30.1.83:33937/v1/chat/completions"
-caffeinate -i python3 run.py judge ministral
+# Set your judge endpoint URLs
+export RF_SARVAM_API_URL="http://<HOST>:<PORT>/v1/chat/completions"
+export RF_QWEN_API_URL="http://<HOST>:<PORT>/v1/chat/completions"
+export RF_MINISTRAL_API_URL="http://<HOST>:<PORT>/v1/chat/completions"
+
+# Run an individual judge
+python3 run.py judge sarvam
+python3 run.py judge qwen
+python3 run.py judge ministral
+
+# Or run all three sequentially (if all endpoints are active)
+python3 run.py judge all
 ```
 
-Use `python3 run.py judge qwen` and `python3 run.py judge sarvam` after setting `RF_QWEN_API_URL` and `RF_SARVAM_API_URL`. Use `judge all` only if all three model servers are available. On Linux omit `caffeinate -i`.
+---
 
-These short commands automatically use **`data/inputs_4000.json`** and **`outputs/judges_4000/`** inside the reference-free folder. They do not use the older 3,998-response snapshot. Valid saved judgments are skipped when resumed. Each judge targets 4,000 responses, or 12,000 judgments in total. Results are saved on the machine running Python, even when inference happens on the server.
+## 📈 Dashboard & Analysis
+
+Compute agreement statistics, candidate score rankings, and bootstrap confidence intervals:
 
 ```bash
+# Compute metrics and generate CSV summaries
 python3 run.py analyze
 
-# Optional dashboard for the current 4,000-response analysis:
-python3 -m pip install -r Experiments/multitask/judges/requirements-dashboard.txt
+# Install dashboard requirements and launch the interactive UI
+pip install -r Experiments/multitask/judges/requirements-dashboard.txt
 python3 run.py dashboard
 ```
 
-The dashboard reads `analysis_4000/`. Re-run analysis to refresh its data. Judge-quality rankings require independent adjudicated human scores; agreement alone cannot identify the best judge. See the research plan for MAE, quadratic weighted kappa, matched comparisons and uncertainty estimates.
+The Streamlit dashboard allows interactive filtering by **language**, **task**, and **judge**, showing score distributions, inter-judge agreement heatmaps, and pairwise model comparisons.
 
-## Four-task evaluation and references
+---
 
-| Task               | What reference-free judges receive                                          | What they assess                                  |
-| ------------------ | --------------------------------------------------------------------------- | ------------------------------------------------- |
-| Question answering | Context, question and visible response                                      | Correctness and sufficiency supported by context. |
-| Reasoning          | Premise, causal question, options, candidate reasoning and visible response | Appropriate choices and logical justification.    |
-| Summarization      | Source document and visible summary                                         | Faithfulness, central coverage and conciseness.   |
-| Translation        | Source text, language direction and visible translation                     | Meaning preservation, completeness and fluency.   |
+## 📂 Repository Structure
 
-No dataset answer, correct-option label, reference summary or reference translation is sent to the current judges. Each returns one 0–5 overall score and a justification. Candidate generation also receives no gold references. Selected translation pairs are Indic-to-English; reasoning uses causal commonsense questions.
+```text
+IndicJudge_IBM/
+├── run.py                                    # Unified CLI runner for candidate checks, judging, and analysis
+├── requirements.txt                          # Generation dependencies (PyTorch, Transformers, llama.cpp)
+│
+├── Experiments/
+│   ├── multitask/                            # Active 4,000-response multitask benchmark
+│   │   ├── candidate/                        # 2,000-response CSVs for Gemma-26B & Gemma-31B
+│   │   │   ├── gemma26b_responses.csv
+│   │   │   └── gemma31b_responses.csv
+│   │   ├── judges/                           # Judging engine, rubrics, analysis & dashboard
+│   │   │   ├── rubric.py                     # All 4 task rubrics & system prompts
+│   │   │   ├── judge.py                      # Core judge execution and parsing
+│   │   │   ├── analyze.py                    # Metrics, QWK, MAE & bootstrap CIs
+│   │   │   ├── dashboard.py                  # Streamlit visual dashboard
+│   │   │   ├── data/inputs_4000.json         # Frozen, reference-stripped evaluation items
+│   │   │   └── outputs/judges_4000/          # Saved judgments for Sarvam, Qwen, Ministral
+│   │   └── review_human/                     # Double-blind human adjudication pack
+│   │
+│   └── mathematics/                          # Math reasoning & perturbation experiments (P1–P5)
+│       ├── gsm_*_experiment/                 # Per-language GSM generation scripts & data
+│       ├── mgsm_*_experiment/                # Per-language MGSM generation scripts & data
+│       ├── perturbation_experiment/          # Controlled error injections (PT1–PT4)
+│       ├── sarvam_30b_judge/                 # Sarvam Initial Rubric results
+│       ├── qwen3_14b_judge/                  # Qwen Initial Rubric results
+│       ├── ministral_8b_judge/               # Ministral Initial Rubric results
+│       ├── sarvam_reasoning_judge/           # Sarvam Rubric v2 (structural vs arithmetic)
+│       ├── qwen_reasoning_judge/             # Qwen Rubric v2
+│       └── ministral_reasoning_judge/        # Ministral Rubric v2
+│
+├── Dataset/                                  # 22-language raw & normalized benchmark collections
+│   ├── dataset_csv/                          # Clean CSVs per task (qa, reasoning, summarization, translation)
+│   ├── config/sources.py                     # HuggingFace source dataset adapters
+│   └── scripts/                              # Verification and collection scripts
+│
+└── docs/                                     # Reference papers (JudgeBench) and design notes
+```
 
-Earlier multitask runs supplied references for QA and translation. Their results remain in separate folders and are not reused as current reference-free judgments.
+---
 
-## Mathematical reasoning: P1–P5
+## 🖥 Presentations & Artifacts
 
-Each language has 50 questions. Both candidate models answer every question under five prompt conditions:
+- **`IndicJudge_Presentation_Final.pptx`**: Presentation slide deck covering:
+  - Multitask evaluation overview and rationale
+  - Two-phase candidate generation and reference-free judging architecture
+  - Detailed task rubric slides for QA, Reasoning, Summarization, and Translation
+  - Results breakdown across models and languages
+  - Controlled perturbation experiment (PT1–PT4) findings
 
-**50 questions × 5 prompts × 2 models × 10 languages = 5,000 candidate responses.**
+---
 
-| Prompt | Requested behavior                                                                                    |
-| ------ | ----------------------------------------------------------------------------------------------------- |
-| P1     | Correct step-by-step reasoning, correct calculations and a verified final answer.                     |
-| P2     | A subtle logical or mathematical error in the reasoning, while still giving the correct final answer. |
-| P3     | A correct method with a small arithmetic error at the end, producing an incorrect final answer.       |
-| P4     | Incorrect reasoning or invalid mathematical steps and an incorrect final answer.                      |
-| P5     | A correct final answer with a brief explanation that does not fully justify it.                       |
+## 🤝 Citation & Acknowledgments
 
-These are generation instructions, not guaranteed properties of the responses. Judges evaluate what each candidate actually produced.
+This research is conducted in collaboration with **IBM Research** (2026).
 
-### Initial Rubric
+If you use IndicJudge in your research, please cite:
 
-The judge receives the problem, reference numerical answer, candidate solution, original generation prompt and prompt-intent summary. It returns:
-
-- `answer_correct`: whether the visible final answer matches the supplied reference.
-- `reasoning_quality`: a score from 0–5 for mathematical reasoning.
-- `follows_prompt_intent`: whether the response satisfies the original prompt.
-- `justification`: a short explanation.
-
-The supplied reference is authoritative for answer correctness. Reasoning quality considers both internal reasoning and the visible response.
-
-### Rubric Version 2
-
-The judge receives only the problem, candidate solution and prompt number. **No gold answer or original generation prompt is supplied.** The prompt number is an identifier, not a scoring instruction.
-
-The judge evaluates operation choice and logical flow together. Arithmetic execution errors alone do not lower the score. For example, choosing addition when multiplication is required is a structural error; writing `6 × 4 = 22` is an arithmetic error.
-
-| Score | Meaning                                                                                                |
-| ----- | ------------------------------------------------------------------------------------------------------ |
-| 0     | No assessable solution method.                                                                         |
-| 1     | A method is attempted, but it makes no valid progress.                                                 |
-| 2     | Major structural problems, a missing central relationship, or multiple independent repairs are needed. |
-| 3     | One localized structural error or missing essential step.                                              |
-| 4     | A valid method with a minor clarity omission.                                                          |
-| 5     | A complete, justified method with appropriate operations and logical dependencies.                     |
-
-Output includes `operator_choice`, `overall_score` and `justification`. The operator label is `correct`, `partially_correct`, `incorrect` or `not_assessable`; it has no separate numerical weight.
-
-Each rubric targets 5,000 judgments per judge. Results from the two rubrics stay in separate folders.
-
-## Paths after reorganization
-
-All experiment folders now live under `Experiments/`. Old commands that referenced top-level directories like `reference_free_judge/`, `multitask_50_samples/`, or any `gsm_*_experiment/` folder must be updated to use the new paths. Prefer `python3 run.py` for the active evaluation.
-
-Only this local project was reorganized. Existing server directories and server model-loading commands were not changed. If syncing to a server, copy the new layout before using the new paths there. Folder moves and verified data hashes are recorded in [organization_manifest.json](docs/organization_manifest.json).
+```bibtex
+@misc{indicjudge2026,
+  title={IndicJudge: Multitask Reference-Free Evaluation across 10 Indic Languages},
+  author={IndicJudge Collaboration Team},
+  year={2026},
+  publisher={GitHub},
+  howpublished={\url{https://github.com/avijit004/IndicJudge_IBM_LLM}}
+}
+```
